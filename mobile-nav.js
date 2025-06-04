@@ -104,5 +104,98 @@ class MobileNavigation {
     }
 }
 
-// Initialize mobile navigation when script loads
-new MobileNavigation(); 
+/**
+ * Sticky Action Buttons Controller
+ * Handles CV download, LinkedIn redirect, email, and call functionality
+ */
+class StickyButtons {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setupButtons());
+        } else {
+            this.setupButtons();
+        }
+    }
+    
+    setupButtons() {
+        // Desktop sticky buttons
+        const cvButton = document.querySelector('.sticky-buttons .cv-button');
+        const linkedinButton = document.querySelector('.sticky-buttons .linkedin-button');
+        const emailButton = document.querySelector('.sticky-buttons .email-button');
+        const callButton = document.querySelector('.sticky-buttons .call-button');
+        
+        // Mobile navigation buttons (Contact section)
+        const mobileCvButton = document.querySelector('.nav-section .nav-link.cv-button');
+        const mobileLinkedinButton = document.querySelector('.nav-section .nav-link.linkedin-button');
+        const mobileEmailButton = document.querySelector('.nav-section .nav-link.email-button');
+        const mobileCallButton = document.querySelector('.nav-section .nav-link.call-button');
+        
+        // Bind desktop sticky buttons
+        if (cvButton) {
+            cvButton.addEventListener('click', this.handleCVDownload.bind(this));
+        }
+        
+        if (linkedinButton) {
+            linkedinButton.addEventListener('click', this.handleLinkedInClick.bind(this));
+        }
+        
+        if (emailButton) {
+            emailButton.addEventListener('click', this.handleEmailClick.bind(this));
+        }
+        
+        if (callButton) {
+            callButton.addEventListener('click', this.handleCallClick.bind(this));
+        }
+        
+        // Bind mobile navigation buttons (only on mobile when Contact section is visible)
+        if (mobileCvButton) {
+            mobileCvButton.addEventListener('click', this.handleCVDownload.bind(this));
+        }
+        
+        if (mobileLinkedinButton) {
+            mobileLinkedinButton.addEventListener('click', this.handleLinkedInClick.bind(this));
+        }
+        
+        if (mobileEmailButton) {
+            mobileEmailButton.addEventListener('click', this.handleEmailClick.bind(this));
+        }
+        
+        if (mobileCallButton) {
+            mobileCallButton.addEventListener('click', this.handleCallClick.bind(this));
+        }
+    }
+    
+    handleCVDownload() {
+        // Open CV PDF from downloads folder in new browser window
+        window.open('downloads/Thomas-Grist_Lead-Product-Designer_CV.pdf', '_blank', 'noopener,noreferrer');
+    }
+    
+    handleLinkedInClick() {
+        // Open LinkedIn profile in new window
+        const linkedInURL = 'https://www.linkedin.com/in/thomas-grist-abb95a50/';
+        window.open(linkedInURL, '_blank', 'noopener,noreferrer');
+    }
+    
+    handleEmailClick() {
+        // Open new email with specific subject line in new window
+        const email = 'thomasgrist@gmail.com';
+        const subject = 'Email from thomasgrist.co.uk';
+        const mailtoURL = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+        window.open(mailtoURL, '_blank');
+    }
+    
+    handleCallClick() {
+        // Open phone dialer for UK phone number
+        const phoneNumber = '+447931042702';
+        const telURL = `tel:${phoneNumber}`;
+        window.location.href = telURL;
+    }
+}
+
+// Initialize both controllers when script loads
+new MobileNavigation();
+new StickyButtons(); 
