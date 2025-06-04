@@ -1,0 +1,577 @@
+/* Apercu Font Face Declarations */
+@font-face {
+    font-family: 'Apercu';
+    src: url('fonts/Apercu-Light.woff2') format('woff2'),
+         url('fonts/Apercu-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* CSS Custom Properties */
+:root {
+    --dark-2: #060606;
+    --nav-width: 245px;
+    --nav-text-light: #B5B5B5;
+    --nav-text-white: #FFFFFF;
+    --transition-fast: 0.2s;
+    --transition-smooth: 0.3s;
+    --transition-hover-in: 0.3s;
+    --transition-hover-out: 0.6s;
+    --easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: var(--dark-2);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+}
+
+/* Left Navigation */
+.left-navigation {
+    width: var(--nav-width);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-background {
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-2);
+    position: relative;
+}
+
+.nav-logo {
+    height: 112px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px;
+}
+
+.logo-link {
+    display: inline-block;
+    transition: transform var(--transition-fast) var(--easing-smooth);
+    transform-origin: center;
+    will-change: transform;
+}
+
+.logo-link:hover {
+    transform: scale(1.2);
+}
+
+.logo-svg {
+    height: auto;
+    width: auto;
+    max-height: 32px;
+    max-width: 100%;
+    filter: brightness(1);
+    display: block;
+}
+
+.nav-content {
+    padding: 0 24px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Navigation Sections */
+.nav-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-section-title {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6em;
+    color: var(--nav-text-light);
+    padding: 0 0 12px 16px;
+    margin: 0;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 197px;
+}
+
+/* Navigation Items */
+.nav-item {
+    width: 100%;
+    transition: background-color var(--transition-hover-out) var(--easing-smooth), 
+                transform var(--transition-hover-out) var(--easing-smooth);
+    will-change: transform, background-color, border-radius;
+    transform: translateX(0);
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.nav-item:hover {
+    background-color: #1F1F1F;
+    transform: translateX(8px);
+    transition: background-color var(--transition-hover-in) var(--easing-smooth), 
+                transform var(--transition-hover-in) var(--easing-smooth);
+}
+
+.nav-icon {
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.nav-arrow {
+    width: 9px;
+    height: 9px;
+    opacity: 1;
+    transition: transform var(--transition-hover-out) var(--easing-smooth);
+    will-change: transform;
+    transform: rotate(0deg);
+}
+
+.nav-item:hover .nav-arrow {
+    transform: rotate(45deg);
+    transition: transform var(--transition-hover-in) var(--easing-smooth);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px 12px 16px;
+    width: 100%;
+    height: 48px;
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--nav-text-white);
+    text-decoration: none;
+    transition: color var(--transition-fast) var(--easing-smooth);
+}
+
+.nav-link:hover {
+    color: var(--nav-text-white);
+}
+
+.nav-text {
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.41em;
+}
+
+/* Special styling for Audi item with subtitle */
+.nav-text-container {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.nav-subtitle {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.21em;
+    color: var(--nav-text-white);
+    opacity: 1;
+    margin-left: -1px;
+}
+
+/* Homepage Layout */
+.homepage {
+    min-height: 100vh;
+    width: 100%;
+    margin-left: var(--nav-width);
+    padding: 0;
+}
+
+/* Page Content */
+.page-content {
+    padding: 60px 80px;
+    max-width: 1200px;
+}
+
+.page-content h1 {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1.2;
+    color: var(--nav-text-white);
+    margin-bottom: 24px;
+}
+
+.page-content p {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--nav-text-light);
+    margin-bottom: 20px;
+}
+
+/* Mobile Hamburger Menu */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 1001;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px 12px;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast) var(--easing-smooth);
+}
+
+/* Mobile Logo */
+.mobile-logo {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+}
+
+.mobile-logo .logo-link {
+    display: inline-block;
+    transition: transform var(--transition-fast) var(--easing-smooth);
+    transform-origin: center;
+    will-change: transform;
+}
+
+.mobile-logo .logo-link:hover {
+    transform: scale(1.1);
+}
+
+.mobile-logo .logo-svg {
+    height: 28px;
+    width: auto;
+    filter: brightness(1);
+    display: block;
+}
+
+.mobile-menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.hamburger {
+    width: 25px;
+    height: 17px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform var(--transition-smooth) var(--easing-smooth);
+}
+
+/* Replace the SVG hamburger with CSS lines for better animation control */
+.hamburger-line {
+    width: 25px;
+    height: 1px;
+    background-color: white;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+    opacity: 1;
+    position: relative;
+}
+
+.hamburger-line:nth-child(1) {
+    transform: translateY(0) rotate(0deg);
+}
+
+.hamburger-line:nth-child(2) {
+    opacity: 0.8;
+    transform: scale(1) rotate(0deg);
+}
+
+.hamburger-line:nth-child(3) {
+    opacity: 0.6;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* Hide the old SVG icon */
+.hamburger-icon {
+    display: none;
+}
+
+/* Remove old span-based styles */
+.hamburger span {
+    display: none;
+}
+
+.hamburger span:nth-child(1),
+.hamburger span:nth-child(2), 
+.hamburger span:nth-child(3) {
+    display: none;
+}
+
+/* Hamburger animation when menu is open - elegant morphing to X */
+.mobile-menu-toggle.menu-open .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    opacity: 1;
+}
+
+.mobile-menu-toggle.menu-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.mobile-menu-toggle.menu-open .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    opacity: 1;
+}
+
+/* Remove old icon rotation animation */
+.mobile-menu-toggle.menu-open .hamburger-icon {
+    display: none;
+}
+
+/* Remove old span-based animations */
+.mobile-menu-toggle.menu-open .hamburger span:nth-child(1),
+.mobile-menu-toggle.menu-open .hamburger span:nth-child(2),
+.mobile-menu-toggle.menu-open .hamburger span:nth-child(3) {
+    display: none;
+}
+
+/* Mobile Overlay */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 6, 6, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity var(--transition-smooth) var(--easing-smooth);
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .mobile-logo {
+        display: block;
+    }
+    
+    .mobile-nav-overlay {
+        display: block;
+    }
+    
+    .left-navigation {
+        transform: translateX(-100%);
+        will-change: transform;
+        z-index: 1000;
+    }
+    
+    .left-navigation .nav-logo {
+        display: none;
+    }
+    
+    .left-navigation.menu-open {
+        transform: translateX(0);
+    }
+    
+    /* Add top padding when mobile menu is open to create 92px margin between mobile logo and case studies */
+    .left-navigation.menu-open .nav-content {
+        padding-top: 92px;
+        padding-left: 4px;
+    }
+    
+    /* Add 1px dividers between case study items on mobile */
+    .left-navigation.menu-open .nav-section .nav-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.15);
+        width: 100vw;
+        margin-left: calc(-4px - 24px);
+    }
+    
+    /* Add dividers above first item of each section */
+    .left-navigation.menu-open .nav-section .nav-item:first-child::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.15);
+        width: 100vw;
+        margin-left: calc(-4px - 24px);
+    }
+    
+    /* Add dividers below last item of each section */
+    .left-navigation.menu-open .nav-section .nav-item:last-child::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.15);
+        width: 100vw;
+        margin-left: calc(-4px - 24px);
+    }
+    
+    .left-navigation.menu-open .nav-section .nav-item {
+        position: relative;
+    }
+    
+    /* Set nav item height to 72px on mobile */
+    .left-navigation .nav-link {
+        height: 72px;
+    }
+    
+    /* Set section title bottom spacing to 24px on mobile */
+    .left-navigation .nav-section-title {
+        padding-bottom: 24px;
+    }
+    
+    /* Make hover state full width and remove rounded corners on mobile */
+    .left-navigation .nav-item {
+        border-radius: 0;
+        position: relative;
+    }
+    
+    .left-navigation .nav-item:hover {
+        transform: translateX(0);
+        border-radius: 0;
+        background-color: transparent;
+        overflow: visible;
+    }
+    
+    .left-navigation .nav-item:hover .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #1F1F1F;
+        width: 100vw;
+        margin-left: calc(-4px - 24px);
+        z-index: -1;
+    }
+    
+    .left-navigation .nav-link {
+        position: relative;
+    }
+    
+    /* Sequential fade-in animation for mobile menu items */
+    .left-navigation .nav-section-title,
+    .left-navigation .nav-item {
+        opacity: 0;
+        transform: translateX(0) translateY(20px);
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    }
+    
+    .left-navigation.menu-open .nav-section-title,
+    .left-navigation.menu-open .nav-item {
+        animation: fadeInUp 0.6s ease-out forwards;
+        transition: none;
+    }
+    
+    /* Sequential delays for each item */
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-section-title {
+        animation-delay: 0.1s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-list .nav-item:nth-child(1) {
+        animation-delay: 0.2s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-list .nav-item:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-list .nav-item:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-list .nav-item:nth-child(4) {
+        animation-delay: 0.5s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-list .nav-item:nth-child(5) {
+        animation-delay: 0.6s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(1) .nav-list .nav-item:nth-child(6) {
+        animation-delay: 0.7s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-section-title {
+        animation-delay: 0.8s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) {
+        animation-delay: 0.9s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) {
+        animation-delay: 1.0s;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateX(0) translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+    }
+    
+    .homepage {
+        margin-left: 0;
+    }
+    
+    .page-content {
+        padding: 80px 20px 60px 20px;
+    }
+    
+    .page-content h1 {
+        font-size: 36px;
+    }
+    
+    .page-content p {
+        font-size: 16px;
+    }
+} 
