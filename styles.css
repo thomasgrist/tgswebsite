@@ -1826,7 +1826,7 @@ button.nav-link {
 .timeline-project-card {
     margin-right: 0;
     margin-bottom: 0;
-    padding: 32px 24px 40px 24px;
+    padding: 0px 24px 0px 24px;
     background: transparent;
     border: none;
     border-radius: 0;
@@ -1848,7 +1848,7 @@ button.nav-link {
     top: 0;
     left: 0;
     width: 0;
-    height: 368px;
+    height: 315px;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
 }
 
