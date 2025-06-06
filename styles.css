@@ -2099,6 +2099,8 @@ button.nav-link {
         gap: 24px;
         transition: all 0.2s ease-out;
         position: relative;
+        /* Allow both horizontal timeline scrolling and vertical page scrolling */
+        touch-action: manipulation;
     }
     
     .timeline-project-card:hover {
