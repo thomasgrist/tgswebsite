@@ -731,6 +731,26 @@ body {
     .project-tile-meta {
         gap: 6px !important;
     }
+    
+    /* Force project tile tags to wrap underneath meta on mobile */
+    .project-tile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    /* Ensure full-width project tile header is also left-aligned on mobile */
+    .project-tile-full .project-tile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    /* Fix touch scrolling conflict - allow vertical page scrolling even when touching project tiles */
+    .project-tile,
+    .project-tile-full {
+        touch-action: manipulation;
+    }
 }
 
 .project-tile-tags {
