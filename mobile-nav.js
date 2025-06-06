@@ -81,6 +81,9 @@ class MobileNavigation {
         this.navigation.classList.add('menu-open');
         this.overlay.classList.add('active');
         
+        // Reset scroll position to top when menu opens
+        this.navigation.scrollTop = 0;
+        
         // Prevent body scroll when menu is open
         document.body.style.overflow = 'hidden';
         
