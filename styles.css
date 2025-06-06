@@ -867,6 +867,25 @@ body {
     border-radius: 50%;
 }
 
+/* Remove hover effect on touch devices to prevent sticky hover states */
+@media (hover: none) {
+    .mobile-menu-toggle:hover {
+        background-color: transparent;
+    }
+}
+
+/* Additional fix for touch devices - prevent focus styles from persisting */
+@media (max-width: 768px) {
+    .mobile-menu-toggle:focus {
+        outline: none;
+    }
+    
+    .mobile-menu-toggle:active {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+    }
+}
+
 .hamburger {
     width: 25px;
     height: 17px;
@@ -1143,8 +1162,8 @@ button.nav-link {
     
     .fixed-header {
         top: 20px;
-        left: 16px;
-        right: 16px;
+        left: 12px;
+        right: 12px;
     }
     
     .fixed-header.scrolled {
@@ -1157,12 +1176,13 @@ button.nav-link {
     
     .header-logo {
         transform: translateY(2px);
+        padding-left: 8px;
     }
     
     .fixed-header::before {
         top: -20px; /* Extend above by mobile top margin amount */
-        left: -16px; /* Extend to mobile viewport edge */
-        right: -16px; /* Extend to mobile viewport edge */
+        left: -12px; /* Extend to mobile viewport edge */
+        right: -12px; /* Extend to mobile viewport edge */
         bottom: -20px; /* Extend below by mobile top margin amount */
     }
     
@@ -1181,6 +1201,8 @@ button.nav-link {
         transform: translateX(-100%);
         will-change: transform;
         z-index: -1;
+        /* Full width on mobile */
+        width: 100vw;
     }
     
     /* .nav-logo no longer exists - removed */
@@ -1189,12 +1211,31 @@ button.nav-link {
         transform: translateX(0);
         z-index: 1000;
         background-color: var(--dark-2);
+        /* Enable scrolling on mobile navigation */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+    }
+    
+    /* Full width nav components on mobile */
+    .left-navigation .nav-list {
+        width: 100%;
+    }
+    
+    .left-navigation .nav-content {
+        width: 100%;
+    }
+    
+    .left-navigation .nav-section {
+        width: 100%;
     }
     
     /* Add top padding when mobile menu is open to create 92px margin between mobile logo and case studies */
     .left-navigation.menu-open .nav-content {
         padding-top: 92px;
         padding-left: 4px;
+        padding-right: 0;
     }
     
     /* Add 1px dividers between case study items on mobile */
@@ -1207,7 +1248,7 @@ button.nav-link {
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
         width: 100vw;
-        margin-left: calc(-4px - 24px);
+        margin-left: -4px;
     }
     
     /* Add dividers above first item of each section */
@@ -1220,7 +1261,7 @@ button.nav-link {
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
         width: 100vw;
-        margin-left: calc(-4px - 24px);
+        margin-left: -4px;
     }
     
     /* Add dividers below last item of each section */
@@ -1233,7 +1274,7 @@ button.nav-link {
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
         width: 100vw;
-        margin-left: calc(-4px - 24px);
+        margin-left: -4px;
     }
     
     .left-navigation.menu-open .nav-section .nav-item {
@@ -1271,7 +1312,7 @@ button.nav-link {
         bottom: 0;
         background-color: #1F1F1F;
         width: 100vw;
-        margin-left: calc(-4px - 24px);
+        margin-left: -4px;
         z-index: -1;
     }
     
@@ -1380,7 +1421,7 @@ button.nav-link {
     }
     
     .content-area {
-        padding: 96px 16px 0 16px;
+        padding: 96px 0 0 0;
     }
     
     .page-content {
@@ -1394,8 +1435,8 @@ button.nav-link {
     
     .hero-section {
         margin-bottom: 48px;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 16px;
+        padding-right: 16px;
     }
     
     .hero-header {
@@ -1444,8 +1485,8 @@ button.nav-link {
         margin-top: 64px;
         margin-left: 0;
         margin-right: 0;
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     /* Mobile vertical spacing between project tile rows */
@@ -1459,6 +1500,8 @@ button.nav-link {
     /* Mobile full-width project tile */
     .project-tile-row-full {
         margin-top: 64px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .project-tile-full {
@@ -1759,21 +1802,17 @@ button.nav-link {
 }
 
 .timeline-project-card {
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 32px 24px 40px 24px;
     background: transparent;
     border: none;
     border-radius: 0;
-    padding: 0px 0px 40px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    transition: all 0.2s ease-out;
     box-shadow: none;
-    position: relative;
-    height: 375px;
-}
-
-.timeline-project:last-child .timeline-project-card {
-    margin-right: 0;
+    height: auto;
+    min-height: 320px;
+    gap: 24px;
+    transition: all 0.2s ease-out;
 }
 
 .timeline-project-card:hover {
@@ -1930,10 +1969,13 @@ button.nav-link {
     z-index: 3;
 }
 
+
+
 /* Mobile responsive design for career timeline */
 @media (max-width: 768px) {
     .career-timeline {
-        margin-top: 64px;
+        margin-top: 48px;
+        padding-left: 16px;
     }
     
     .career-timeline-header {
@@ -1944,8 +1986,12 @@ button.nav-link {
         margin-bottom: 40px;
     }
     
+    .career-timeline-title-section {
+        gap: 12px;
+    }
+    
     .career-timeline-title {
-        font-size: 27px;
+        font-size: 27px !important;
         line-height: 1.1851851851851851em;
     }
     
@@ -1954,42 +2000,83 @@ button.nav-link {
         gap: 4px;
     }
     
-
-    
     .career-timeline-navigation {
         display: none;
     }
     
     .career-timeline-content {
         padding: 0;
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
+        position: relative;
+        overflow: hidden;
+        width: calc(100% + 60px);
+        margin-left: -60px;
     }
     
     .career-timeline-projects {
-        width: 284px;
-        flex-shrink: 0;
+        width: 100%;
+        overflow: visible;
+        position: relative;
+        padding: 0;
     }
     
     .timeline-projects-row {
-        flex-direction: column;
-        gap: 1px;
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        width: calc(12 * (100vw - 40px)); /* 12 cards * (card width + margin) */
+        transition: transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+        touch-action: pan-x;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-touch-callout: none;
+        transform: translateX(60px);
+        position: relative;
+    }
+
+    .timeline-projects-row::after {
+        content: '';
+        position: absolute;
+        bottom: 14px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: transparent;
+        opacity: 0.6;
+        background-image: repeating-linear-gradient(to right, #B5B5B5 0, #B5B5B5 1px, transparent 1px, transparent 7px);
+        z-index: 1;
+        pointer-events: none;
     }
     
     .timeline-project {
-        width: 100%;
+        width: calc(100vw - 60px); /* Full viewport width minus peek (60px) */
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        position: relative;
+        margin-right: 20px; /* Space between cards */
+    }
+    
+    .timeline-project:last-child {
+        margin-right: 0;
     }
     
     .timeline-project-card {
         margin-right: 0;
         margin-bottom: 0;
-        padding: 0 24px 16px 0;
+        padding: 0px 0px 12px 16px;
         background: transparent;
-        box-shadow: none;
-        height: 292px;
+        border: none;
         border-radius: 0;
-        gap: 32px;
+        box-shadow: none;
+        height: auto;
+        min-height: 340px;
+        gap: 24px;
+        transition: all 0.2s ease-out;
+        position: relative;
     }
     
     .timeline-project-card:hover {
@@ -1999,41 +2086,58 @@ button.nav-link {
     }
     
     .timeline-project-line {
-        height: 288px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 320px;
+        border-left: 1px solid rgba(255, 255, 255, 0.4);
     }
     
     .timeline-project-content {
-        gap: 16px;
+        gap: 20px;
+        flex: 1;
+        padding-bottom: 0;
     }
     
     .timeline-project-header {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
-        row-gap: 4px;
+    }
+    
+    .timeline-project-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
     
     .timeline-project-company {
-        font-size: 19px;
-        line-height: 1.5263157894736843em;
+        font-size: 20px;
+        line-height: 1.4em;
     }
     
     .timeline-project-description {
-        font-size: 15px;
-        line-height: 1.6em;
+        font-size: 15px !important;
+        line-height: 1.5em !important;
+        margin: 0;
     }
     
     .timeline-year {
-        bottom: -15px;
+        position: absolute;
+        bottom: -3px;
         left: -3px;
-        right: auto;
+        font-size: 12px;
+        color: #B5B5B5;
     }
     
     .timeline-tag-text {
-        font-size: 12px !important;
-        line-height: 10px !important;
+        font-size: 13px !important;
+        line-height: 14px !important;
     }
     
     .timeline-project-tags {
-        gap: 4px;
+        gap: 6px;
         flex-wrap: wrap;
         max-width: 100%;
         overflow: hidden;
@@ -2048,28 +2152,26 @@ button.nav-link {
         word-break: break-word;
         white-space: normal;
         flex-shrink: 1;
+        font-size: 14px;
     }
     
     .timeline-line {
-        display: none;
+        display: none; /* Hide individual card timeline lines on mobile */
     }
     
     .timeline-dot {
-        display: none;
+        width: 7px;
+        height: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        background: transparent;
+        position: absolute;
+        bottom: 11px;
+        left: -3px;
     }
     
     .career-timeline-fade {
         display: none;
-    }
-    
-    /* Additional mobile timeline projects */
-    .career-timeline-content::after {
-        content: '';
-        width: 288px;
-        height: 292px;
-        flex-shrink: 0;
-        background: transparent;
-        position: relative;
     }
 }
 
@@ -2150,8 +2252,8 @@ button.nav-link {
 @media (max-width: 480px) {
     .fixed-header {
         top: 20px;
-        left: 16px;
-        right: 16px;
+        left: 12px;
+        right: 12px;
     }
     
     .fixed-header.scrolled {
@@ -2165,8 +2267,8 @@ button.nav-link {
     
     .fixed-header::before {
         top: -20px; /* Extend above by small mobile top margin amount */
-        left: -16px; /* Extend to small mobile viewport edge */
-        right: -16px; /* Extend to small mobile viewport edge */
+        left: -12px; /* Extend to small mobile viewport edge */
+        right: -12px; /* Extend to small mobile viewport edge */
         bottom: -20px; /* Extend below by small mobile top margin amount */
     }
     

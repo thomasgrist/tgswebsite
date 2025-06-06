@@ -101,6 +101,11 @@ class MobileNavigation {
         // Focus management for accessibility
         this.navigation.setAttribute('aria-hidden', 'true');
         this.menuToggle.setAttribute('aria-expanded', 'false');
+        
+        // Force remove any persistent hover states on touch devices
+        if ('ontouchstart' in window) {
+            this.menuToggle.blur();
+        }
     }
 }
 
@@ -285,6 +290,232 @@ class CareerTimelineNavigation {
 }
 
 /**
+ * Mobile Timeline Swiper
+ * Handles touch swiping for career timeline on mobile devices
+ */
+class MobileTimelineSwiper {
+    constructor() {
+        this.currentIndex = 0;
+        this.totalCards = 12;
+        this.startX = 0;
+        this.currentX = 0;
+        this.isDragging = false;
+        this.hasStartedDrag = false;
+        this.threshold = 50; // Minimum distance to trigger swipe
+        this.maxDrag = 100; // Maximum drag distance for visual feedback
+        
+        this.init();
+    }
+    
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setupSwiper());
+        } else {
+            this.setupSwiper();
+        }
+    }
+    
+    setupSwiper() {
+        // Only initialize on mobile devices
+        if (window.innerWidth > 768) {
+            return;
+        }
+        
+        this.timelineRow = document.querySelector('.timeline-projects-row');
+        
+        if (!this.timelineRow) {
+            return;
+        }
+        
+        this.bindEvents();
+    }
+    
+    bindEvents() {
+        // Touch events
+        this.timelineRow.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: false });
+        this.timelineRow.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
+        this.timelineRow.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: false });
+        
+        // Mouse events for desktop testing
+        this.timelineRow.addEventListener('mousedown', (e) => this.handleMouseDown(e));
+        this.timelineRow.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.timelineRow.addEventListener('mouseup', (e) => this.handleMouseUp(e));
+        this.timelineRow.addEventListener('mouseleave', (e) => this.handleMouseUp(e));
+        
+        // Prevent context menu on long press
+        this.timelineRow.addEventListener('contextmenu', (e) => e.preventDefault());
+        
+        // Handle window resize
+        window.addEventListener('resize', () => this.handleResize());
+    }
+    
+
+    
+    handleTouchStart(e) {
+        this.startX = e.touches[0].clientX;
+        this.currentX = this.startX;
+        this.isDragging = true;
+        this.hasStartedDrag = false;
+        
+        // Add grabbing cursor
+        this.timelineRow.style.cursor = 'grabbing';
+        
+        // Prevent scrolling while swiping horizontally
+        e.preventDefault();
+    }
+    
+    handleTouchMove(e) {
+        if (!this.isDragging) return;
+        
+        this.currentX = e.touches[0].clientX;
+        const diffX = this.currentX - this.startX;
+        
+        if (!this.hasStartedDrag && Math.abs(diffX) > 10) {
+            this.hasStartedDrag = true;
+        }
+        
+        if (this.hasStartedDrag) {
+            // Limit drag distance for visual feedback
+            const limitedDiffX = Math.max(-this.maxDrag, Math.min(this.maxDrag, diffX));
+            this.updateTransformWithDrag(limitedDiffX);
+            
+            // Prevent page scrolling
+            e.preventDefault();
+        }
+    }
+    
+    handleTouchEnd(e) {
+        if (!this.isDragging) return;
+        
+        const diffX = this.currentX - this.startX;
+        
+        // Reset cursor
+        this.timelineRow.style.cursor = 'grab';
+        
+        // Determine if swipe threshold was met
+        if (Math.abs(diffX) > this.threshold) {
+            if (diffX > 0 && this.currentIndex > 0) {
+                // Swipe right - go to previous slide
+                this.goToSlide(this.currentIndex - 1);
+            } else if (diffX < 0 && this.currentIndex < this.totalCards - 1) {
+                // Swipe left - go to next slide
+                this.goToSlide(this.currentIndex + 1);
+            } else {
+                // Snap back to current position
+                this.goToSlide(this.currentIndex);
+            }
+        } else {
+            // Snap back to current position
+            this.goToSlide(this.currentIndex);
+        }
+        
+        this.isDragging = false;
+        this.hasStartedDrag = false;
+    }
+    
+    // Mouse events for desktop testing
+    handleMouseDown(e) {
+        if (window.innerWidth > 768) return; // Only on mobile
+        this.startX = e.clientX;
+        this.currentX = this.startX;
+        this.isDragging = true;
+        this.hasStartedDrag = false;
+        this.timelineRow.style.cursor = 'grabbing';
+        e.preventDefault();
+    }
+    
+    handleMouseMove(e) {
+        if (!this.isDragging || window.innerWidth > 768) return;
+        
+        this.currentX = e.clientX;
+        const diffX = this.currentX - this.startX;
+        
+        if (!this.hasStartedDrag && Math.abs(diffX) > 10) {
+            this.hasStartedDrag = true;
+        }
+        
+        if (this.hasStartedDrag) {
+            const limitedDiffX = Math.max(-this.maxDrag, Math.min(this.maxDrag, diffX));
+            this.updateTransformWithDrag(limitedDiffX);
+        }
+    }
+    
+    handleMouseUp(e) {
+        if (!this.isDragging || window.innerWidth > 768) return;
+        
+        const diffX = this.currentX - this.startX;
+        this.timelineRow.style.cursor = 'grab';
+        
+        if (Math.abs(diffX) > this.threshold) {
+            if (diffX > 0 && this.currentIndex > 0) {
+                this.goToSlide(this.currentIndex - 1);
+            } else if (diffX < 0 && this.currentIndex < this.totalCards - 1) {
+                this.goToSlide(this.currentIndex + 1);
+            } else {
+                this.goToSlide(this.currentIndex);
+            }
+        } else {
+            this.goToSlide(this.currentIndex);
+        }
+        
+        this.isDragging = false;
+        this.hasStartedDrag = false;
+    }
+    
+    updateTransformWithDrag(dragOffset) {
+        const slideDistance = this.getCardWidth();
+        const baseTranslateX = 60 - (this.currentIndex * slideDistance); // Account for initial 60px offset
+        const translateX = baseTranslateX + dragOffset;
+        
+        this.timelineRow.style.transition = 'none';
+        this.timelineRow.style.transform = `translateX(${translateX}px)`;
+    }
+    
+    goToSlide(index) {
+        // Constrain index to valid range
+        this.currentIndex = Math.max(0, Math.min(index, this.totalCards - 1));
+        
+        const slideDistance = this.getCardWidth();
+        const translateX = 60 - (this.currentIndex * slideDistance); // Account for initial 60px offset
+        
+        // Re-enable smooth transition
+        this.timelineRow.style.transition = 'transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        this.timelineRow.style.transform = `translateX(${translateX}px)`;
+        
+        // Debug log to verify positioning
+        const firstCard = document.querySelector('.timeline-project');
+        const cardRect = firstCard ? firstCard.getBoundingClientRect() : null;
+        const cardStyle = firstCard ? window.getComputedStyle(firstCard) : null;
+        console.log(`Slide ${this.currentIndex}: translateX = ${translateX}px, slideDistance = ${slideDistance}px, actualCardWidth = ${cardRect?.width}px, marginRight = ${cardStyle?.marginRight}`);
+    }
+    
+    getCardWidth() {
+        // Get the actual rendered width of the first card including its margin
+        // This ensures perfect alignment by using the browser's actual calculations
+        const firstCard = document.querySelector('.timeline-project');
+        if (firstCard) {
+            const cardRect = firstCard.getBoundingClientRect();
+            const cardStyle = window.getComputedStyle(firstCard);
+            const marginRight = parseFloat(cardStyle.marginRight) || 0;
+            return cardRect.width + marginRight;
+        }
+        
+        // Fallback calculation if card not found (card width + margin)
+        // Card width = 100vw - 60px, margin = 20px, total = 100vw - 40px
+        return window.innerWidth - 40;
+    }
+    
+
+    
+    handleResize() {
+        // Recalculate position on resize
+        if (window.innerWidth <= 768) {
+            this.goToSlide(this.currentIndex);
+        }
+    }
+}
+
+/**
  * Resize Animation Stopper
  * Prevents unwanted animations during window resize
  */
@@ -322,4 +553,5 @@ class ResizeAnimationStopper {
 new MobileNavigation();
 new StickyButtons();
 new CareerTimelineNavigation();
+new MobileTimelineSwiper();
 new ResizeAnimationStopper(); 
