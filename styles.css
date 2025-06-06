@@ -1237,7 +1237,7 @@ button.nav-link {
         padding-left: 4px;
         padding-right: 0;
         /* Add bottom padding to ensure the call button is always accessible when scrolling */
-        padding-bottom: 120px;
+        padding-bottom: 180px;
     }
     
     /* Add 1px dividers between case study items on mobile */
