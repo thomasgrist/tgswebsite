@@ -8,53 +8,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Sticky Action Buttons -->
-    <div class="sticky-buttons">
-        <button class="action-button cv-button">
-            <img src="img/cv-icon.svg" alt="" class="button-icon">
-            <span class="button-text">CV</span>
-        </button>
-        <button class="action-button linkedin-button">
-            <img src="img/linkedin-icon.svg" alt="" class="button-icon">
-            <span class="button-text">LinkedIn</span>
-        </button>
-        <button class="action-button email-button">
-            <img src="img/email-icon.svg" alt="" class="button-icon">
-            <span class="button-text">Email</span>
-        </button>
-        <button class="action-button call-button">
-            <img src="img/call-icon.svg" alt="" class="button-icon">
-            <span class="button-text">Call</span>
-        </button>
-    </div>
-
-    <!-- Mobile Logo -->
-    <div class="mobile-logo">
-        <a href="index.html" class="logo-link">
-            <img src="img/tgs-mark.svg" alt="TGS" class="logo-svg">
-        </a>
-    </div>
-
-    <!-- Mobile Menu Toggle Button -->
-    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <div class="hamburger">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
+    <!-- Fixed Header - Contains Logo and Action Buttons -->
+    <header class="fixed-header">
+        <div class="header-logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/tgs-mark.svg" alt="TGS" class="logo-svg">
+            </a>
         </div>
-    </button>
+        
+        <div class="header-buttons">
+            <button class="action-button cv-button">
+                <img src="img/cv-icon.svg" alt="" class="button-icon">
+                <span class="button-text">CV</span>
+            </button>
+            <button class="action-button linkedin-button">
+                <img src="img/linkedin-icon.svg" alt="" class="button-icon">
+                <span class="button-text">LinkedIn</span>
+            </button>
+            <button class="action-button email-button">
+                <img src="img/email-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Email</span>
+            </button>
+            <button class="action-button call-button">
+                <img src="img/call-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Call</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <div class="hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </button>
+    </header>
 
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay"></div>
 
     <aside class="left-navigation" aria-hidden="true">
         <div class="nav-background">
-            <div class="nav-logo">
-                <a href="index.html" class="logo-link">
-                    <img src="img/tgs-mark.svg" alt="TGS" class="logo-svg">
-                </a>
-            </div>
-            
             <nav class="nav-content">
                 <!-- Case Studies Section -->
                 <section class="nav-section">
@@ -188,5 +183,7 @@
 
     <!-- Mobile Navigation JavaScript -->
     <script src="mobile-nav.js"></script>
+    <!-- Header Scroll Animation -->
+    <script src="header-scroll.js"></script>
 </body>
 </html> 

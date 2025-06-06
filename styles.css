@@ -52,6 +52,11 @@ body {
     left: 0;
     top: 0;
     z-index: 1000;
+    transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.left-navigation.scrolled {
+    top: -28px;
 }
 
 .nav-background {
@@ -61,15 +66,7 @@ body {
     position: relative;
 }
 
-.nav-logo {
-    height: 112px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 40px;
-}
+/* .nav-logo removed - logo now in fixed header */
 
 .logo-link {
     display: inline-block;
@@ -92,7 +89,7 @@ body {
 }
 
 .nav-content {
-    padding: 0 24px 0 24px;
+    padding: 128px 24px 0 24px;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -719,6 +716,7 @@ body {
     /* Reduce project tag and company text size on mobile */
     .tag-text {
         font-size: 12px !important;
+        line-height: 10px !important;
     }
     
     .project-tile-company {
@@ -786,43 +784,82 @@ body {
 /* Mobile Hamburger Menu */
 .mobile-menu-toggle {
     display: none;
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    z-index: 1001;
     background: none;
     border: none;
     cursor: pointer;
     padding: 15px 12px;
     border-radius: 50%;
     transition: background-color var(--transition-fast) var(--easing-smooth);
+    pointer-events: auto;
 }
 
-/* Mobile Logo */
-.mobile-logo {
-    display: none;
+/* Fixed Header - Groups Logo and Action Buttons */
+.fixed-header {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
+    top: 40px;
+    left: 40px;
+    right: 24px;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none; /* Allow clicks to pass through the container */
+    transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.mobile-logo .logo-link {
+.fixed-header.scrolled {
+    top: 12px;
+}
+
+.fixed-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; /* Extend above by top margin amount */
+    left: -40px; /* Extend to viewport edge */
+    right: -24px; /* Extend to viewport edge */
+    bottom: -40px; /* Extend below by top margin amount */
+    background-color: var(--dark-2);
+    z-index: -1;
+    transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                backdrop-filter 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fixed-header.scrolled::before {
+    top: -12px; /* Adjust background for scrolled state */
+    bottom: -12px; /* Maintain equal spacing */
+    background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
+    backdrop-filter: blur(37px); /* Background blur effect */
+}
+
+.header-logo,
+.header-buttons {
+    pointer-events: auto; /* Re-enable clicks on actual interactive elements */
+}
+
+.header-logo .logo-link {
     display: inline-block;
     transition: transform var(--transition-fast) var(--easing-smooth);
     transform-origin: center;
     will-change: transform;
 }
 
-.mobile-logo .logo-link:hover {
+.header-logo .logo-link:hover {
     transform: scale(1.1);
 }
 
-.mobile-logo .logo-svg {
+.header-logo .logo-svg {
     height: 24px;
     width: auto;
     filter: brightness(1);
     display: block;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 24px;
+    align-items: center;
 }
 
 .mobile-menu-toggle:hover {
@@ -1072,14 +1109,14 @@ button.nav-link {
         width: 100%;
     }
     
-    .sticky-buttons {
+    .header-buttons {
         gap: 12px;
     }
 }
 
 /* Viewports smaller than 1200px */
 @media (max-width: 1199px) {
-    .sticky-buttons {
+    .header-buttons {
         gap: 4px !important;
     }
     
@@ -1102,11 +1139,38 @@ button.nav-link {
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
-        right: 8px;
     }
     
-    .mobile-logo {
-        display: block;
+    .fixed-header {
+        top: 20px;
+        left: 16px;
+        right: 16px;
+    }
+    
+    .fixed-header.scrolled {
+        top: 8px; /* Proportional scroll adjustment for mobile */
+    }
+    
+    .header-buttons {
+        display: none; /* Hide action buttons on mobile, they're in the side nav */
+    }
+    
+    .header-logo {
+        transform: translateY(2px);
+    }
+    
+    .fixed-header::before {
+        top: -20px; /* Extend above by mobile top margin amount */
+        left: -16px; /* Extend to mobile viewport edge */
+        right: -16px; /* Extend to mobile viewport edge */
+        bottom: -20px; /* Extend below by mobile top margin amount */
+    }
+    
+    .fixed-header.scrolled::before {
+        top: -8px; /* Adjust mobile background for scrolled state */
+        bottom: -8px; /* Maintain equal spacing */
+        background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
+        backdrop-filter: blur(37px); /* Background blur effect */
     }
     
     .mobile-nav-overlay {
@@ -1119,9 +1183,7 @@ button.nav-link {
         z-index: -1;
     }
     
-    .left-navigation .nav-logo {
-        display: none;
-    }
+    /* .nav-logo no longer exists - removed */
     
     .left-navigation.menu-open {
         transform: translateX(0);
@@ -1456,16 +1518,8 @@ button.nav-link {
     }
 }
 
-/* Sticky Action Buttons */
-.sticky-buttons {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    z-index: 2000;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-}
+/* Action Buttons (now part of header) */
+/* No additional positioning needed - handled by .header-buttons */
 
 .action-button {
     display: flex;
@@ -1521,11 +1575,9 @@ button.nav-link {
     white-space: nowrap;
 }
 
-/* Mobile responsive adjustments for sticky buttons */
+/* Mobile responsive adjustments for action buttons */
 @media (max-width: 768px) {
-    .sticky-buttons {
-        display: none;
-    }
+    /* Action buttons are hidden via .header-buttons rule above */
     
     .action-button {
         padding: 8px 16px;
@@ -1540,11 +1592,33 @@ button.nav-link {
 }
 
 @media (max-width: 480px) {
-    .sticky-buttons {
+    .fixed-header {
+        top: 20px;
+        left: 16px;
+        right: 16px;
+    }
+    
+    .fixed-header.scrolled {
+        top: 8px; /* Proportional scroll adjustment for small mobile */
+    }
+    
+    .header-buttons {
         flex-direction: column;
         gap: 8px;
-        top: 12px;
-        right: 12px;
+    }
+    
+    .fixed-header::before {
+        top: -20px; /* Extend above by small mobile top margin amount */
+        left: -16px; /* Extend to small mobile viewport edge */
+        right: -16px; /* Extend to small mobile viewport edge */
+        bottom: -20px; /* Extend below by small mobile top margin amount */
+    }
+    
+    .fixed-header.scrolled::before {
+        top: -8px; /* Adjust small mobile background for scrolled state */
+        bottom: -8px; /* Maintain equal spacing */
+        background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
+        backdrop-filter: blur(37px); /* Background blur effect */
     }
     
     .action-button {
