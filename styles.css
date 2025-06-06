@@ -715,12 +715,12 @@ body {
     
     /* Reduce project tag and company text size on mobile */
     .tag-text {
-        font-size: 12px !important;
+        font-size: 13px !important;
         line-height: 10px !important;
     }
     
     .project-tile-company {
-        font-size: 12px !important;
+        font-size: 13px !important;
     }
     
     .skill-tag-text {
@@ -2176,7 +2176,7 @@ button.nav-link {
         word-break: break-word;
         white-space: normal;
         flex-shrink: 1;
-        font-size: 14px;
+        font-size: 13px;
     }
     
     .timeline-line {
