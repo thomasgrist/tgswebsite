@@ -196,6 +196,41 @@ class StickyButtons {
     }
 }
 
-// Initialize both controllers when script loads
+/**
+ * Resize Animation Stopper
+ * Prevents unwanted animations during window resize
+ */
+class ResizeAnimationStopper {
+    constructor() {
+        this.resizeTimer = null;
+        this.init();
+    }
+    
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setupResizeHandler());
+        } else {
+            this.setupResizeHandler();
+        }
+    }
+    
+    setupResizeHandler() {
+        window.addEventListener('resize', () => {
+            // Add class to disable animations
+            document.body.classList.add('resize-animation-stopper');
+            
+            // Clear existing timer
+            clearTimeout(this.resizeTimer);
+            
+            // Remove class after resize is finished (100ms delay)
+            this.resizeTimer = setTimeout(() => {
+                document.body.classList.remove('resize-animation-stopper');
+            }, 100);
+        });
+    }
+}
+
+// Initialize all controllers when script loads
 new MobileNavigation();
-new StickyButtons(); 
+new StickyButtons();
+new ResizeAnimationStopper(); 
