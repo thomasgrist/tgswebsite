@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.fixed-header');
     const leftNav = document.querySelector('.left-navigation');
-    let scrollThreshold = 50; // Trigger animation after 50px of scroll
+    let scrollThreshold = 5; // Trigger animation after 5px of scroll
     
     function handleScroll() {
         const currentScrollY = window.scrollY;
