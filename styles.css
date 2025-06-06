@@ -2048,7 +2048,7 @@ button.nav-link {
         width: calc(12 * (100vw - 40px)); /* 12 cards * (card width + margin) */
         transition: transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         will-change: transform;
-        touch-action: pan-x;
+        touch-action: pan-x pan-y;
         cursor: grab;
         user-select: none;
         -webkit-user-select: none;
