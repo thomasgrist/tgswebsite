@@ -122,11 +122,11 @@ class StickyButtons {
     }
     
     setupButtons() {
-        // Desktop sticky buttons
-        const cvButton = document.querySelector('.sticky-buttons .cv-button');
-        const linkedinButton = document.querySelector('.sticky-buttons .linkedin-button');
-        const emailButton = document.querySelector('.sticky-buttons .email-button');
-        const callButton = document.querySelector('.sticky-buttons .call-button');
+        // Header buttons
+        const headerCvButton = document.querySelector('.header-buttons .cv-button');
+        const headerLinkedinButton = document.querySelector('.header-buttons .linkedin-button');
+        const headerEmailButton = document.querySelector('.header-buttons .email-button');
+        const headerCallButton = document.querySelector('.header-buttons .call-button');
         
         // Mobile navigation buttons (Contact section)
         const mobileCvButton = document.querySelector('.nav-section .nav-link.cv-button');
@@ -134,28 +134,29 @@ class StickyButtons {
         const mobileEmailButton = document.querySelector('.nav-section .nav-link.email-button');
         const mobileCallButton = document.querySelector('.nav-section .nav-link.call-button');
         
-        // Bind desktop sticky buttons
-        if (cvButton) {
-            cvButton.addEventListener('click', this.handleCVDownload.bind(this));
+        // Career timeline CV link
+        const careerCvButton = document.querySelector('.career-cv-link.cv-button');
+        
+        // Bind all CV buttons (header, mobile nav, and career timeline)
+        const allCvButtons = [headerCvButton, mobileCvButton, careerCvButton].filter(Boolean);
+        allCvButtons.forEach(button => {
+            button.addEventListener('click', this.handleCVDownload.bind(this));
+        });
+        
+        // Bind header buttons
+        if (headerLinkedinButton) {
+            headerLinkedinButton.addEventListener('click', this.handleLinkedInClick.bind(this));
         }
         
-        if (linkedinButton) {
-            linkedinButton.addEventListener('click', this.handleLinkedInClick.bind(this));
+        if (headerEmailButton) {
+            headerEmailButton.addEventListener('click', this.handleEmailClick.bind(this));
         }
         
-        if (emailButton) {
-            emailButton.addEventListener('click', this.handleEmailClick.bind(this));
+        if (headerCallButton) {
+            headerCallButton.addEventListener('click', this.handleCallClick.bind(this));
         }
         
-        if (callButton) {
-            callButton.addEventListener('click', this.handleCallClick.bind(this));
-        }
-        
-        // Bind mobile navigation buttons (only on mobile when Contact section is visible)
-        if (mobileCvButton) {
-            mobileCvButton.addEventListener('click', this.handleCVDownload.bind(this));
-        }
-        
+        // Bind mobile navigation buttons
         if (mobileLinkedinButton) {
             mobileLinkedinButton.addEventListener('click', this.handleLinkedInClick.bind(this));
         }
@@ -197,6 +198,93 @@ class StickyButtons {
 }
 
 /**
+ * Career Timeline Navigation Controller
+ * Handles scrolling through timeline project cards
+ */
+class CareerTimelineNavigation {
+    constructor() {
+        this.currentPosition = 0;
+        this.cardWidth = 312; // 288px card + 24px margin
+        this.cardsPerView = 3;
+        this.totalCards = 12;
+        this.init();
+    }
+    
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setupNavigation());
+        } else {
+            this.setupNavigation();
+        }
+    }
+    
+    setupNavigation() {
+        this.timelineRow = document.querySelector('.timeline-projects-row');
+        this.prevButton = document.querySelector('.career-nav-previous');
+        this.nextButton = document.querySelector('.career-nav-next');
+        
+        if (this.timelineRow && this.prevButton && this.nextButton) {
+            this.bindEvents();
+            this.updateButtonStates();
+        }
+    }
+    
+    bindEvents() {
+        this.prevButton.addEventListener('click', () => this.scrollPrevious());
+        this.nextButton.addEventListener('click', () => this.scrollNext());
+    }
+    
+    scrollNext() {
+        const maxPosition = this.totalCards - this.cardsPerView;
+        if (this.currentPosition < maxPosition) {
+            this.currentPosition += this.cardsPerView;
+            if (this.currentPosition > maxPosition) {
+                this.currentPosition = maxPosition;
+            }
+            this.updateTransform();
+            this.updateButtonStates();
+        }
+    }
+    
+    scrollPrevious() {
+        if (this.currentPosition > 0) {
+            this.currentPosition -= this.cardsPerView;
+            if (this.currentPosition < 0) {
+                this.currentPosition = 0;
+            }
+            this.updateTransform();
+            this.updateButtonStates();
+        }
+    }
+    
+    updateTransform() {
+        const translateX = -(this.currentPosition * this.cardWidth);
+        this.timelineRow.style.transform = `translateX(${translateX}px)`;
+    }
+    
+    updateButtonStates() {
+        // Disable/enable buttons based on position
+        const maxPosition = this.totalCards - this.cardsPerView;
+        
+        this.prevButton.disabled = this.currentPosition === 0;
+        this.nextButton.disabled = this.currentPosition >= maxPosition;
+        
+        // Add visual disabled state
+        if (this.currentPosition === 0) {
+            this.prevButton.style.opacity = '0.3';
+        } else {
+            this.prevButton.style.opacity = '1';
+        }
+        
+        if (this.currentPosition >= maxPosition) {
+            this.nextButton.style.opacity = '0.3';
+        } else {
+            this.nextButton.style.opacity = '1';
+        }
+    }
+}
+
+/**
  * Resize Animation Stopper
  * Prevents unwanted animations during window resize
  */
@@ -233,4 +321,5 @@ class ResizeAnimationStopper {
 // Initialize all controllers when script loads
 new MobileNavigation();
 new StickyButtons();
+new CareerTimelineNavigation();
 new ResizeAnimationStopper(); 

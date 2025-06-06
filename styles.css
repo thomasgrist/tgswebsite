@@ -1518,6 +1518,561 @@ button.nav-link {
     }
 }
 
+/* Career Timeline Component */
+.career-timeline {
+    margin-top: 156px;
+    margin-bottom: 156px;
+    width: 100%;
+}
+
+.career-timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    padding: 0 40px;
+    margin-bottom: 64px;
+}
+
+.career-timeline-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.career-timeline-title {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.375em;
+    color: #FFFFFF;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.career-timeline-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.career-action-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.career-action-icon {
+    width: 14px;
+    height: 15px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.career-tick-icon {
+    width: 14px;
+    height: 15px;
+}
+
+.career-cv-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: baseline;
+    padding-bottom: 2px;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.career-cv-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(181, 181, 181, 0.4);
+    transition: background-color 0.2s ease;
+}
+
+.career-cv-link:hover {
+    color: #FFFFFF;
+}
+
+.career-cv-link:hover::after {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.career-cv-link:hover .career-cv-icon path {
+    stroke: #FFFFFF;
+}
+
+.career-cv-icon {
+    width: 10px;
+    height: auto;
+    margin-left: 6px;
+    margin-right: 4px;
+}
+
+.career-cv-icon path {
+    transition: stroke 0.2s ease;
+}
+
+.career-action-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.411764705882353em;
+    color: #B5B5B5;
+}
+
+
+
+.career-timeline-navigation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.career-nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0);
+    position: relative;
+    /* iOS-style smooth appearance */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.career-nav-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: subtract;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+.career-nav-button:hover {
+    box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 1.0);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.career-nav-button:disabled,
+.career-nav-button[disabled] {
+    pointer-events: none;
+}
+
+.career-nav-button[style*="opacity: 0.3"] {
+    pointer-events: none;
+}
+
+.career-nav-icon {
+    width: auto;
+    height: auto;
+}
+
+.career-nav-icon-previous {
+    transform: scaleX(-1);
+}
+
+.career-nav-icon-next {
+    /* No transform needed - displays naturally */
+}
+
+.career-timeline-content {
+    padding: 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.career-timeline-projects {
+    position: relative;
+    width: calc(3.7 * 312px); /* Show 3 full cards + more of 4th card for fade */
+    overflow: hidden;
+    padding-bottom: 40px; /* Space for timeline dots and year text */
+    padding-left: 5px; /* Space for dots on the left */
+}
+
+.timeline-line {
+    position: absolute;
+    bottom: 41px;
+    left: 5px;
+    right: 0;
+    height: 1px;
+    background: transparent;
+    opacity: 0.6;
+    background-image: repeating-linear-gradient(to right, #B5B5B5 0, #B5B5B5 1px, transparent 1px, transparent 8px);
+    z-index: 1;
+}
+
+.timeline-projects-row {
+    display: flex;
+    gap: 0;
+    position: relative;
+    width: calc(12 * 312px); /* 12 cards total width */
+    transition: transform 0.3s ease-in-out;
+}
+
+.timeline-project {
+    flex: 0 0 288px; /* Fixed width for each card */
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    position: relative;
+    margin-right: 24px;
+}
+
+.timeline-project:last-child {
+    margin-right: 0;
+}
+
+.timeline-project-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0px 0px 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    transition: all 0.2s ease-out;
+    box-shadow: none;
+    position: relative;
+    height: 375px;
+}
+
+.timeline-project:last-child .timeline-project-card {
+    margin-right: 0;
+}
+
+.timeline-project-card:hover {
+    box-shadow: none;
+    transform: none;
+    background: transparent;
+}
+
+.timeline-project-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 368px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.timeline-project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1;
+    padding-bottom: 16px;
+}
+
+.timeline-project-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    row-gap: 8px;
+}
+
+.timeline-project-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.timeline-project-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+}
+
+.timeline-tag-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 16px;
+    color: #B5B5B5;
+}
+
+.timeline-project-company {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.4545454545454546em;
+    color: #FFFFFF;
+}
+
+.timeline-project-company-at {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2109999656677246em;
+    color: #FFFFFF;
+    margin-left: 4px;
+}
+
+.timeline-project-tags {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-shrink: 1;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.timeline-skill-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 1;
+    max-width: 100%;
+}
+
+.timeline-skill-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 17px;
+    color: #B5B5B5;
+}
+
+.timeline-skill-dot {
+    width: 1px;
+    height: 1px;
+    background-color: #B5B5B5;
+    border-radius: 50%;
+}
+
+.timeline-skill-tag:last-child .timeline-skill-dot {
+    display: none;
+}
+
+.timeline-project-description {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 17px !important;
+    line-height: 1.6rem !important;
+    color: #B5B5B5;
+    margin: 0;
+    flex: 1;
+}
+
+.timeline-year {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2109999656677246em;
+    color: #B5B5B5;
+    position: absolute;
+    bottom: -20px;
+    left: -3px;
+}
+
+.timeline-dot {
+    width: 7px;
+    height: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    background: transparent;
+    position: absolute;
+    bottom: -2px;
+    left: -3px;
+}
+
+.career-timeline-fade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(6, 6, 6, 0.3) 40%, rgba(6, 6, 6, 0.8) 70%, #060606 100%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Mobile responsive design for career timeline */
+@media (max-width: 768px) {
+    .career-timeline {
+        margin-top: 64px;
+    }
+    
+    .career-timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    
+    .career-timeline-title {
+        font-size: 27px;
+        line-height: 1.1851851851851851em;
+    }
+    
+    .career-timeline-actions {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+
+    
+    .career-timeline-navigation {
+        display: none;
+    }
+    
+    .career-timeline-content {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+    }
+    
+    .career-timeline-projects {
+        width: 284px;
+        flex-shrink: 0;
+    }
+    
+    .timeline-projects-row {
+        flex-direction: column;
+        gap: 1px;
+    }
+    
+    .timeline-project {
+        width: 100%;
+    }
+    
+    .timeline-project-card {
+        margin-right: 0;
+        margin-bottom: 0;
+        padding: 0 24px 16px 0;
+        background: transparent;
+        box-shadow: none;
+        height: 292px;
+        border-radius: 0;
+        gap: 32px;
+    }
+    
+    .timeline-project-card:hover {
+        box-shadow: none;
+        transform: none;
+        background: transparent;
+    }
+    
+    .timeline-project-line {
+        height: 288px;
+    }
+    
+    .timeline-project-content {
+        gap: 16px;
+    }
+    
+    .timeline-project-header {
+        gap: 8px;
+        row-gap: 4px;
+    }
+    
+    .timeline-project-company {
+        font-size: 19px;
+        line-height: 1.5263157894736843em;
+    }
+    
+    .timeline-project-description {
+        font-size: 15px;
+        line-height: 1.6em;
+    }
+    
+    .timeline-year {
+        bottom: -15px;
+        left: -3px;
+        right: auto;
+    }
+    
+    .timeline-tag-text {
+        font-size: 12px !important;
+        line-height: 10px !important;
+    }
+    
+    .timeline-project-tags {
+        gap: 4px;
+        flex-wrap: wrap;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    .timeline-skill-tag {
+        flex-shrink: 1;
+        max-width: 100%;
+    }
+    
+    .timeline-skill-text {
+        word-break: break-word;
+        white-space: normal;
+        flex-shrink: 1;
+    }
+    
+    .timeline-line {
+        display: none;
+    }
+    
+    .timeline-dot {
+        display: none;
+    }
+    
+    .career-timeline-fade {
+        display: none;
+    }
+    
+    /* Additional mobile timeline projects */
+    .career-timeline-content::after {
+        content: '';
+        width: 288px;
+        height: 292px;
+        flex-shrink: 0;
+        background: transparent;
+        position: relative;
+    }
+}
+
 /* Action Buttons (now part of header) */
 /* No additional positioning needed - handled by .header-buttons */
 
@@ -1541,8 +2096,9 @@ button.nav-link {
 }
 
 .action-button:hover {
-    background-color: #1F1F1F;
-    transition: background-color var(--transition-hover-in) var(--easing-smooth);
+    background-color: rgba(255, 255, 255, 0.07); /* 7% white tint */
+    backdrop-filter: blur(37px); /* Background blur effect */
+    transition: background-color var(--transition-hover-in) var(--easing-smooth), backdrop-filter var(--transition-hover-in) var(--easing-smooth);
 }
 
 .action-button:active {
