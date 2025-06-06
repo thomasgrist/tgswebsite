@@ -716,7 +716,7 @@ body {
     /* Reduce project tag and company text size on mobile */
     .tag-text {
         font-size: 14px !important;
-        line-height: 10px !important;
+        line-height: 14px !important;
     }
     
     .project-tile-company {
@@ -736,14 +736,14 @@ body {
     .project-tile-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 8px;
     }
     
     /* Ensure full-width project tile header is also left-aligned on mobile */
     .project-tile-full .project-tile-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 8px;
     }
     
     /* Fix touch scrolling conflict - allow vertical page scrolling even when touching project tiles */
