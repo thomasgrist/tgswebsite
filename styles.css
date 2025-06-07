@@ -1991,7 +1991,12 @@ button.nav-link {
     z-index: 3;
 }
 
-
+/* Hide career timeline for tablet and medium screen sizes */
+@media (min-width: 769px) and (max-width: 1527px) {
+    .career-timeline {
+        display: none;
+    }
+}
 
 /* Mobile responsive design for career timeline */
 @media (max-width: 768px) {
