@@ -517,7 +517,7 @@ body {
     bottom: 0;
     border-radius: 8px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: subtract;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -595,7 +595,7 @@ body {
     bottom: 0;
     border-radius: 8px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: subtract;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -700,7 +700,7 @@ body {
     }
     
     .project-tile-no-gap .project-tile-image-space {
-        margin: 0 -16px -16px -16px !important; /* Remove top margin, adjust for mobile padding */
+        margin: 0 -32px -32px -32px !important; /* Remove top margin, adjust for mobile padding */
     }
     
     /* Reduce Audi image top margin on mobile */
@@ -1528,13 +1528,13 @@ button.nav-link {
 
     .project-tile-full {
         width: 100%;
-        padding: 16px;
+        padding: 32px;
         margin-top: 0;
         gap: 8px; /* Reduce internal spacing between elements */
     }
 
     .project-tile-full .project-tile-image-space {
-        margin: 16px -16px -16px -16px; /* 16px top gap for mobile, adjust for mobile padding */
+        margin: 16px -32px -32px -32px; /* 16px top gap for mobile, adjust for mobile padding */
     }
 
     .project-tile-full .project-tile-description {
@@ -1543,13 +1543,13 @@ button.nav-link {
     
     .project-tile {
         width: 100%;
-        padding: 16px;
+        padding: 32px;
         margin-top: 0;
         gap: 8px; /* Reduce internal spacing between elements */
     }
     
     .project-tile-image-space {
-        margin: 16px -16px -16px -16px; /* 16px top gap for mobile, adjust for mobile padding */
+        margin: 16px -32px -32px -32px; /* 16px top gap for mobile, adjust for mobile padding */
     }
     
     .project-tile-tags {
