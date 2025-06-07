@@ -852,9 +852,12 @@ body {
 
 .fixed-header.scrolled::before {
     top: -12px; /* Adjust background for scrolled state */
-    bottom: -12px; /* Maintain equal spacing */
+    bottom: -12px; /* Position border 12px below header */
+    left: -100vw; /* Extend to full viewport width */
+    right: -100vw; /* Extend to full viewport width */
     background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
     backdrop-filter: blur(37px); /* Background blur effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Full width border */
 }
 
 .header-logo,
@@ -1212,9 +1215,12 @@ button.nav-link {
     
     .fixed-header.scrolled::before {
         top: -8px; /* Adjust mobile background for scrolled state */
-        bottom: -8px; /* Maintain equal spacing */
+        bottom: -8px; /* Position border 8px below header (4px higher than desktop) */
+        left: -100vw; /* Extend to full viewport width */
+        right: -100vw; /* Extend to full viewport width */
         background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
         backdrop-filter: blur(37px); /* Background blur effect */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Full width border */
     }
     
     .mobile-nav-overlay {
@@ -1492,6 +1498,10 @@ button.nav-link {
     
     .hero-location-super {
         font-size: 60%;
+    }
+    
+    .hero-subtitle {
+        padding: 0; /* Remove 4px padding on mobile */
     }
     
     .hero-badges {
@@ -2666,9 +2676,12 @@ button.nav-link {
     
     .fixed-header.scrolled::before {
         top: -8px; /* Adjust small mobile background for scrolled state */
-        bottom: -8px; /* Maintain equal spacing */
+        bottom: -8px; /* Position border 8px below header (4px higher than desktop) */
+        left: -100vw; /* Extend to full viewport width */
+        right: -100vw; /* Extend to full viewport width */
         background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
         backdrop-filter: blur(37px); /* Background blur effect */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Full width border */
     }
     
     .action-button {
