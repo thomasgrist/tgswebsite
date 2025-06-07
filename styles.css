@@ -1595,7 +1595,7 @@ button.nav-link {
     justify-content: space-between;
     align-items: flex-end;
     gap: 40px;
-    padding: 0 40px;
+    padding: 0;
     margin-bottom: 64px;
 }
 
@@ -1777,7 +1777,7 @@ button.nav-link {
 }
 
 .career-timeline-content {
-    padding: 0 40px;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
