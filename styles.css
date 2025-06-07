@@ -428,6 +428,10 @@ body {
     transform: translateX(1.5px) translateY(0.5px);
 }
 
+.badge-icon[src*="vibe-code-icon.svg"] {
+    transform: translateY(1px);
+}
+
 .badge-text {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
