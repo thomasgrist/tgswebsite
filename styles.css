@@ -2714,3 +2714,9 @@ button.nav-link {
     transition-duration: 0.01ms !important;
     transition-delay: -0.01ms !important;
 }
+
+/* Exclude cube animation from resize animation stopper to prevent erratic spinning */
+.resize-animation-stopper .cube {
+    animation-duration: 30s !important;
+    animation-delay: 0s !important;
+}
