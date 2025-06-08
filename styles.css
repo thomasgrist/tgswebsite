@@ -473,6 +473,87 @@ body {
     color: inherit;
 }
 
+/* Specific positioning for individual coming soon callouts */
+#how-i-design-coming-soon {
+    top: 10px;
+    right: -17px;
+}
+
+#roadmap-coming-soon {
+    top: 10px;
+    right: 7px;
+}
+
+#speechmatics-ai-coming-soon {
+    top: 10px;
+    right: 10px;
+}
+
+/* Speechmatics AI tile - disable shadow and hover effects, add solid border */
+.speechmatics-ai-tile {
+    box-shadow: none !important;
+    cursor: default !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.speechmatics-ai-tile:hover {
+    box-shadow: none !important;
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.speechmatics-ai-tile::before {
+    display: none !important;
+}
+
+/* Speechmatics AI tile - make project company name and description light grey */
+.speechmatics-ai-tile .project-tile-company {
+    color: #B5B5B5 !important;
+}
+
+.project-tile-full.speechmatics-ai-tile .project-tile-description {
+    color: #B5B5B5 !important;
+}
+
+/* Speechmatics AI tile - make skill tags and dots light grey */
+.speechmatics-ai-tile .skill-tag-text {
+    color: #B5B5B5 !important;
+}
+
+.speechmatics-ai-tile .skill-tag-dot {
+    background-color: #B5B5B5 !important;
+}
+
+/* Speechmatics AI coming soon callout - adjusted opacity and repositioned */
+#speechmatics-ai-coming-soon {
+    background: rgba(181, 181, 181, 0.4) !important;
+    color: rgba(181, 181, 181, 0.7) !important;
+    top: 40px !important;
+    right: 40px !important;
+}
+
+#speechmatics-ai-coming-soon::before {
+    background: #060606 !important;
+}
+
+/* Mobile-specific positioning for coming soon callouts */
+@media (max-width: 768px) {
+    #how-i-design-coming-soon {
+        top: 27px;
+        right: 20px;
+    }
+    
+    #roadmap-coming-soon {
+        top: 27px;
+        right: 20px;
+    }
+    
+    #speechmatics-ai-coming-soon {
+        top: 32px !important;
+        right: 32px !important;
+    }
+}
+
 @keyframes pulse {
     0%, 100% { 
         transform: scale(1); 
