@@ -128,8 +128,12 @@ class FeedbackWidget {
         const feedbackWidget = document.getElementById('feedback-widget');
         const scrollY = window.scrollY;
         
+        // Different scroll thresholds for mobile vs desktop
+        const isMobile = window.innerWidth <= 768;
+        const scrollThreshold = isMobile ? 2000 : 200;
+        
         // Only show the widget once the threshold is reached, but don't hide it again
-        if (scrollY >= 200 && !feedbackWidget.classList.contains('visible')) {
+        if (scrollY >= scrollThreshold && !feedbackWidget.classList.contains('visible')) {
             feedbackWidget.classList.remove('hidden');
             feedbackWidget.classList.add('visible');
         }
