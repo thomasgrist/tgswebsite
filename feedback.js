@@ -111,6 +111,9 @@ class FeedbackWidget {
 
         // Handle scroll for visibility
         window.addEventListener('scroll', () => this.handleScroll());
+
+        // Close form when clicking outside of it
+        document.addEventListener('click', (e) => this.handleClickOutside(e));
     }
 
     handleScroll() {
@@ -121,6 +124,25 @@ class FeedbackWidget {
         if (scrollY >= 200 && !feedbackWidget.classList.contains('visible')) {
             feedbackWidget.classList.remove('hidden');
             feedbackWidget.classList.add('visible');
+        }
+    }
+
+    handleClickOutside(e) {
+        const widget = document.getElementById('feedback-widget');
+        const form = document.getElementById('feedback-form');
+        const success = document.getElementById('feedback-success');
+        
+        // Only handle clicks if the form or success state is visible
+        const isFormVisible = form.style.display === 'block';
+        const isSuccessVisible = success.style.display === 'block';
+        
+        if (!isFormVisible && !isSuccessVisible) {
+            return; // Nothing to close
+        }
+        
+        // Check if click was outside the widget
+        if (!widget.contains(e.target)) {
+            this.closeFeedbackForm();
         }
     }
 
