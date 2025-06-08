@@ -163,7 +163,8 @@ class FeedbackWidget {
         if (success.style.display !== 'none') {
             const feedbackForm = document.querySelector('.feedback-form');
             feedbackForm.reset();
-            this.clearSavedValues();
+            // Clear the name cookie when fully resetting the form
+            this.deleteCookie('feedback-name');
         }
     }
 
@@ -198,8 +199,6 @@ class FeedbackWidget {
 
             if (response.ok) {
                 this.showSuccessState();
-                // Clear saved values since form was submitted successfully
-                this.clearSavedValues();
             } else {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -240,9 +239,11 @@ class FeedbackWidget {
     showSuccessState() {
         const form = document.getElementById('feedback-form');
         const success = document.getElementById('feedback-success');
+        const messageField = document.getElementById('feedback-message');
         
-        // Clear saved values since form was submitted successfully
-        this.clearSavedValues();
+        // Clear the message field and its saved value, but keep the name for future use
+        messageField.value = '';
+        this.deleteCookie('feedback-message');
         
         form.style.display = 'none';
         success.style.display = 'block';
@@ -268,6 +269,7 @@ class FeedbackWidget {
         const savedMessage = this.getCookie('feedback-message');
         
         if (savedName) nameField.value = savedName;
+        // Only restore message if it exists (won't exist after successful submission)
         if (savedMessage) messageField.value = savedMessage;
     }
 
