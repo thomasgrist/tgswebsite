@@ -245,10 +245,7 @@ class FeedbackWidget {
         form.style.display = 'none';
         success.style.display = 'block';
         
-        // Auto-close after 3 seconds
-        setTimeout(() => {
-            this.closeFeedbackForm();
-        }, 3000);
+        // Success state will remain visible until user manually closes it
     }
 
     saveFormValues() {
