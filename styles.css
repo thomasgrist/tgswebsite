@@ -3288,20 +3288,20 @@ button.nav-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
+    width: 18px;
+    height: 18px;
 }
 
 .animated-checkmark {
-    width: 52px;
-    height: 52px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     display: block;
     stroke-width: 2;
-    stroke: #10B981;
+    stroke: white;
     stroke-miterlimit: 10;
     margin: 0 auto;
-    animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+    animation: scale 0.3s ease-in-out 0.9s both;
 }
 
 .animated-checkmark .checkmark-circle {
@@ -3309,7 +3309,7 @@ button.nav-link {
     stroke-dashoffset: 166;
     stroke-width: 2;
     stroke-miterlimit: 10;
-    stroke: #10B981;
+    stroke: white;
     fill: none;
     animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
@@ -3336,11 +3336,7 @@ button.nav-link {
     }
 }
 
-@keyframes fill {
-    100% {
-        box-shadow: inset 0px 0px 0px 30px #10B981;
-    }
-}
+
 
 
 
