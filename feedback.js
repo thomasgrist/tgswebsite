@@ -133,6 +133,9 @@ class FeedbackWidget {
         button.style.display = 'none';
         form.style.display = 'block';
         
+        // Ensure form is in proper state for submission
+        this.resetFormState();
+        
         // Restore saved values from cookies
         this.restoreFormValues();
         
@@ -173,6 +176,7 @@ class FeedbackWidget {
         
         const form = e.target;
         const messageField = document.getElementById('feedback-message');
+        const nameField = document.getElementById('feedback-name');
         
         // Custom validation for required message field
         if (!messageField.value.trim()) {
@@ -182,7 +186,6 @@ class FeedbackWidget {
             this.hideValidationError(messageField);
         }
         
-        const formData = new FormData(form);
         const submitBtn = form.querySelector('.feedback-submit-btn');
         const submitText = submitBtn.querySelector('.feedback-submit-text');
         
@@ -190,12 +193,27 @@ class FeedbackWidget {
         submitBtn.disabled = true;
         submitText.textContent = 'Sending...';
         
+        // Construct form data manually to ensure all required fields are included
+        const formData = new FormData();
+        formData.append('form-name', 'feedback');
+        formData.append('name', nameField.value || '');
+        formData.append('message', messageField.value);
+        
+        // Debug logging to verify what's being sent
+        console.log('Submitting feedback:', {
+            name: nameField.value || '',
+            message: messageField.value,
+            formName: 'feedback'
+        });
+        
         try {
             const response = await fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(formData).toString()
             });
+
+            console.log('Response status:', response.status, 'Response OK:', response.ok);
 
             if (response.ok) {
                 this.showSuccessState();
@@ -264,6 +282,22 @@ class FeedbackWidget {
         // Save values to cookies with 7 day expiry
         this.setCookie('feedback-name', nameField.value, 7);
         this.setCookie('feedback-message', messageField.value, 7);
+    }
+
+    resetFormState() {
+        const form = document.querySelector('.feedback-form');
+        const submitBtn = form.querySelector('.feedback-submit-btn');
+        const submitText = submitBtn.querySelector('.feedback-submit-text');
+        const messageField = document.getElementById('feedback-message');
+        
+        // Ensure submit button is in correct state
+        submitBtn.disabled = false;
+        submitText.textContent = 'Submit feedback';
+        
+        // Clear any error states
+        this.hideValidationError(messageField);
+        
+        console.log('Form state reset for new submission');
     }
 
     restoreFormValues() {
