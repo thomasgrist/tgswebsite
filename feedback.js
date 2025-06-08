@@ -240,10 +240,16 @@ class FeedbackWidget {
         const form = document.getElementById('feedback-form');
         const success = document.getElementById('feedback-success');
         const messageField = document.getElementById('feedback-message');
+        const submitBtn = form.querySelector('.feedback-submit-btn');
+        const submitText = submitBtn.querySelector('.feedback-submit-text');
         
         // Clear the message field and its saved value, but keep the name for future use
         messageField.value = '';
         this.deleteCookie('feedback-message');
+        
+        // Reset submit button to original state for future submissions
+        submitBtn.disabled = false;
+        submitText.textContent = 'Submit feedback';
         
         form.style.display = 'none';
         success.style.display = 'block';
