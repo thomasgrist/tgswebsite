@@ -951,6 +951,11 @@ body {
     align-items: center;
 }
 
+/* Hide mobile controls group on desktop */
+.mobile-controls-group {
+    display: none;
+}
+
 .mobile-menu-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
@@ -1260,7 +1265,61 @@ button.nav-link {
     }
     
     .header-buttons {
-        display: none; /* Hide action buttons on mobile, they're in the side nav */
+        display: none; /* Hide all header buttons on mobile */
+    }
+    
+    /* Mobile Controls Group - Contains call button and hamburger menu */
+    .mobile-controls-group {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+    
+    /* Style the call button in mobile controls group */
+    .mobile-controls-group .call-button {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px 7px 16px;
+        background: transparent;
+        backdrop-filter: blur(37px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50px;
+        color: white;
+        font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        box-shadow: none;
+        position: relative;
+    }
+    
+    /* Show button text for call button in mobile controls group */
+    .mobile-controls-group .call-button .button-text {
+        display: block;
+        color: white;
+        transition: color 0.2s ease;
+        transform: translateY(-2px);
+    }
+    
+    /* Add hover effects for mobile controls group call button */
+    .mobile-controls-group .call-button:hover {
+        background: rgba(25, 25, 25, 0.1);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-1px);
+    }
+    
+    .mobile-controls-group .call-button:hover .button-text {
+        color: white;
+    }
+    
+    .mobile-controls-group .call-button .button-icon {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        flex-shrink: 0;
+        transform: translateY(-1px);
     }
     
     .header-logo {
@@ -2724,8 +2783,63 @@ button.nav-link {
     }
     
     .header-buttons {
-        flex-direction: column;
-        gap: 8px;
+        display: none; /* Hide all header buttons on small mobile */
+    }
+    
+    /* Mobile Controls Group for small screens */
+    .mobile-controls-group {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+    
+    /* Style the call button in mobile controls group on small screens */
+    .mobile-controls-group .call-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px 7px 16px;
+        background: transparent;
+        backdrop-filter: blur(37px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50px;
+        color: white;
+        font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        box-shadow: none;
+        position: relative;
+    }
+    
+    /* Show button text for call button in mobile controls group on small mobile */
+    .mobile-controls-group .call-button .button-text {
+        display: block;
+        color: white;
+        transition: color 0.2s ease;
+        transform: translateY(-2px);
+    }
+    
+    /* Add hover effects for mobile controls group on small mobile */
+    .mobile-controls-group .call-button:hover {
+        background: rgba(25, 25, 25, 0.1);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-1px);
+    }
+    
+    .mobile-controls-group .call-button:hover .button-text {
+        color: white;
+    }
+    
+    .mobile-controls-group .call-button .button-icon {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        flex-shrink: 0;
+        width: 21px;
+        height: 21px;
+        transform: translateY(-1px);
     }
     
     .fixed-header::before {
