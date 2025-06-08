@@ -960,7 +960,8 @@
     </main>
 
     <!-- Hidden form for Netlify detection -->
-    <form name="feedback" netlify netlify-honeypot="bot-field" hidden>
+    <form name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="feedback" />
         <input type="text" name="name" />
         <textarea name="message"></textarea>
         <input type="hidden" name="bot-field" />

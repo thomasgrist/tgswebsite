@@ -196,8 +196,10 @@ class FeedbackWidget {
 
             if (response.ok) {
                 this.showSuccessState();
+                // Clear saved values since form was submitted successfully
+                this.clearSavedValues();
             } else {
-                throw new Error('Network response was not ok');
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
         } catch (error) {
             console.error('Error submitting feedback:', error);
