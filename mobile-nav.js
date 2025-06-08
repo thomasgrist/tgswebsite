@@ -81,6 +81,12 @@ class MobileNavigation {
         this.navigation.classList.add('menu-open');
         this.overlay.classList.add('active');
         
+        // Fade out the mobile call button
+        const mobileCallButton = document.querySelector('.mobile-controls-group .call-button');
+        if (mobileCallButton) {
+            mobileCallButton.classList.add('faded-out');
+        }
+        
         // Reset scroll position to top when menu opens
         this.navigation.scrollTop = 0;
         
@@ -97,6 +103,12 @@ class MobileNavigation {
         this.menuToggle.classList.remove('menu-open');
         this.navigation.classList.remove('menu-open');
         this.overlay.classList.remove('active');
+        
+        // Fade in the mobile call button
+        const mobileCallButton = document.querySelector('.mobile-controls-group .call-button');
+        if (mobileCallButton) {
+            mobileCallButton.classList.remove('faded-out');
+        }
         
         // Restore body scroll
         document.body.style.overflow = '';
