@@ -37,6 +37,10 @@ class FeedbackWidget {
                             </button>
                         </div>
 
+                        <div class="feedback-form-description">
+                            <p class="feedback-description-text">Feedback on my portfolio would be hugely appreciated regardless of your line of work</p>
+                        </div>
+
                         <div class="feedback-form-fields">
                             <div class="feedback-field">
                                 <div class="feedback-label-row">
@@ -77,7 +81,7 @@ class FeedbackWidget {
                                     </svg>
                                 </div>
                             </div>
-                            <h3 class="feedback-success-title">I appreciate that</h3>
+                            <h3 class="feedback-success-title">Thank you</h3>
                         </div>
                         <button type="button" class="feedback-close-btn" id="feedback-success-close" aria-label="Close feedback">
                             <img src="img/close.svg" alt="" class="feedback-close-icon">

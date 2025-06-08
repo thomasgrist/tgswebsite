@@ -3279,7 +3279,7 @@ button.nav-link {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .feedback-form-title-container {
@@ -3301,6 +3301,20 @@ button.nav-link {
     font-size: 17px;
     font-weight: 500;
     margin: 0;
+}
+
+.feedback-form-description {
+    margin-bottom: 20px;
+    margin-right: 8px;
+}
+
+.feedback-description-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .feedback-close-btn {
