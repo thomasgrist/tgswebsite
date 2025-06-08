@@ -1526,7 +1526,7 @@ button.nav-link {
     }
     
     .content-area {
-        padding: 96px 0 64px 0;
+        padding: 96px 0 76px 0;
     }
     
     .page-content {
@@ -3381,7 +3381,7 @@ button.nav-link {
     
     .feedback-form-container {
         width: calc(100vw - 40px);
-        max-width: 340px;
+        max-width: 326px;
         padding: 20px;
     }
     
@@ -3403,7 +3403,7 @@ button.nav-link {
 @media (max-width: 480px) {
     .feedback-widget {
         bottom: 24px;
-        right: 24px;
+        right: 12px;
     }
     
     .feedback-button {
