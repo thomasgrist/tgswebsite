@@ -3398,6 +3398,12 @@ button.nav-link {
     .feedback-success-title {
         font-size: 16px;
     }
+    
+    /* Prevent mobile browser auto-zoom on inputs */
+    .feedback-input,
+    .feedback-textarea {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 480px) {
