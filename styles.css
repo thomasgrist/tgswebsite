@@ -3402,16 +3402,12 @@ button.nav-link {
 
 @media (max-width: 480px) {
     .feedback-widget {
-        bottom: 16px;
-        right: 16px;
+        bottom: 24px;
+        right: 24px;
     }
     
     .feedback-button {
         padding: 10px 16px 7px 16px;
-    }
-    
-    .feedback-text {
-        display: none;
     }
     
     .feedback-form-container {
