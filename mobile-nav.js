@@ -90,7 +90,19 @@ class MobileNavigation {
         // Fade out the feedback button
         const feedbackWidget = document.querySelector('.feedback-widget');
         if (feedbackWidget) {
+            console.log('Mobile menu opening: Adding faded-out class to feedback widget');
             feedbackWidget.classList.add('faded-out');
+        } else {
+            console.log('Mobile menu opening: Feedback widget not found');
+        }
+        
+        // Fade out the header border
+        const fixedHeader = document.querySelector('.fixed-header');
+        if (fixedHeader) {
+            console.log('Mobile menu opening: Adding border-faded-out class to header');
+            fixedHeader.classList.add('border-faded-out');
+        } else {
+            console.log('Mobile menu opening: Fixed header not found');
         }
         
         // Reset scroll position to top when menu opens
@@ -119,7 +131,19 @@ class MobileNavigation {
         // Fade in the feedback button
         const feedbackWidget = document.querySelector('.feedback-widget');
         if (feedbackWidget) {
+            console.log('Mobile menu closing: Removing faded-out class from feedback widget');
             feedbackWidget.classList.remove('faded-out');
+        } else {
+            console.log('Mobile menu closing: Feedback widget not found');
+        }
+        
+        // Fade in the header border
+        const fixedHeader = document.querySelector('.fixed-header');
+        if (fixedHeader) {
+            console.log('Mobile menu closing: Removing border-faded-out class from header');
+            fixedHeader.classList.remove('border-faded-out');
+        } else {
+            console.log('Mobile menu closing: Fixed header not found');
         }
         
         // Restore body scroll
