@@ -3408,6 +3408,11 @@ button.nav-link {
     
     .feedback-button {
         padding: 10px 16px 7px 16px;
+        font-size: 16px;
+    }
+    
+    .feedback-text {
+        font-size: 16px;
     }
     
     .feedback-form-container {
