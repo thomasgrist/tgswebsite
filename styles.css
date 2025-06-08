@@ -3281,7 +3281,7 @@ button.nav-link {
 .feedback-success-title-container {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 .feedback-success-icon {
