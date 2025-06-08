@@ -212,7 +212,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 156px 40px 12px 40px;
+    padding: 156px 40px 68px 40px;
 }
 
 /* Page Content */
@@ -2801,8 +2801,8 @@ button.nav-link {
 /* Feedback Widget Styles */
 .feedback-widget {
     position: fixed;
-    bottom: 24px;
-    right: 48px;
+    bottom: 48px;
+    right: 24px;
     z-index: 1000;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -2886,8 +2886,8 @@ button.nav-link {
 }
 
 .feedback-widget.expanded {
-    bottom: 24px;
-    right: 48px;
+    bottom: 48px;
+    right: 24px;
 }
 
 .feedback-form-container {
