@@ -4,10 +4,6 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Form settings
-[[forms]]
-  name = "feedback"
-
 # Redirects
 [[redirects]]
   from = "/thank-you"
