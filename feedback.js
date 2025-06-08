@@ -66,7 +66,13 @@ class FeedbackWidget {
                             <div class="feedback-success-icon">
                                 <div class="animated-checkmark">
                                     <svg width="18" height="18" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="white" stroke-width="2"/>
+                                        <defs>
+                                            <linearGradient id="circleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:white;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:white;stop-opacity:0.5" />
+                                            </linearGradient>
+                                        </defs>
+                                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="url(#circleGradient)" stroke-width="2"/>
                                         <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
