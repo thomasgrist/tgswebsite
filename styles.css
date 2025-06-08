@@ -923,7 +923,8 @@ body {
 }
 
 .header-logo,
-.header-buttons {
+.header-buttons,
+.mobile-controls-group {
     pointer-events: auto; /* Re-enable clicks on actual interactive elements */
 }
 
@@ -2933,6 +2934,12 @@ button.nav-link {
     right: 24px;
     z-index: 1000;
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Fade out state for feedback widget */
+.feedback-widget.faded-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .feedback-widget.hidden {

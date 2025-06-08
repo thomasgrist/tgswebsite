@@ -87,6 +87,12 @@ class MobileNavigation {
             mobileCallButton.classList.add('faded-out');
         }
         
+        // Fade out the feedback button
+        const feedbackWidget = document.querySelector('.feedback-widget');
+        if (feedbackWidget) {
+            feedbackWidget.classList.add('faded-out');
+        }
+        
         // Reset scroll position to top when menu opens
         this.navigation.scrollTop = 0;
         
@@ -108,6 +114,12 @@ class MobileNavigation {
         const mobileCallButton = document.querySelector('.mobile-controls-group .call-button');
         if (mobileCallButton) {
             mobileCallButton.classList.remove('faded-out');
+        }
+        
+        // Fade in the feedback button
+        const feedbackWidget = document.querySelector('.feedback-widget');
+        if (feedbackWidget) {
+            feedbackWidget.classList.remove('faded-out');
         }
         
         // Restore body scroll
@@ -154,6 +166,9 @@ class StickyButtons {
         const mobileEmailButton = document.querySelector('.nav-section .nav-link.email-button');
         const mobileCallButton = document.querySelector('.nav-section .nav-link.call-button');
         
+        // Mobile controls group button (sticky header)
+        const mobileControlsCallButton = document.querySelector('.mobile-controls-group .call-button');
+        
         // Career timeline CV link
         const careerCvButton = document.querySelector('.career-cv-link.cv-button');
         
@@ -187,6 +202,11 @@ class StickyButtons {
         
         if (mobileCallButton) {
             mobileCallButton.addEventListener('click', this.handleCallClick.bind(this));
+        }
+        
+        // Bind mobile controls group call button
+        if (mobileControlsCallButton) {
+            mobileControlsCallButton.addEventListener('click', this.handleCallClick.bind(this));
         }
     }
     
