@@ -199,21 +199,12 @@ class FeedbackWidget {
         formData.append('name', nameField.value || '');
         formData.append('message', messageField.value);
         
-        // Debug logging to verify what's being sent
-        console.log('Submitting feedback:', {
-            name: nameField.value || '',
-            message: messageField.value,
-            formName: 'feedback'
-        });
-        
         try {
             const response = await fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(formData).toString()
             });
-
-            console.log('Response status:', response.status, 'Response OK:', response.ok);
 
             if (response.ok) {
                 this.showSuccessState();
@@ -258,10 +249,16 @@ class FeedbackWidget {
         const form = document.getElementById('feedback-form');
         const success = document.getElementById('feedback-success');
         const messageField = document.getElementById('feedback-message');
+        const nameField = document.getElementById('feedback-name');
         const submitBtn = form.querySelector('.feedback-submit-btn');
         const submitText = submitBtn.querySelector('.feedback-submit-text');
         
-        // Clear the message field and its saved value, but keep the name for future use
+        // Save the current name for future use (always use the latest name entered)
+        if (nameField.value.trim()) {
+            this.setCookie('feedback-name', nameField.value, 7);
+        }
+        
+        // Clear the message field and its saved value
         messageField.value = '';
         this.deleteCookie('feedback-message');
         
@@ -296,8 +293,6 @@ class FeedbackWidget {
         
         // Clear any error states
         this.hideValidationError(messageField);
-        
-        console.log('Form state reset for new submission');
     }
 
     restoreFormValues() {
