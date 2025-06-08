@@ -61,20 +61,22 @@ class FeedbackWidget {
 
                 <!-- Success State -->
                 <div class="feedback-success-container" id="feedback-success">
-                    <div class="feedback-success-content">
-                        <div class="feedback-success-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" fill="#10B981"/>
-                                <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                    <div class="feedback-success-header">
+                        <div class="feedback-success-title-container">
+                            <div class="feedback-success-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" fill="#10B981"/>
+                                    <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="feedback-success-title">I appreciate that</h3>
                         </div>
-                        <h3 class="feedback-success-title">Thank you!</h3>
-                        <p class="feedback-success-message">Your feedback has been received.</p>
                         <button type="button" class="feedback-close-btn" id="feedback-success-close" aria-label="Close feedback">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
+                            <img src="img/close.svg" alt="" class="feedback-close-icon">
                         </button>
+                    </div>
+                    <div class="feedback-success-content">
+                        <p class="feedback-success-message">Your feedback will help me further improve my portfolio</p>
                     </div>
                 </div>
             </div>
