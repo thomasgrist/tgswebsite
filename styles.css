@@ -212,7 +212,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 156px 40px 68px 40px;
+    padding: 156px 40px 44px 40px;
 }
 
 /* Page Content */
@@ -2427,32 +2427,32 @@ button.nav-link {
 
 .face.front {
     transform: rotateY(0deg) translateZ(100px);
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 .face.back {
     transform: rotateY(180deg) translateZ(100px);
-    background: linear-gradient(120deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 .face.left {
     transform: rotateY(-90deg) translateZ(100px);
-    background: linear-gradient(-30deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 .face.right {
     transform: rotateY(90deg) translateZ(100px);
-    background: linear-gradient(75deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 .face.top {
     transform: rotateX(90deg) translateZ(100px);
-    background: linear-gradient(165deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 .face.bottom {
     transform: rotateX(-90deg) translateZ(100px);
-    background: linear-gradient(-15deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 @keyframes rotateCube {
@@ -2929,7 +2929,7 @@ button.nav-link {
 /* Feedback Widget Styles */
 .feedback-widget {
     position: fixed;
-    bottom: 48px;
+    bottom: 24px;
     right: 24px;
     z-index: 1000;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -3014,7 +3014,7 @@ button.nav-link {
 }
 
 .feedback-widget.expanded {
-    bottom: 48px;
+    bottom: 24px;
     right: 24px;
 }
 
