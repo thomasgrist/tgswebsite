@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Grist - {{COMPANY_NAME}} - Lead Product Designer - UK</title>
+    <link rel="icon" type="image/svg+xml" href="img/tgs-mark.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fixed Header - Contains Logo and Action Buttons -->
+    <header class="fixed-header">
+        <div class="header-logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/tgs-mark.svg" alt="TGS" class="logo-svg">
+            </a>
+        </div>
+        
+        <div class="header-buttons">
+            <button class="action-button cv-button">
+                <img src="img/cv-icon.svg" alt="" class="button-icon">
+                <span class="button-text">CV</span>
+            </button>
+            <button class="action-button linkedin-button">
+                <img src="img/linkedin-icon.svg" alt="" class="button-icon">
+                <span class="button-text">LinkedIn</span>
+            </button>
+            <button class="action-button email-button">
+                <img src="img/email-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Email</span>
+            </button>
+            <button class="action-button call-button">
+                <img src="img/call-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Call</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Controls Group (Call Button + Hamburger Menu) -->
+        <div class="mobile-controls-group">
+            <button class="action-button call-button">
+                <img src="img/call-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Call</span>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay"></div>
+
+    <aside class="left-navigation" aria-hidden="true">
+        <div class="nav-background">
+            <nav class="nav-content">
+                <!-- Case Studies Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">Case studies</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="whereby.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Whereby</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="sky-comcast.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Sky & Comcast</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="rio-esg.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Rio ESG</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="deltatre.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Deltatre</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="audi.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <div class="nav-text-container">
+                                    <span class="nav-text">Audi</span>
+                                    <span class="nav-subtitle">@ BBH</span>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- {{NAVIGATION_HIGHLIGHT}} - Add active state to current page in navigation -->
+                    </ul>
+                </section>
+
+                <!-- About Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">About</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item disabled">
+                            <span class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow-grey.svg" alt="" class="nav-arrow">
+                                    <div class="nav-callout" id="how-i-design-coming-soon">Coming Soon</div>
+                                </div>
+                                <span class="nav-text">How I design</span>
+                            </span>
+                        </li>
+                        <li class="nav-item disabled">
+                            <span class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow-grey.svg" alt="" class="nav-arrow">
+                                    <div class="nav-callout" id="roadmap-coming-soon">Coming Soon</div>
+                                </div>
+                                <span class="nav-text">Roadmap</span>
+                            </span>
+                        </li>
+                        <li class="nav-item cv-nav-item">
+                            <button class="nav-link cv-button">
+                                <div class="nav-icon">
+                                    <img src="img/cv-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">CV</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+                
+                <!-- Contact Section -->
+                <section class="nav-section contact-section">
+                    <h2 class="nav-section-title">Contact</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <button class="nav-link linkedin-button">
+                                <div class="nav-icon">
+                                    <img src="img/linkedin-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">LinkedIn</span>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link email-button">
+                                <div class="nav-icon">
+                                    <img src="img/email-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Email</span>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link call-button">
+                                <div class="nav-icon">
+                                    <img src="img/call-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Call</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    </aside>
+
+    <main class="homepage">
+        <div class="content-area">
+            <div class="page-content">
+                <!-- Case Study Header Component -->
+                <div class="case-study-header-component">
+                    <div class="case-study-header-row">
+                        <div class="project-tile-meta">
+                            <div class="project-tile-tag">
+                                <span class="tag-text">SaaS</span>
+                            </div>
+                            <span class="project-tile-company">Whereby</span>
+                        </div>
+                    </div>
+                    <h1 class="hero-name">Identifying & solving customer pain points</h1>
+                    <p class="case-study-description">Whereby provides video meetings for consumers and organisations, much like Zoom or Google Hangouts.</p>
+                </div>
+
+                <!-- Case Study Tabs Component -->
+                <div class="case-study-tabs-component">
+                    <div class="case-study-tabs-container">
+                        <button class="case-study-tab active" data-tab="summary">
+                            <span class="case-study-tab-text">Overview</span>
+                        </button>
+                        <button class="case-study-tab" data-tab="customer-journey">
+                            <span class="case-study-tab-text">Customer journey mapping</span>
+                        </button>
+                        <button class="case-study-tab" data-tab="strategy">
+                            <span class="case-study-tab-text">Strategy</span>
+                        </button>
+                        <button class="case-study-tab" data-tab="ux">
+                            <span class="case-study-tab-text">UX</span>
+                        </button>
+                        <button class="case-study-tab" data-tab="ui">
+                            <span class="case-study-tab-text">UI</span>
+                        </button>
+                        <button class="case-study-tab" data-tab="testing">
+                            <span class="case-study-tab-text">Testing & Validation</span>
+                        </button>
+                        <button class="case-study-tab" data-tab="results">
+                            <span class="case-study-tab-text">Results & Impact</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Overview Section Component -->
+                <div class="case-study-overview-section">
+                    <div class="overview-content-row">
+                        <div class="overview-date">Jul '22-Nov '22</div>
+                        <div class="overview-content-column">
+                            <div class="overview-item overview-item-first">
+                                <p class="overview-text">Due to a lack of customer feedback for a new product called Embedded, I conducted a customer journey mapping exercise - leading several workshops to gain insight from the Customer Success Managers.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">Use cases, pain points and potential remedies were captured and presented to the business with the aim of increasing 'activation' in the Embedded product.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">On the Meetings product, patterns in the customer feedback identified problems surrounding hosting and scheduling meetings.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">I delivered designs for a BETA programme and a commercial release of 'Flex Rooms', a new feature that allowed customers to host meetings without being present.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">I pitched a new scheduling feature to the business, designed to help customers grow their business without any coding skills.</p>
+                            </div>
+                            <div class="overview-item overview-item-last">
+                                <p class="overview-text">I also delivered three smaller projects to ensure users were extracting as much value as possible from the products: upgrades, shared room promotion and a unified subscription page.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- One Column Content Block Component -->
+                <div class="case-study-content-block">
+                    <div class="content-block-container">
+                        <div class="content-block-image-placeholder"></div>
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">I also delivered three smaller projects to ensure users were extracting as much value as possible from the products: upgrades, shared room promotion and a unified subscription page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Content Block Component -->
+                <div class="case-study-double-content-block">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <div class="double-content-image-placeholder"></div>
+                            <p class="double-content-text">I also delivered three smaller projects to ensure users were extracting as much value as possible from the products: upgrades, shared room promotion and a unified subscription page.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <div class="double-content-image-placeholder"></div>
+                            <p class="double-content-text">I also delivered three smaller projects to ensure users were extracting as much value as possible from the products: upgrades, shared room promotion and a unified subscription page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 2 -->
+                <div class="case-study-content-block">
+                    <div class="content-block-container">
+                        <div class="content-block-image-placeholder"></div>
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">The user research phase revealed key insights about customer behavior patterns and pain points that directly informed our design decisions and feature prioritization.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Content Block Component 2 -->
+                <div class="case-study-double-content-block">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <div class="double-content-image-placeholder"></div>
+                            <p class="double-content-text">Wireframes and prototypes were created to test different interaction patterns and validate our design assumptions with real users before moving to high-fidelity designs.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <div class="double-content-image-placeholder"></div>
+                            <p class="double-content-text">The final UI designs incorporated the feedback from user testing sessions, resulting in a more intuitive and accessible interface for all user types.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 3 -->
+                <div class="case-study-content-block">
+                    <div class="content-block-container">
+                        <div class="content-block-image-placeholder"></div>
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">A/B testing was conducted on key user flows to measure the impact of design changes and ensure we were moving in the right direction with our solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Content Block Component 3 -->
+                <div class="case-study-double-content-block">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <div class="double-content-image-placeholder"></div>
+                            <p class="double-content-text">Post-launch metrics showed significant improvements in user engagement and conversion rates, validating the design decisions made throughout the project.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <div class="double-content-image-placeholder"></div>
+                            <p class="double-content-text">The project's success led to increased user satisfaction scores and positive feedback from both internal stakeholders and end users.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 4 -->
+                <div class="case-study-content-block">
+                    <div class="content-block-container">
+                        <div class="content-block-image-placeholder"></div>
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">The lessons learned from this project have been documented and shared with the broader design team to inform future projects and maintain consistency across products.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study Navigation Component -->
+                <div class="case-study-navigation">
+                    <div class="case-study-navigation-container">
+                        <div class="case-study-nav-card previous">
+                            <div class="case-study-nav-arrow">
+                                <img src="img/case-study-nav-arrow.svg" alt="Previous case study" />
+                            </div>
+                            <div class="case-study-nav-content">
+                                <div class="project-tile-meta">
+                                    <div class="project-tile-tag">
+                                        <span class="tag-text">eCommerce</span>
+                                    </div>
+                                    <span class="project-tile-company">Audi @ BBH</span>
+                                </div>
+                                <h3 class="case-study-nav-title">59% increase in lead generation</h3>
+                            </div>
+                        </div>
+                        <div class="case-study-nav-card next">
+                            <div class="case-study-nav-content">
+                                <div class="project-tile-meta">
+                                    <div class="project-tile-tag">
+                                        <span class="tag-text">SaaS</span>
+                                    </div>
+                                    <span class="project-tile-company">Sky & Comcast</span>
+                                </div>
+                                <h3 class="case-study-nav-title">62% increase in ops speed</h3>
+                            </div>
+                            <div class="case-study-nav-arrow next-arrow">
+                                <img src="img/case-study-nav-arrow.svg" alt="Next case study" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Static form for Netlify detection - DO NOT REMOVE -->
+    <form name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: none;">
+        <input type="hidden" name="form-name" value="feedback" />
+        <label>Name: <input type="text" name="name" /></label>
+        <label>Message: <textarea name="message" required></textarea></label>
+        <div style="display: none;">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Mobile Navigation JavaScript -->
+    <script src="mobile-nav.js"></script>
+    <!-- Header Scroll Animation -->
+    <script src="header-scroll.js"></script>
+    <!-- Feedback Widget -->
+    <script src="feedback.js"></script>
+</body>
+</html>

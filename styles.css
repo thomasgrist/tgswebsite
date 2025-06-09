@@ -219,6 +219,7 @@ body {
 .page-content {
     max-width: 1187px;
     width: 100%;
+    margin-bottom: 80px;
 }
 
 .page-content h1 {
@@ -264,7 +265,6 @@ body {
     font-size: 18px;
     line-height: 1.6;
     color: var(--nav-text-light);
-    margin-bottom: 20px;
 }
 
 .highlight-section {
@@ -2789,6 +2789,347 @@ button.nav-link {
     }
 }
 
+/* Case Study Header Component */
+.case-study-header-component {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 940px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Override project tile meta styles to be pure white in case study header */
+.case-study-header-component .project-tile-tag {
+    border: 1px solid #FFFFFF;
+}
+
+.case-study-header-component .tag-text {
+    color: #FFFFFF;
+}
+
+.case-study-header-component .project-tile-company {
+    color: #FFFFFF;
+}
+
+.case-study-header-component .case-study-description {
+    color: #FFFFFF;
+}
+
+/* Case Study Tabs Component */
+.case-study-tabs-component {
+    margin-top: 64px;
+    width: 100%;
+    position: relative;
+    max-width: 940px;
+    margin: 64px auto;
+}
+
+.case-study-tabs-component::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.case-study-tabs-container {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+}
+
+.case-study-tab {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.case-study-tab-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.411764705882353em;
+    color: #B5B5B5;
+    transition: color 0.2s ease;
+}
+
+.case-study-tab.active .case-study-tab-text {
+    color: #FFFFFF;
+}
+
+.case-study-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #FFFFFF;
+}
+
+.case-study-tab:hover .case-study-tab-text {
+    color: #FFFFFF;
+}
+
+.case-study-header-row {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%;
+}
+
+
+
+
+
+.case-study-description {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5263157894736843em;
+    color: #FFFFFF;
+    margin: 0;
+    max-width: 698px;
+}
+
+/* Overview Section Component */
+.case-study-overview-section {
+    margin-top: 80px;
+    width: 100%;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overview-content-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.overview-date {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.411764705882353em;
+    color: #FFFFFF;
+    width: 17%;
+    flex-shrink: 0;
+    position: sticky;
+    top: 128px;
+    align-self: flex-start;
+}
+
+.overview-content-column {
+    width: 617px;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-item {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 24px 0;
+}
+
+.overview-item-first {
+    padding-top: 0;
+}
+
+.overview-item-last {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.overview-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5263157894736843em;
+    color: #B5B5B5;
+    margin: 0;
+    width: 100%;
+}
+
+/* One Column Content Block Component */
+.case-study-content-block {
+    margin-top: 96px;
+    width: 100%;
+    max-width: 1187px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-block-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+}
+
+.content-block-image-placeholder {
+    width: 100%;
+    height: 699px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+.content-block-text-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+}
+
+.content-block-date-spacer {
+    width: 17%;
+    font-family: 'Proxima Nova', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.526;
+    color: #B5B5B5;
+    min-height: 1em;
+}
+
+.content-block-text {
+    font-family: 'Proxima Nova', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.526;
+    color: #B5B5B5;
+    margin: 0;
+    width: 617px;
+    text-align: left;
+}
+
+/* Double Content Block Component */
+.case-study-double-content-block {
+    margin: 96px auto 0;
+}
+
+.double-content-container {
+    width: 100%;
+    max-width: 1187px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+}
+
+.double-content-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.double-content-image-placeholder {
+    width: 100%;
+    height: 573px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+.double-content-text {
+    font-family: 'Proxima Nova', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.526;
+    color: #B5B5B5;
+    margin: 0;
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
+/* Mobile responsive for Case Study Header Component */
+@media (max-width: 768px) {
+    .case-study-header-component {
+        gap: 24px;
+        padding: 0 16px;
+        max-width: 343px;
+    }
+    
+
+    
+
+    
+    .case-study-description {
+        font-size: 17px; /* Match Figma mobile design */
+        line-height: 1.411764705882353em; /* Match Figma mobile design */
+    }
+    
+    .case-study-tabs-component {
+        margin-top: 48px; /* Mobile spacing */
+        padding: 0 16px; /* Add padding to align with other mobile content */
+    }
+    
+    .case-study-tabs-component::after {
+        left: 16px; /* Align with mobile padding */
+    }
+    
+    .case-study-tabs-container {
+        gap: 32px; /* Match Figma mobile design */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-right: 16px; /* Ensure tabs can bleed off screen */
+        margin-left: 0; /* Reset desktop margin on mobile */
+    }
+    
+    .case-study-tabs-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .case-study-tab {
+        flex-shrink: 0;
+        min-width: fit-content;
+        height: 40px; /* Match Figma mobile design - shorter than desktop */
+    }
+    
+    .case-study-tab-text {
+        font-size: 17px; /* Keep same as desktop per Figma mobile design */
+        white-space: nowrap;
+    }
+    
+    /* Overview Section Mobile */
+    .case-study-overview-section {
+        max-width: 343px;
+        padding: 0 16px;
+    }
+    
+    .overview-content-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .overview-date {
+        width: auto;
+    }
+    
+    .overview-content-column {
+        width: 100%;
+    }
+    
+    .overview-text {
+        font-size: 15px;
+        line-height: 1.6em;
+    }
+}
+
 /* Mobile responsive for AI Thoughts Section */
 @media (max-width: 768px) {
     .ai-thoughts-section {
@@ -3775,4 +4116,195 @@ button.nav-link {
         width: calc(100vw - 32px);
         padding: 18px;
     }
+}
+
+/* Case Study Navigation Component */
+.case-study-navigation {
+    margin-top: 156px;
+    width: 100%;
+    max-width: 1187px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.case-study-navigation-container {
+    display: flex;
+    gap: 0;
+    width: 100%;
+}
+
+.case-study-nav-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0);
+}
+
+.case-study-nav-card:hover {
+    box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 1.0);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.case-study-nav-card.previous {
+    justify-content: flex-start;
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+    padding-left: 24px;
+    gap: 32px;
+}
+
+.case-study-nav-card.next {
+    justify-content: flex-end;
+    border-radius: 0 8px 8px 0;
+    padding-right: 24px;
+    padding-left: 40px;
+    gap: 64px;
+}
+
+.case-study-nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: subtract;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+}
+
+.case-study-nav-card.previous::before {
+    border-radius: 8px 0 0 8px;
+}
+
+.case-study-nav-card.next::before {
+    border-radius: 0 8px 8px 0;
+}
+
+.case-study-nav-arrow {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+
+.case-study-nav-arrow img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.case-study-nav-arrow.next-arrow img {
+    transform: scaleX(-1);
+}
+
+
+
+.case-study-nav-content {
+    flex: 1;
+}
+
+.case-study-nav-content .project-tile-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.case-study-nav-title {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 22px !important;
+    line-height: 1.189;
+    color: #FFFFFF;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Mobile responsive for Case Study Navigation Component */
+@media (max-width: 768px) {
+    .case-study-navigation {
+        margin-top: 96px;
+        max-width: 343px;
+        padding: 0 16px;
+    }
+    
+    .case-study-navigation-container {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .case-study-nav-card {
+        padding: 12px 16px 12px 0;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 0;
+        gap: 16px;
+    }
+    
+    .case-study-nav-card.previous {
+        padding-left: 12px;
+        gap: 24px;
+    }
+    
+    .case-study-nav-card:last-child {
+        border-bottom: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 12px 0 12px 16px;
+    }
+    
+    .case-study-nav-card.next {
+        padding-right: 12px;
+        gap: 24px;
+    }
+    
+    .case-study-nav-card:hover {
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .case-study-nav-card:last-child:hover {
+        border-top-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .case-study-nav-arrow {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .case-study-nav-arrow img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .case-study-nav-content {
+        max-width: none;
+    }
+    
+    .case-study-nav-content .project-tile-meta {
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .case-study-nav-title {
+        font-size: 17px;
+        line-height: 1.412;
+        margin: 0;
+    }
+    
+
 }
