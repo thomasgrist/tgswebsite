@@ -4311,6 +4311,11 @@ button.nav-link {
 
 .case-study-nav-card.previous::before {
     border-radius: 8px 0 0 8px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) padding-box;
+    -webkit-mask-composite: subtract;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) padding-box;
+    mask-composite: exclude;
+    padding-right: 0;
 }
 
 .case-study-nav-card.next::before {
