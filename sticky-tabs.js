@@ -2,9 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tabsComponent = document.querySelector('.case-study-tabs-component');
     const tabsContainer = document.querySelector('.case-study-tabs-container');
+    const tabsNav = document.querySelector('.case-study-tabs-nav');
     const tabs = document.querySelectorAll('.case-study-tab');
     
-    if (!tabsComponent || !tabsContainer || !tabs.length) return;
+    if (!tabsComponent || !tabsContainer || !tabsNav || !tabs.length) return;
     
     // Section mapping
     const sections = [
@@ -21,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateActiveIndicator(activeTab) {
         const tabRect = activeTab.getBoundingClientRect();
-        const containerRect = tabsContainer.getBoundingClientRect();
+        const navRect = tabsNav.getBoundingClientRect();
         
-        const left = tabRect.left - containerRect.left;
+        const left = tabRect.left - navRect.left;
         const width = tabRect.width;
         
-        tabsContainer.style.setProperty('--indicator-left', `${left}px`);
-        tabsContainer.style.setProperty('--indicator-width', `${width}px`);
+        tabsNav.style.setProperty('--indicator-left', `${left}px`);
+        tabsNav.style.setProperty('--indicator-width', `${width}px`);
         
         // Update active class
         tabs.forEach(tab => tab.classList.remove('active'));
@@ -68,19 +69,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Initialize CSS custom properties and disable transition for initial load
-    tabsContainer.style.setProperty('--indicator-left', '0px');
-    tabsContainer.style.setProperty('--indicator-width', '0px');
+    tabsNav.style.setProperty('--indicator-left', '0px');
+    tabsNav.style.setProperty('--indicator-width', '0px');
+    tabsNav.style.setProperty('--hover-indicator-left', '-100px');
+    tabsNav.style.setProperty('--hover-indicator-width', '0px');
+    tabsNav.style.setProperty('--hover-indicator-opacity', '0');
     
     // Temporarily disable transition for initial positioning
-    const indicatorElement = window.getComputedStyle(tabsContainer, '::after');
-    tabsContainer.style.setProperty('--disable-transition', '1');
+    const indicatorElement = window.getComputedStyle(tabsNav, '::after');
+    tabsNav.style.setProperty('--disable-transition', '1');
     
     // Check initial state without animation
     handleScroll();
     
     // Re-enable transitions after a brief delay
     setTimeout(() => {
-        tabsContainer.style.removeProperty('--disable-transition');
+        tabsNav.style.removeProperty('--disable-transition');
     }, 50);
     
     // Listen for scroll events
@@ -90,4 +94,56 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         handleScroll();
     });
+    
+    // Add hover effects for tabs
+    tabs.forEach(tab => {
+        tab.addEventListener('mouseenter', function() {
+            const tabRect = tab.getBoundingClientRect();
+            const navRect = tabsNav.getBoundingClientRect();
+            const left = tabRect.left - navRect.left;
+            const width = tabRect.width;
+            
+            tabsNav.style.setProperty('--hover-indicator-left', left + 'px');
+            tabsNav.style.setProperty('--hover-indicator-width', width + 'px');
+            tabsNav.style.setProperty('--hover-indicator-opacity', '1');
+        });
+        
+        tab.addEventListener('mouseleave', function() {
+            tabsNav.style.setProperty('--hover-indicator-opacity', '0');
+        });
+    });
+    
+    // Hide hover indicator when leaving the container
+    tabsNav.addEventListener('mouseleave', function() {
+        tabsNav.style.setProperty('--hover-indicator-opacity', '0');
+    });
+    
+    // Add back to top functionality
+    const backToTopBtn = document.querySelector('.back-to-top-btn');
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+            // Very fast custom scroll animation
+            const startPosition = window.pageYOffset;
+            const duration = 200; // Much faster - 200ms
+            const startTime = performance.now();
+            
+            function scrollAnimation(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = elapsed / duration;
+                
+                if (progress >= 1) {
+                    // Ensure we reach exactly 0
+                    window.scrollTo(0, 0);
+                    return;
+                }
+                
+                // Pure linear interpolation - no easing at all
+                const position = Math.round(startPosition * (1 - progress));
+                window.scrollTo(0, position);
+                requestAnimationFrame(scrollAnimation);
+            }
+            
+            scrollAnimation(performance.now());
+        });
+    }
 }); 

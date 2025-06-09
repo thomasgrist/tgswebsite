@@ -286,6 +286,12 @@ body {
     padding: 156px 40px 44px 40px;
 }
 
+@media (min-width: 769px) {
+    .content-area {
+        padding-top: 175px;
+    }
+}
+
 /* Page Content */
 .page-content {
     max-width: 1187px;
@@ -712,6 +718,12 @@ body {
     width: 100%;
 }
 
+@media (min-width: 769px) {
+    .project-tiles-row {
+        margin-top: 128px;
+    }
+}
+
 /* Add vertical spacing between project tile rows */
 .project-tiles-row + .project-tiles-row {
     margin-top: 40px;
@@ -737,6 +749,12 @@ body {
     display: flex;
     margin-top: 156px;
     width: 100%;
+}
+
+@media (min-width: 769px) {
+    .project-tile-row-full {
+        margin-top: 128px;
+    }
 }
 
 /* Add vertical spacing between full-width project tile rows */
@@ -2009,6 +2027,13 @@ button.nav-link {
     width: 100%;
 }
 
+@media (min-width: 769px) {
+    .career-timeline {
+        margin-top: 128px;
+        margin-bottom: 128px;
+    }
+}
+
 .career-timeline-header {
     display: flex;
     justify-content: space-between;
@@ -2941,6 +2966,18 @@ button.nav-link {
     padding-right: 25.85%; /* 243px equivalent of 940px max-width */
 }
 
+@media (min-width: 1025px) {
+    .case-study-header-component {
+        padding-right: 0px;
+    }
+}
+
+@media (min-width: 769px) {
+    .case-study-header-component {
+        margin-bottom: 48px;
+    }
+}
+
 /* Override project tile meta styles to be pure white in case study header */
 .case-study-header-component .project-tile-tag {
     border: 1px solid #FFFFFF;
@@ -3026,14 +3063,39 @@ button.nav-link {
 .case-study-tabs-container {
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    transition: border-bottom-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.case-study-tabs-component.is-stuck .case-study-tabs-container {
-    border-bottom-color: transparent;
+.case-study-tabs-nav {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.case-study-tabs-container::after {
+.case-study-tabs-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.case-study-tabs-nav::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--hover-indicator-left, -100px);
+    width: var(--hover-indicator-width, 0px);
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: left 0.2s ease-out, width 0.2s ease-out, opacity 0.2s ease-out;
+    transform-origin: left;
+    opacity: var(--hover-indicator-opacity, 0);
+    z-index: 1;
+}
+
+.case-study-tabs-nav::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -3043,15 +3105,62 @@ button.nav-link {
     background-color: #FFFFFF;
     transition: left 0.2s ease-out, width 0.2s ease-out;
     transform-origin: left;
+    z-index: 2;
 }
 
 /* Disable transition on initial load */
-.case-study-tabs-container[style*="--disable-transition"]::after {
+.case-study-tabs-nav[style*="--disable-transition"]::before,
+.case-study-tabs-nav[style*="--disable-transition"]::after {
     transition: none;
 }
 
-.case-study-tab:hover .case-study-tab-text {
+/* Hover text color change removed - using only indicator animation */
+
+/* Back to Top Button */
+.back-to-top-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    color: #B5B5B5;
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.466666666666667em;
+    cursor: pointer;
+    transition: color 0.2s ease, opacity 0.3s ease;
+    flex-shrink: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.case-study-tabs-component.is-stuck .back-to-top-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
     color: #FFFFFF;
+}
+
+.back-to-top-text {
+    white-space: nowrap;
+}
+
+.back-to-top-icon {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+    filter: brightness(0.7);
+}
+
+.back-to-top-btn:hover .back-to-top-icon {
+    transform: rotate(-45deg);
+    filter: brightness(1);
 }
 
 .case-study-header-row {
@@ -3100,6 +3209,11 @@ button.nav-link {
     position: sticky;
     top: 172px; /* Desktop: positions below sticky header + sticky tabs + 12px spacing */
     align-self: flex-start;
+}
+
+/* Increase space above overview-date when tabs are stuck */
+.case-study-tabs-component.is-stuck ~ .case-study-overview-section .overview-date {
+    top: 184px; /* Additional 12px when tabs are sticky */
 }
 
 .overview-content-column {
@@ -3250,17 +3364,30 @@ button.nav-link {
 
     
     .case-study-tabs-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding-right: 16px; /* Ensure tabs can bleed off screen */
+        margin-left: 0; /* Reset desktop margin on mobile */
+    }
+    
+    .case-study-tabs-nav {
         gap: 32px; /* Match Figma mobile design */
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        padding-right: 16px; /* Ensure tabs can bleed off screen */
-        margin-left: 0; /* Reset desktop margin on mobile */
     }
     
-    .case-study-tabs-container::-webkit-scrollbar {
+    .case-study-tabs-nav::-webkit-scrollbar {
         display: none;
+    }
+    
+    .back-to-top-btn {
+        align-self: flex-end;
+        padding: 6px 12px;
+        font-size: 14px;
+        gap: 6px;
     }
     
     .case-study-tab {
@@ -4301,6 +4428,12 @@ button.nav-link {
     max-width: 1187px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (min-width: 769px) {
+    .case-study-navigation {
+        margin-top: 128px;
+    }
 }
 
 .case-study-navigation-container {
