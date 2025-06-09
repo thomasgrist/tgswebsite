@@ -1412,7 +1412,7 @@ button.nav-link {
     .mobile-controls-group {
         display: flex;
         align-items: center;
-        gap: 32px;
+        gap: 16px;
     }
     
     /* Style the call button in mobile controls group */
@@ -2787,6 +2787,21 @@ button.nav-link {
         padding: 32px 32px 32px 32px;
         gap: 24px;
     }
+    
+    /* Stack double content columns */
+    .double-content-container {
+        flex-direction: column;
+        gap: 64px;
+    }
+    
+    .double-content-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .content-block-date-spacer {
+        display: none;
+    }
 }
 
 /* Case Study Header Component */
@@ -2797,6 +2812,7 @@ button.nav-link {
     max-width: 940px;
     width: 100%;
     margin: 0 auto;
+    padding-right: 25.85%; /* 243px equivalent of 940px max-width */
 }
 
 /* Override project tile meta styles to be pure white in case study header */
@@ -2899,7 +2915,6 @@ button.nav-link {
     line-height: 1.5263157894736843em;
     color: #FFFFFF;
     margin: 0;
-    max-width: 698px;
 }
 
 /* Overview Section Component */
@@ -3026,7 +3041,7 @@ button.nav-link {
     max-width: 1187px;
     margin: 0 auto;
     display: flex;
-    gap: 40px;
+    gap: 96px;
 }
 
 .double-content-column {
@@ -3057,9 +3072,8 @@ button.nav-link {
 /* Mobile responsive for Case Study Header Component */
 @media (max-width: 768px) {
     .case-study-header-component {
-        gap: 24px;
+        gap: 12px;
         padding: 0 16px;
-        max-width: 343px;
     }
     
 
@@ -3107,7 +3121,8 @@ button.nav-link {
     
     /* Overview Section Mobile */
     .case-study-overview-section {
-        max-width: 343px;
+        margin-top: 48px;
+        margin-bottom: 80px;
         padding: 0 16px;
     }
     
@@ -3127,6 +3142,14 @@ button.nav-link {
     .overview-text {
         font-size: 15px;
         line-height: 1.6em;
+    }
+    
+    .content-block-container {
+        gap: 24px;
+    }
+    
+    .double-content-column {
+        gap: 24px;
     }
 }
 
@@ -3304,9 +3327,6 @@ button.nav-link {
     
     /* Mobile Controls Group for small screens */
     .mobile-controls-group {
-        display: flex;
-        align-items: center;
-        gap: 32px;
     }
     
     /* Style the call button in mobile controls group on small screens */
@@ -4236,11 +4256,55 @@ button.nav-link {
     margin-bottom: 0 !important;
 }
 
+/* Tablet responsive for Case Study Navigation Component - stack cards */
+@media (max-width: 1024px) {
+    .case-study-navigation-container {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .case-study-nav-card {
+        border-radius: 8px;
+        gap: 32px;
+    }
+    
+    .case-study-nav-card.previous {
+        border-radius: 8px 8px 0 0;
+        padding-left: 40px;
+        gap: 32px;
+    }
+    
+    .case-study-nav-card.next {
+        border-radius: 0 0 8px 8px;
+        padding-right: 40px;
+        padding-left: 40px;
+        gap: 32px;
+        justify-content: flex-start;
+        margin-top: -1px; /* Overlap to remove gap between cards */
+    }
+    
+    .case-study-nav-card.previous::before {
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .case-study-nav-card.next::before {
+        border-radius: 0 0 8px 8px;
+    }
+    
+    .case-study-nav-card.previous::before {
+        background: rgba(255, 255, 255, 0.20); /* Solid color instead of gradient */
+        padding-bottom: 0; /* Remove bottom border */
+    }
+    
+    .case-study-nav-card:hover {
+        transform: none; /* Remove translateY hover effect on tablets */
+    }
+}
+
 /* Mobile responsive for Case Study Navigation Component */
 @media (max-width: 768px) {
     .case-study-navigation {
-        margin-top: 96px;
-        max-width: 343px;
+        margin-top: 80px;
         padding: 0 16px;
     }
     
@@ -4260,11 +4324,12 @@ button.nav-link {
     .case-study-nav-card.previous {
         padding-left: 12px;
         gap: 24px;
+        border-bottom: none;
     }
     
     .case-study-nav-card:last-child {
         border-bottom: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: none;
         padding: 12px 0 12px 16px;
     }
     
@@ -4291,20 +4356,181 @@ button.nav-link {
         height: 18px;
     }
     
+    .case-study-nav-card.previous .case-study-nav-arrow {
+        margin-left: 12px;
+    }
+    
+    .case-study-nav-card.next .case-study-nav-arrow {
+        margin-right: 12px;
+    }
+    
     .case-study-nav-content {
         max-width: none;
     }
     
     .case-study-nav-content .project-tile-meta {
         gap: 12px;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
     }
     
     .case-study-nav-title {
-        font-size: 17px;
+        font-size: 17px !important;
         line-height: 1.412;
         margin: 0;
     }
     
 
+}
+
+/* Responsive breakpoints for case study components (768px - 1024px gap fix) */
+@media (min-width: 1025px) and (max-width: 1199px) {
+    .content-block-text {
+        padding-left: 64px;
+        padding-right: 64px;
+        width: auto;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .case-study-header-component {
+        padding-right: 0px;
+    }
+    
+    .overview-content-row {
+        padding-right: 0px;
+    }
+    
+    .content-block-date-spacer {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .overview-content-column {
+        width: calc(100% - 20px);
+    }
+    
+    .content-block-text {
+        width: calc(100% - 0px);
+    }
+    
+    .content-block-image-placeholder {
+        height: calc(100vw * 0.59); /* Make image height responsive */
+        max-height: 699px;
+    }
+    
+    .double-content-image-placeholder {
+        height: calc((100vw - 120px) * 0.48); /* Responsive height for double content */
+        max-height: 573px;
+    }
+    
+    .double-content-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    /* Stack overview content row */
+    .overview-content-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .overview-date {
+        width: 100%;
+        position: static; /* Remove sticky positioning on smaller screens */
+    }
+}
+
+@media (max-width: 999px) and (min-width: 769px) {
+    .overview-content-column {
+        width: calc(100% - 0px);
+    }
+    
+    .content-block-text {
+        width: calc(100% - 0px);
+    }
+    
+    .content-block-image-placeholder {
+        height: calc(100vw * 0.5);
+        max-height: 600px;
+    }
+    
+    .double-content-image-placeholder {
+        height: calc((100vw - 100px) * 0.45);
+        max-height: 500px;
+    }
+    
+    /* Make double content stack vertically on smaller screens */
+    .double-content-container {
+        flex-direction: column;
+        gap: 96px;
+    }
+    
+    .double-content-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .overview-content-column {
+        width: calc(100% - 0px);
+    }
+    
+    .content-block-text {
+        width: calc(100% - 0px);
+    }
+    
+    .content-block-image-placeholder {
+        height: calc(100vw * 0.5);
+        max-height: 600px;
+    }
+    
+    .double-content-image-placeholder {
+        height: calc((100vw - 100px) * 0.45);
+        max-height: 500px;
+    }
+    
+    /* Make double content stack vertically on smaller screens */
+    .double-content-container {
+        flex-direction: column;
+        gap: 48px;
+    }
+    
+    .double-content-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* Apply 16px padding only on mobile (below 768px) */
+@media (max-width: 768px) {
+    .case-study-content-block:first-of-type,
+    .case-study-double-content-block:first-of-type {
+        margin-top: 64px;
+        padding: 0 16px;
+    }
+    
+    .case-study-content-block:not(:first-of-type),
+    .case-study-double-content-block:not(:first-of-type) {
+        margin-top: 48px;
+        padding: 0 16px;
+    }
+    
+    .case-study-content-block:last-of-type,
+    .case-study-double-content-block:last-of-type {
+        margin-bottom: 72px;
+    }
+}
+
+/* Enhanced tablet breakpoint (between mobile and desktop) */
+@media (max-width: 900px) {
+    .content-block-text-container {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .content-block-date-spacer {
+        width: 100%;
+    }
 }
