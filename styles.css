@@ -107,18 +107,22 @@ body {
     font-weight: 300;
     font-size: 15px;
     line-height: 1.6em;
-    color: rgba(181, 181, 181, 1);
+    color: #FFFFFF;
     padding: 0 0 12px 16px;
     margin: 0;
 }
 
-/* Keep opacity for Contact sections */
-.nav-section:nth-child(3) .nav-section-title,
-.nav-section:nth-child(4) .nav-section-title {
-    color: rgba(181, 181, 181, 0.7);
+/* Keep Contact section pure white */
+.nav-section:nth-child(3) .nav-section-title {
+    color: #FFFFFF;
 }
 
-/* Ensure thomasgrist.co.uk section title has full opacity */
+/* Make thomasgrist.co.uk section light grey */
+.nav-section:nth-child(4) .nav-section-title {
+    color: rgba(181, 181, 181, 1);
+}
+
+/* Ensure thomasgrist.co.uk section title is light grey */
 .nav-section:last-child .nav-section-title {
     color: rgba(181, 181, 181, 1) !important;
 }
@@ -128,10 +132,15 @@ body {
     display: none;
 }
 
-/* About and Contact sections full opacity in mobile menu */
+    /* About and Contact sections pure white in mobile menu */
 @media (max-width: 768px) {
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-section-title,
     .left-navigation.menu-open .nav-section:nth-child(3) .nav-section-title {
+        color: #FFFFFF;
+    }
+    
+    /* Make thomasgrist.co.uk section light grey in mobile menu */
+    .left-navigation.menu-open .nav-section:nth-child(4) .nav-section-title {
         color: rgba(181, 181, 181, 1);
     }
     
@@ -153,9 +162,10 @@ body {
         order: 1;
     }
     
-    /* Hide thomasgrist.co.uk section on mobile */
+    /* Show thomasgrist.co.uk section on mobile at the bottom */
     .left-navigation.menu-open .nav-section:nth-child(4) {
-        display: none;
+        display: flex;
+        order: 4;
     }
     
     /* Reorder items within About section: CV first, then How I Design, then Roadmap */
@@ -164,22 +174,17 @@ body {
         flex-direction: column;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* How I Design */
-        order: 2;
-    }
-    
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* Roadmap - mobile only */
-        order: 3;
-    }
-    
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3) { /* CV */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* CV */
         order: 1;
     }
     
-    /* Show mobile roadmap item only on mobile */
-    .left-navigation.menu-open .mobile-roadmap-item {
-        display: flex;
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* How I Design */
+        order: 2;
     }
+    
+
+    
+
 }
 
 .nav-list {
@@ -1418,9 +1423,9 @@ button.nav-link {
     display: none;
 }
 
-/* CV nav item - hidden on desktop, visible on mobile */
+/* CV nav item - visible on desktop and mobile */
 .cv-nav-item {
-    display: none;
+    display: flex;
 }
 
 /* Contact section icon sizing in mobile nav */
@@ -1708,7 +1713,7 @@ button.nav-link {
     }
     
     /* CV nav item (visually first but 3rd child) needs top border on mobile */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3)::before { /* CV */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::before { /* CV */
         content: '';
         position: absolute;
         left: 0;
@@ -1720,9 +1725,17 @@ button.nav-link {
         margin-left: -4px;
     }
     
-    /* Remove bottom border from CV nav item since it's no longer last visually */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3)::after { /* CV */
-        display: none;
+    /* Add bottom border to CV nav item to create divider between CV and How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::after { /* CV */
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.15);
+        width: 100vw;
+        margin-left: -4px;
     }
     
     .left-navigation.menu-open .nav-section .nav-item {
@@ -1834,17 +1847,15 @@ button.nav-link {
         animation-delay: 1.2s;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* CV */
+        animation-delay: 1.3s;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* How I Design */
         animation-delay: 1.4s;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* Roadmap */
-        animation-delay: 1.5s;
-    }
-    
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3) { /* CV */
-        animation-delay: 1.3s;
-    }
+
     
     .left-navigation.menu-open .nav-section:nth-child(4) .nav-section-title {
         animation-delay: 1.6s;
@@ -1862,6 +1873,18 @@ button.nav-link {
     /* Show CV nav item on mobile */
     .cv-nav-item {
         display: flex;
+    }
+    
+    /* Remove hover effects for How I Design and Roadmap on mobile */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover, /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover { /* Roadmap */
+        transform: translateX(0) !important;
+        background-color: transparent !important;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover .nav-link::before, /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover .nav-link::before { /* Roadmap */
+        display: none !important;
     }
     
     @keyframes fadeInUp {
@@ -3030,6 +3053,29 @@ button.nav-link {
     display: flex;
     gap: 40px;
     width: 100%;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.case-study-tabs-nav-wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.case-study-tabs-nav {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;
+    scroll-behavior: smooth;
 }
 
 .case-study-tab {
@@ -3044,6 +3090,7 @@ button.nav-link {
     position: relative;
     transition: color 0.2s ease;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .case-study-tab-text {
@@ -3053,29 +3100,119 @@ button.nav-link {
     line-height: 1.411764705882353em;
     color: #B5B5B5;
     transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
 .case-study-tab.active .case-study-tab-text {
     color: #FFFFFF;
 }
 
-/* Dynamic active indicator */
-.case-study-tabs-container {
-    position: relative;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    display: flex;
-    justify-content: space-between;
+/* Tab Navigation Controls */
+.tabs-nav-controls {
+    display: none;
     align-items: center;
+    gap: 8px;
+    margin-left: 16px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--dark-2);
+    padding-left: 20px;
+    padding-right: 4px;
+    z-index: 10;
+    border-radius: 0 0 0 8px;
 }
 
-.case-study-tabs-nav {
+.tabs-nav-btn {
     display: flex;
-    gap: 32px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+    opacity: 0.6;
 }
+
+.tabs-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.tabs-nav-btn:active {
+    transform: scale(0.95);
+    transition: transform 0.05s ease;
+}
+
+.tabs-nav-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.tabs-nav-btn:disabled:hover {
+    background-color: transparent;
+    transform: none;
+}
+
+.tabs-nav-icon {
+    width: 8px;
+    height: 8px;
+    transition: filter 0.2s ease;
+    filter: brightness(0.8);
+}
+
+.tabs-nav-btn:hover .tabs-nav-icon {
+    filter: brightness(1);
+}
+
+.tabs-nav-btn:disabled .tabs-nav-icon {
+    filter: brightness(0.5);
+}
+
+.tabs-nav-prev .tabs-nav-icon {
+    transform: rotate(225deg);
+}
+
+.tabs-nav-next .tabs-nav-icon {
+    transform: rotate(45deg);
+}
+
+/* Show navigation controls on tablet and larger screens when tabs overflow */
+@media (min-width: 481px) {
+    .case-study-tabs-nav-wrapper.has-overflow .tabs-nav-controls {
+        display: flex;
+    }
+    
+    .case-study-tabs-nav-wrapper.has-overflow::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 80px;
+        background: linear-gradient(to left, var(--dark-2) 20%, transparent 100%);
+        pointer-events: none;
+        z-index: 5;
+    }
+    
+    /* Adjust controls positioning when sticky */
+    .case-study-tabs-component.is-stuck .case-study-tabs-nav-wrapper.has-overflow .tabs-nav-controls {
+        background: rgba(6, 6, 6, 0.7);
+        backdrop-filter: blur(37px);
+    }
+    
+    .case-study-tabs-component.is-stuck .case-study-tabs-nav-wrapper.has-overflow::after {
+        background: linear-gradient(to left, rgba(6, 6, 6, 0.7) 20%, transparent 100%);
+    }
+}
+
+/* Dynamic active indicator */
 
 .case-study-tabs-nav::-webkit-scrollbar {
     display: none;
@@ -3341,6 +3478,13 @@ button.nav-link {
 }
 
 /* Mobile responsive for Case Study Header Component */
+@media (max-width: 480px) {
+    /* Hide navigation controls on small mobile screens only */
+    .tabs-nav-controls {
+        display: none !important;
+    }
+}
+
 @media (max-width: 768px) {
     .case-study-header-component {
         gap: 12px;
@@ -3371,6 +3515,10 @@ button.nav-link {
         margin-left: 0; /* Reset desktop margin on mobile */
     }
     
+    .case-study-tabs-nav-wrapper {
+        overflow: visible;
+    }
+    
     .case-study-tabs-nav {
         gap: 32px; /* Match Figma mobile design */
         overflow-x: auto;
@@ -3399,6 +3547,11 @@ button.nav-link {
     .case-study-tab-text {
         font-size: 17px; /* Keep same as desktop per Figma mobile design */
         white-space: nowrap;
+    }
+    
+    /* Ensure wrapper takes full width on mobile */
+    .case-study-tabs-nav-wrapper {
+        width: 100%;
     }
     
     /* Overview Section Mobile */

@@ -2,10 +2,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tabsComponent = document.querySelector('.case-study-tabs-component');
     const tabsContainer = document.querySelector('.case-study-tabs-container');
+    const tabsNavWrapper = document.querySelector('.case-study-tabs-nav-wrapper');
     const tabsNav = document.querySelector('.case-study-tabs-nav');
     const tabs = document.querySelectorAll('.case-study-tab');
+    const prevBtn = document.querySelector('.tabs-nav-prev');
+    const nextBtn = document.querySelector('.tabs-nav-next');
     
-    if (!tabsComponent || !tabsContainer || !tabsNav || !tabs.length) return;
+    if (!tabsComponent || !tabsContainer || !tabsNavWrapper || !tabsNav || !tabs.length) return;
     
     // Section mapping
     const sections = [
@@ -17,6 +20,69 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 'implementation', tab: tabs[5] },
         { id: 'results', tab: tabs[6] }
     ];
+    
+    // Tab Navigation Functionality
+    function checkTabOverflow() {
+        if (window.innerWidth >= 481) { // On larger mobile, tablet and desktop
+            const navWidth = tabsNav.scrollWidth;
+            const containerWidth = tabsNavWrapper.clientWidth;
+            const hasOverflow = navWidth > containerWidth;
+            
+            if (hasOverflow) {
+                tabsNavWrapper.classList.add('has-overflow');
+            } else {
+                tabsNavWrapper.classList.remove('has-overflow');
+            }
+            
+            updateNavButtonStates();
+        } else {
+            tabsNavWrapper.classList.remove('has-overflow');
+        }
+    }
+    
+    function updateNavButtonStates() {
+        if (!prevBtn || !nextBtn) return;
+        
+        const scrollLeft = tabsNav.scrollLeft;
+        const maxScroll = tabsNav.scrollWidth - tabsNav.clientWidth;
+        
+        // Update button disabled states
+        prevBtn.disabled = scrollLeft <= 0;
+        nextBtn.disabled = scrollLeft >= maxScroll - 1; // -1 for rounding tolerance
+    }
+    
+    function scrollTabs(direction) {
+        const scrollAmount = 240; // Pixels to scroll - enough to reveal 1-2 more tabs
+        const currentScroll = tabsNav.scrollLeft;
+        
+        if (direction === 'prev') {
+            tabsNav.scrollTo({
+                left: Math.max(0, currentScroll - scrollAmount),
+                behavior: 'smooth'
+            });
+        } else {
+            const maxScroll = tabsNav.scrollWidth - tabsNav.clientWidth;
+            tabsNav.scrollTo({
+                left: Math.min(maxScroll, currentScroll + scrollAmount),
+                behavior: 'smooth'
+            });
+        }
+        
+        // Update button states after scroll completes
+        setTimeout(updateNavButtonStates, 300);
+    }
+    
+    // Add event listeners for navigation buttons
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => scrollTabs('prev'));
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => scrollTabs('next'));
+    }
+    
+    // Listen for manual scroll to update button states
+    tabsNav.addEventListener('scroll', updateNavButtonStates);
     
     // Note: Using getBoundingClientRect() for more reliable sticky detection
     
@@ -81,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check initial state without animation
     handleScroll();
+    checkTabOverflow();
     
     // Re-enable transitions after a brief delay
     setTimeout(() => {
@@ -93,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Recalculate on window resize
     window.addEventListener('resize', function() {
         handleScroll();
+        checkTabOverflow();
     });
     
     // Add hover effects for tabs
