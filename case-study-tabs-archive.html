@@ -5,8 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Study Tabs Archive - Not for Website Use</title>
     <!-- This file is for archival purposes only and should not be accessible from the website -->
+    <link rel="icon" type="image/svg+xml" href="img/tgs-mark.svg">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Fixed Header - Contains Logo and Action Buttons -->
+    <header class="fixed-header">
+        <div class="header-logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/tgs-mark.svg" alt="TGS" class="logo-svg">
+            </a>
+        </div>
+        
+        <div class="header-buttons">
+            <button class="action-button linkedin-button">
+                <img src="img/linkedin-icon.svg" alt="" class="button-icon">
+                <span class="button-text">LinkedIn</span>
+            </button>
+            <button class="action-button email-button">
+                <img src="img/email-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Email</span>
+            </button>
+            <button class="action-button call-button">
+                <img src="img/call-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Call</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Controls Group (Call Button + Hamburger Menu) -->
+        <div class="mobile-controls-group">
+            <button class="action-button call-button">
+                <img src="img/call-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Call</span>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay"></div>
+
+    <aside class="left-navigation" aria-hidden="true">
+        <div class="nav-background">
+            <nav class="nav-content">
+                <!-- Case Studies Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">Case studies</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="whereby.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Whereby</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="sky-comcast.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Sky & Comcast</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="rio-esg.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Rio ESG</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="deltatre.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Deltatre</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="audi.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <div class="nav-text-container">
+                                    <span class="nav-text">Audi</span>
+                                    <span class="nav-subtitle">@ BBH</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- About Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">About</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item cv-nav-item">
+                            <button class="nav-link cv-button">
+                                <div class="nav-icon">
+                                    <img src="img/cv-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">CV</span>
+                            </button>
+                        </li>
+                        <li class="nav-item disabled">
+                            <span class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow-grey.svg" alt="" class="nav-arrow">
+                                    <div class="nav-callout" id="how-i-design-coming-soon">Coming Soon</div>
+                                </div>
+                                <span class="nav-text">How I design</span>
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <!-- Contact Section -->
+                <section class="nav-section contact-section">
+                    <h2 class="nav-section-title">Contact</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <button class="nav-link linkedin-button">
+                                <div class="nav-icon">
+                                    <img src="img/linkedin-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">LinkedIn</span>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link email-button">
+                                <div class="nav-icon">
+                                    <img src="img/email-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Email</span>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link call-button">
+                                <div class="nav-icon">
+                                    <img src="img/call-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Call</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- thomasgrist.co.uk Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">thomasgrist.co.uk</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item disabled">
+                            <span class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow-grey.svg" alt="" class="nav-arrow">
+                                    <div class="nav-callout" id="roadmap-coming-soon">Coming Soon</div>
+                                </div>
+                                <span class="nav-text">Roadmap</span>
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    </aside>
+
     <!-- ARCHIVED CASE STUDY TABS COMPONENT -->
     <!-- This component was removed from case-study-template.html for permanent storage -->
     
