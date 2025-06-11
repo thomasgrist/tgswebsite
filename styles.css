@@ -2666,7 +2666,7 @@ button.nav-link {
 /* AI Thoughts Section */
 .ai-thoughts-section {
     margin-top: 156px;
-    margin-bottom: 80px;
+    margin-bottom: 0;
     width: 100%;
 }
 
@@ -3581,7 +3581,7 @@ button.nav-link {
 @media (max-width: 768px) {
     .ai-thoughts-section {
         margin-top: 48px;
-        margin-bottom: 16px;
+        margin-bottom: 0;
         padding-left: 16px;
         padding-right: 16px;
     }
