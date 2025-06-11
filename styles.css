@@ -4132,7 +4132,7 @@ button.nav-link {
 .feedback-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .feedback-label-row {
@@ -5736,7 +5736,7 @@ button.nav-link {
 .feedback-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .feedback-label-row {
@@ -5888,6 +5888,12 @@ button.nav-link {
 /* Success State */
 .feedback-success-state {
     text-align: center;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    min-height: 300px;
     display: none;
 }
 

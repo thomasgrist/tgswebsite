@@ -11,6 +11,7 @@ class BottomFeedbackForm {
     bindEvents() {
         const form = document.getElementById('bottom-feedback-form');
         const messageField = document.getElementById('bottom-feedback-message');
+        const leaveMoreBtn = document.getElementById('bottom-feedback-leave-more');
 
         if (!form || !messageField) return;
 
@@ -23,6 +24,11 @@ class BottomFeedbackForm {
                 this.hideValidationError(messageField);
             }
         });
+
+        // Handle "Leave more feedback" button click
+        if (leaveMoreBtn) {
+            leaveMoreBtn.addEventListener('click', () => this.resetForm());
+        }
     }
 
     async handleFormSubmit(e) {
@@ -99,7 +105,7 @@ class BottomFeedbackForm {
         if (form && successState) {
             // Hide form and show success state
             form.style.display = 'none';
-            successState.style.display = 'block';
+            successState.style.display = 'flex';
             
             // Trigger animation for checkmark
             const checkmark = successState.querySelector('.animated-checkmark');
@@ -114,10 +120,7 @@ class BottomFeedbackForm {
                 checkmark.classList.add('animate');
             }
             
-            // Auto-hide success state after 5 seconds and reset form
-            setTimeout(() => {
-                this.resetForm();
-            }, 5000);
+            // No auto-hide - user must click "Leave more feedback" button
         }
     }
 
