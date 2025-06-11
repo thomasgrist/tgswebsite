@@ -101,8 +101,8 @@ class MobileNavigation {
         // Reset scroll position to top when menu opens
         this.navigation.scrollTop = 0;
         
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = 'hidden';
+        // Allow page scrolling - the navigation handles its own scrolling
+        // document.body.style.overflow = 'hidden'; // Removed to allow page scrolling
         
         // Focus management for accessibility
         this.navigation.setAttribute('aria-hidden', 'false');
@@ -132,8 +132,8 @@ class MobileNavigation {
             console.log('Mobile menu closing: Fixed header not found');
         }
         
-        // Restore body scroll
-        document.body.style.overflow = '';
+        // Body scroll was never disabled, so no need to restore
+        // document.body.style.overflow = ''; // Removed since we don't disable scrolling
         
         // Focus management for accessibility
         this.navigation.setAttribute('aria-hidden', 'true');
