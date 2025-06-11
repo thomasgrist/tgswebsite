@@ -5280,8 +5280,8 @@ button.nav-link {
 .feedback-description {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 16px;
-    line-height: 1.4;
+    font-size: 17px !important;
+    line-height: 1.6rem !important;
     color: #B5B5B5;
     margin: 0;
     text-align: left;
@@ -5546,7 +5546,8 @@ button.nav-link {
     }
 
     .feedback-description {
-        font-size: 15px;
+        font-size: 15px !important;
+        line-height: 1.5em !important;
         text-align: left;
     }
 
@@ -5584,6 +5585,7 @@ button.nav-link {
     }
 
     .feedback-description {
-        font-size: 14px;
+        font-size: 14px !important;
+        line-height: 1.5em !important;
     }
 }
