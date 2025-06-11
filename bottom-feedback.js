@@ -59,6 +59,11 @@ class BottomFeedbackForm {
                 formData.append('form-name', 'feedback');
             }
             
+            // Ensure bot-field is empty (honeypot should be empty for humans)
+            if (!formData.has('bot-field')) {
+                formData.append('bot-field', '');
+            }
+            
             const response = await fetch('/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
