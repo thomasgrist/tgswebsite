@@ -21,8 +21,8 @@ class FeedbackWidget {
 
                 <!-- Feedback Form State -->
                 <div class="feedback-form-container" id="feedback-form">
-                    <form class="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="feedback" />
+                    <form class="feedback-form" name="feedback-widget" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="feedback-widget" />
                         <p style="display: none;">
                             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                         </p>
@@ -233,7 +233,7 @@ class FeedbackWidget {
         
         // Construct form data manually to ensure all required fields are included
         const formData = new FormData();
-        formData.append('form-name', 'feedback');
+        formData.append('form-name', 'feedback-widget');
         formData.append('name', nameField.value || '');
         formData.append('message', messageField.value);
         
