@@ -4877,6 +4877,9 @@ button.nav-link {
     border-radius: 12px;
     padding: 40px;
     position: relative;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
 }
 
 .bottom-feedback-form-container::before {
@@ -5289,7 +5292,9 @@ button.nav-link {
 }
 
 .feedback-form {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .feedback-fields {
@@ -5297,6 +5302,7 @@ button.nav-link {
     flex-direction: column;
     gap: 24px;
     margin-bottom: 32px;
+    flex: 1;
 }
 
 .feedback-field {
@@ -5495,12 +5501,11 @@ button.nav-link {
 .feedback-success-state {
     text-align: center;
     flex: 1;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 24px;
-    min-height: 300px;
-    display: none;
     margin-top: 0;
     padding-top: 0;
 }
@@ -5599,6 +5604,10 @@ button.nav-link {
     .feedback-submit-btn {
         padding: 14px 20px;
     }
+
+    .bottom-feedback-form-container {
+        min-height: 280px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -5627,5 +5636,10 @@ button.nav-link {
     .feedback-description {
         font-size: 14px !important;
         line-height: 1.5em !important;
+    }
+
+    .bottom-feedback-form-container {
+        min-height: 260px;
+        padding: 32px;
     }
 }
