@@ -4,6 +4,10 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Forms configuration
+[forms]
+  form_handling = "default"
+
 # Redirects
 [[redirects]]
   from = "/thank-you"

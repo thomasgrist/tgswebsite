@@ -54,6 +54,11 @@ class BottomFeedbackForm {
             // Submit to Netlify
             const formData = new FormData(form);
             
+            // Ensure form-name is included for Netlify
+            if (!formData.has('form-name')) {
+                formData.append('form-name', 'feedback');
+            }
+            
             const response = await fetch('/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
