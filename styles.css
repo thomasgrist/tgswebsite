@@ -5735,8 +5735,8 @@ button.nav-link {
     }
 
     .feedback-title {
-        font-size: 24px;
-        margin: 0 !important;
+        font-size: 27px !important;
+        margin: 0 0 16px 0 !important;
     }
 
     .feedback-description {
