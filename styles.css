@@ -626,7 +626,6 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
     top: 40px !important;
     right: 40px !important;
-    z-index: 2 !important;
 }
 
 #speechmatics-ai-coming-soon::before {
