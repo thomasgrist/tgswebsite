@@ -7,6 +7,9 @@ class BottomFeedbackForm {
     init() {
         this.bindEvents();
         this.restoreFormData();
+        
+        // Add console log for debugging
+        console.log('BottomFeedbackForm initialized');
     }
 
     bindEvents() {
@@ -15,38 +18,63 @@ class BottomFeedbackForm {
         const messageField = document.getElementById('bottom-feedback-message');
         const leaveMoreBtn = document.getElementById('bottom-feedback-leave-more');
 
-        if (!form || !messageField) return;
+        if (!form || !messageField) {
+            console.warn('Feedback form elements not found');
+            return;
+        }
 
         // Handle form submission
         form.addEventListener('submit', (e) => this.handleFormSubmit(e));
 
         // Save form data as user types and clear error state
         if (nameField) {
+            console.log('Adding input listeners to name field');
             nameField.addEventListener('input', () => {
+                console.log('Name field input event triggered');
                 this.saveFormData();
             });
+            
+            // Also save on blur to catch any missed changes
+            nameField.addEventListener('blur', () => {
+                console.log('Name field blur event triggered');
+                this.saveFormData();
+            });
+        } else {
+            console.warn('Name field not found!');
         }
 
-        messageField.addEventListener('input', () => {
-            this.saveFormData();
-            if (messageField.classList.contains('error')) {
-                this.hideValidationError(messageField);
-            }
-        });
+        if (messageField) {
+            console.log('Adding input listeners to message field');
+            messageField.addEventListener('input', () => {
+                console.log('Message field input event triggered');
+                this.saveFormData();
+                if (messageField.classList.contains('error')) {
+                    this.hideValidationError(messageField);
+                }
+            });
+            
+            // Also save on blur to catch any missed changes
+            messageField.addEventListener('blur', () => {
+                console.log('Message field blur event triggered');
+                this.saveFormData();
+            });
+        } else {
+            console.warn('Message field not found!');
+        }
 
         // Handle "Leave more feedback" button click
         if (leaveMoreBtn) {
             leaveMoreBtn.addEventListener('click', () => this.resetForm());
         }
 
-        // Clear saved data when user actually leaves the website
-        window.addEventListener('beforeunload', () => {
-            // Only clear if user is navigating away from the domain
-            // Note: This will clear when closing tab/browser or going to external sites
-            if (!this.isInternalNavigation()) {
-                this.clearSavedFormData();
-            }
-        });
+        // Save data periodically to catch any missed input events
+        setInterval(() => {
+            this.saveFormData();
+        }, 2000); // Save every 2 seconds if there's data
+
+        // Note: We don't need to clear sessionStorage on beforeunload
+        // because sessionStorage automatically clears when the browser/tab is closed
+        // and we want it to persist during page refreshes within the same session
     }
 
     async handleFormSubmit(e) {
@@ -201,41 +229,85 @@ class BottomFeedbackForm {
     }
 
     saveFormData() {
-        const nameField = document.getElementById('bottom-feedback-name');
-        const messageField = document.getElementById('bottom-feedback-message');
-        
-        const formData = {
-            name: nameField ? nameField.value : '',
-            message: messageField ? messageField.value : ''
-        };
-        
-        // Only save if there's actually some data to save
-        if (formData.name.trim() || formData.message.trim()) {
-            sessionStorage.setItem('feedbackFormData', JSON.stringify(formData));
+        try {
+            const nameField = document.getElementById('bottom-feedback-name');
+            const messageField = document.getElementById('bottom-feedback-message');
+            
+            if (!nameField || !messageField) {
+                console.warn('Form fields not found for saving');
+                return;
+            }
+            
+            const formData = {
+                name: nameField.value.trim(),
+                message: messageField.value.trim(),
+                timestamp: Date.now() // Add timestamp for debugging
+            };
+            
+            // Only save if there's actually some data to save
+            if (formData.name || formData.message) {
+                const dataToSave = JSON.stringify(formData);
+                sessionStorage.setItem('feedbackFormData', dataToSave);
+                console.log('Form data saved:', { name: formData.name ? '[name provided]' : '[no name]', message: formData.message ? '[message provided]' : '[no message]' });
+                console.log('Raw data saved to sessionStorage:', dataToSave);
+            } else {
+                // If no data, remove any existing saved data
+                sessionStorage.removeItem('feedbackFormData');
+            }
+        } catch (error) {
+            console.error('Error saving form data:', error);
         }
     }
 
     restoreFormData() {
-        const savedData = sessionStorage.getItem('feedbackFormData');
-        
-        if (savedData) {
-            try {
+        try {
+            // Debug sessionStorage contents
+            console.log('All sessionStorage keys:', Object.keys(sessionStorage));
+            console.log('sessionStorage length:', sessionStorage.length);
+            for (let i = 0; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                console.log(`sessionStorage[${key}]:`, sessionStorage.getItem(key));
+            }
+            
+            const savedData = sessionStorage.getItem('feedbackFormData');
+            console.log('Raw sessionStorage data:', savedData);
+            
+            if (savedData) {
                 const formData = JSON.parse(savedData);
                 const nameField = document.getElementById('bottom-feedback-name');
                 const messageField = document.getElementById('bottom-feedback-message');
                 
-                if (nameField && formData.name) {
-                    nameField.value = formData.name;
+                if (!nameField || !messageField) {
+                    console.warn('Form fields not found for restoration');
+                    return;
                 }
                 
-                if (messageField && formData.message) {
-                    messageField.value = formData.message;
+                let restored = false;
+                
+                if (formData.name) {
+                    nameField.value = formData.name;
+                    restored = true;
                 }
-            } catch (error) {
-                console.error('Error restoring form data:', error);
-                // Clear corrupted data
-                sessionStorage.removeItem('feedbackFormData');
+                
+                if (formData.message) {
+                    messageField.value = formData.message;
+                    restored = true;
+                }
+                
+                if (restored) {
+                    console.log('Form data restored:', { 
+                        name: formData.name ? '[name restored]' : '[no name]', 
+                        message: formData.message ? '[message restored]' : '[no message]',
+                        savedAt: formData.timestamp ? new Date(formData.timestamp).toLocaleTimeString() : 'unknown'
+                    });
+                }
+            } else {
+                console.log('No saved form data found');
             }
+        } catch (error) {
+            console.error('Error restoring form data:', error);
+            // Clear corrupted data
+            sessionStorage.removeItem('feedbackFormData');
         }
     }
 
@@ -244,15 +316,27 @@ class BottomFeedbackForm {
         sessionStorage.removeItem('feedbackUserName'); // Legacy cleanup
     }
 
-    isInternalNavigation() {
-        // This is a simple check - in a real scenario, we might want more sophisticated detection
-        // For now, we'll rely on the beforeunload event behavior
-        // sessionStorage automatically clears when the browser/tab is closed anyway
-        return false;
+
+}
+
+// Ensure we only initialize once
+let feedbackFormInitialized = false;
+
+function initializeFeedbackForm() {
+    if (feedbackFormInitialized) {
+        console.log('Feedback form already initialized, skipping');
+        return;
     }
+    feedbackFormInitialized = true;
+    console.log('Initializing feedback form');
+    new BottomFeedbackForm();
 }
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new BottomFeedbackForm();
-}); 
+document.addEventListener('DOMContentLoaded', initializeFeedbackForm);
+
+// Fallback initialization for cases where DOMContentLoaded has already fired
+if (document.readyState !== 'loading') {
+    // DOM is already loaded, initialize immediately
+    initializeFeedbackForm();
+} 
