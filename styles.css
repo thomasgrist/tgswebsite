@@ -612,12 +612,21 @@ body {
     background-color: #B5B5B5 !important;
 }
 
-/* Speechmatics AI coming soon callout - adjusted opacity and repositioned */
+/* Speechmatics AI coming soon callout - match navigation menu styling exactly */
 #speechmatics-ai-coming-soon {
     background: rgba(181, 181, 181, 0.4) !important;
     color: rgba(181, 181, 181, 1) !important;
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+    font-weight: normal !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    padding: 2px 3px !important;
+    border-radius: 4px !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
     top: 40px !important;
     right: 40px !important;
+    z-index: 2 !important;
 }
 
 #speechmatics-ai-coming-soon::before {
@@ -1630,13 +1639,18 @@ button.nav-link {
     
     .left-navigation.menu-open {
         transform: translateX(0);
-        z-index: 1000;
+        z-index: 3000;
         background-color: var(--dark-2);
         /* Enable scrolling on mobile navigation */
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
         touch-action: pan-y;
+    }
+    
+    /* Hide dropdown when mobile menu is open */
+    .left-navigation.menu-open ~ * .bottom-dropdown-menu {
+        z-index: 1;
     }
     
     /* Full width nav components on mobile */
@@ -4747,7 +4761,7 @@ button.nav-link {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .bottom-dropdown-menu {
-        bottom: 16px;
+        bottom: 32px;
         left: 50%;
         transform: translateX(-50%) translateY(100px);
     }
@@ -4783,7 +4797,7 @@ button.nav-link {
 
 @media (max-width: 480px) {
     .bottom-dropdown-menu {
-        bottom: 16px;
+        bottom: 32px;
         left: 50%;
         transform: translateX(-50%) translateY(100px);
     }
@@ -5633,7 +5647,7 @@ button.nav-link {
 
     .feedback-content {
         flex-direction: column;
-        gap: 32px;
+        gap: 64px;
         width: 100%;
         transform: none;
     }
@@ -5699,9 +5713,9 @@ button.nav-link {
 
     .feedback-submit-btn {
         padding: 14px 20px;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
+        width: fit-content;
+        margin: 0 auto;
+        display: block;
     }
     
     /* Remove bottom spacing on mobile */
@@ -5727,7 +5741,7 @@ button.nav-link {
     }
 
     .feedback-content {
-        gap: 24px;
+        gap: 48px;
     }
 
     .feedback-intro {
