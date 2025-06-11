@@ -87,14 +87,7 @@ class MobileNavigation {
             mobileCallButton.classList.add('faded-out');
         }
         
-        // Fade out the feedback button
-        const feedbackWidget = document.querySelector('.feedback-widget');
-        if (feedbackWidget) {
-            console.log('Mobile menu opening: Adding faded-out class to feedback widget');
-            feedbackWidget.classList.add('faded-out');
-        } else {
-            console.log('Mobile menu opening: Feedback widget not found');
-        }
+        // Feedback widget removed - no longer needed
         
         // Fade out the header border
         const fixedHeader = document.querySelector('.fixed-header');
@@ -128,14 +121,7 @@ class MobileNavigation {
             mobileCallButton.classList.remove('faded-out');
         }
         
-        // Fade in the feedback button
-        const feedbackWidget = document.querySelector('.feedback-widget');
-        if (feedbackWidget) {
-            console.log('Mobile menu closing: Removing faded-out class from feedback widget');
-            feedbackWidget.classList.remove('faded-out');
-        } else {
-            console.log('Mobile menu closing: Feedback widget not found');
-        }
+        // Feedback widget removed - no longer needed
         
         // Fade in the header border
         const fixedHeader = document.querySelector('.fixed-header');
