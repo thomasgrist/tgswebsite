@@ -64,8 +64,17 @@ class BottomFeedbackForm {
             return;
         }
 
-        // Clear saved form data since we're submitting
-        this.clearSavedFormData();
+        // Preserve user's name for future feedback, but clear the message
+        const userName = nameField ? nameField.value.trim() : '';
+        if (userName) {
+            const preservedData = {
+                name: userName,
+                message: ''
+            };
+            sessionStorage.setItem('feedbackFormData', JSON.stringify(preservedData));
+        } else {
+            this.clearSavedFormData();
+        }
 
         // Show loading state
         const originalText = submitText.textContent;
@@ -164,12 +173,20 @@ class BottomFeedbackForm {
         const submitBtn = form.querySelector('.feedback-submit-btn');
         const submitText = submitBtn.querySelector('.feedback-submit-text');
         
-        // Reset form fields (clear everything for a fresh start)
-        if (nameField) nameField.value = '';
+        // Preserve the user's name but clear the message
+        const preservedName = nameField ? nameField.value : '';
         if (messageField) messageField.value = '';
         
-        // Clear any saved data since we're starting fresh
-        this.clearSavedFormData();
+        // Save the preserved name back to sessionStorage so it persists
+        if (preservedName.trim()) {
+            const formData = {
+                name: preservedName,
+                message: ''
+            };
+            sessionStorage.setItem('feedbackFormData', JSON.stringify(formData));
+        } else {
+            this.clearSavedFormData();
+        }
         
         // Reset button
         submitText.textContent = 'Submit feedback';
