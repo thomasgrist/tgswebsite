@@ -35,6 +35,7 @@ class BottomFeedbackForm {
         e.preventDefault();
         
         const form = e.target;
+        const nameField = document.getElementById('bottom-feedback-name');
         const messageField = document.getElementById('bottom-feedback-message');
         const submitBtn = form.querySelector('.feedback-submit-btn');
         const submitText = submitBtn.querySelector('.feedback-submit-text');
@@ -43,6 +44,11 @@ class BottomFeedbackForm {
         if (!messageField.value.trim()) {
             this.showValidationError(messageField);
             return;
+        }
+
+        // Store name in sessionStorage for this session only
+        if (nameField && nameField.value.trim()) {
+            sessionStorage.setItem('feedbackUserName', nameField.value.trim());
         }
 
         // Show loading state
@@ -143,8 +149,13 @@ class BottomFeedbackForm {
         const submitText = submitBtn.querySelector('.feedback-submit-text');
         
         // Reset form fields
-        if (nameField) nameField.value = '';
         if (messageField) messageField.value = '';
+        
+        // Restore name from sessionStorage if available
+        if (nameField) {
+            const savedName = sessionStorage.getItem('feedbackUserName');
+            nameField.value = savedName || '';
+        }
         
         // Reset button
         submitText.textContent = 'Submit feedback';
