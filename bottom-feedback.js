@@ -51,45 +51,20 @@ class BottomFeedbackForm {
         submitBtn.disabled = true;
 
         try {
-            // Try a more direct approach with XMLHttpRequest
+            // Submit to Netlify
             const formData = new FormData(form);
             
-            // Ensure form-name is included for Netlify
-            formData.set('form-name', 'feedback');
-            
-            // Debug: Log what we're sending
-            console.log('Form data entries:');
-            for (const [key, value] of formData.entries()) {
-                console.log(key + ':', value);
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            });
+
+            if (response.ok) {
+                this.showSuccessState();
+            } else {
+                throw new Error('Form submission failed');
             }
-            
-            // Use XMLHttpRequest for better Netlify compatibility
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/');
-            
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    this.showSuccessState();
-                } else {
-                    console.error('Form submission failed with status:', xhr.status);
-                    alert('Sorry, there was an error submitting your feedback. Please try again.');
-                    // Reset button
-                    submitText.textContent = originalText;
-                    submitBtn.disabled = false;
-                }
-            };
-            
-            xhr.onerror = () => {
-                console.error('Network error during form submission');
-                alert('Sorry, there was an error submitting your feedback. Please try again.');
-                // Reset button
-                submitText.textContent = originalText;
-                submitBtn.disabled = false;
-            };
-            
-            // Send as form data (multipart/form-data)
-            xhr.send(formData);
-            
         } catch (error) {
             console.error('Error submitting feedback:', error);
             alert('Sorry, there was an error submitting your feedback. Please try again.');
