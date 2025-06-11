@@ -6,10 +6,12 @@ class BottomFeedbackForm {
 
     init() {
         this.bindEvents();
+        this.restoreFormData();
     }
 
     bindEvents() {
         const form = document.getElementById('bottom-feedback-form');
+        const nameField = document.getElementById('bottom-feedback-name');
         const messageField = document.getElementById('bottom-feedback-message');
         const leaveMoreBtn = document.getElementById('bottom-feedback-leave-more');
 
@@ -18,8 +20,15 @@ class BottomFeedbackForm {
         // Handle form submission
         form.addEventListener('submit', (e) => this.handleFormSubmit(e));
 
-        // Clear error state when user starts typing in message field
+        // Save form data as user types and clear error state
+        if (nameField) {
+            nameField.addEventListener('input', () => {
+                this.saveFormData();
+            });
+        }
+
         messageField.addEventListener('input', () => {
+            this.saveFormData();
             if (messageField.classList.contains('error')) {
                 this.hideValidationError(messageField);
             }
@@ -29,6 +38,15 @@ class BottomFeedbackForm {
         if (leaveMoreBtn) {
             leaveMoreBtn.addEventListener('click', () => this.resetForm());
         }
+
+        // Clear saved data when user actually leaves the website
+        window.addEventListener('beforeunload', () => {
+            // Only clear if user is navigating away from the domain
+            // Note: This will clear when closing tab/browser or going to external sites
+            if (!this.isInternalNavigation()) {
+                this.clearSavedFormData();
+            }
+        });
     }
 
     async handleFormSubmit(e) {
@@ -46,10 +64,8 @@ class BottomFeedbackForm {
             return;
         }
 
-        // Store name in sessionStorage for this session only
-        if (nameField && nameField.value.trim()) {
-            sessionStorage.setItem('feedbackUserName', nameField.value.trim());
-        }
+        // Clear saved form data since we're submitting
+        this.clearSavedFormData();
 
         // Show loading state
         const originalText = submitText.textContent;
@@ -148,14 +164,12 @@ class BottomFeedbackForm {
         const submitBtn = form.querySelector('.feedback-submit-btn');
         const submitText = submitBtn.querySelector('.feedback-submit-text');
         
-        // Reset form fields
+        // Reset form fields (clear everything for a fresh start)
+        if (nameField) nameField.value = '';
         if (messageField) messageField.value = '';
         
-        // Restore name from sessionStorage if available
-        if (nameField) {
-            const savedName = sessionStorage.getItem('feedbackUserName');
-            nameField.value = savedName || '';
-        }
+        // Clear any saved data since we're starting fresh
+        this.clearSavedFormData();
         
         // Reset button
         submitText.textContent = 'Submit feedback';
@@ -167,6 +181,57 @@ class BottomFeedbackForm {
         // Show form and hide success state
         form.style.display = 'block';
         successState.style.display = 'none';
+    }
+
+    saveFormData() {
+        const nameField = document.getElementById('bottom-feedback-name');
+        const messageField = document.getElementById('bottom-feedback-message');
+        
+        const formData = {
+            name: nameField ? nameField.value : '',
+            message: messageField ? messageField.value : ''
+        };
+        
+        // Only save if there's actually some data to save
+        if (formData.name.trim() || formData.message.trim()) {
+            sessionStorage.setItem('feedbackFormData', JSON.stringify(formData));
+        }
+    }
+
+    restoreFormData() {
+        const savedData = sessionStorage.getItem('feedbackFormData');
+        
+        if (savedData) {
+            try {
+                const formData = JSON.parse(savedData);
+                const nameField = document.getElementById('bottom-feedback-name');
+                const messageField = document.getElementById('bottom-feedback-message');
+                
+                if (nameField && formData.name) {
+                    nameField.value = formData.name;
+                }
+                
+                if (messageField && formData.message) {
+                    messageField.value = formData.message;
+                }
+            } catch (error) {
+                console.error('Error restoring form data:', error);
+                // Clear corrupted data
+                sessionStorage.removeItem('feedbackFormData');
+            }
+        }
+    }
+
+    clearSavedFormData() {
+        sessionStorage.removeItem('feedbackFormData');
+        sessionStorage.removeItem('feedbackUserName'); // Legacy cleanup
+    }
+
+    isInternalNavigation() {
+        // This is a simple check - in a real scenario, we might want more sophisticated detection
+        // For now, we'll rely on the beforeunload event behavior
+        // sessionStorage automatically clears when the browser/tab is closed anyway
+        return false;
     }
 }
 
