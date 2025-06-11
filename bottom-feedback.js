@@ -38,15 +38,6 @@ class BottomFeedbackForm {
         if (leaveMoreBtn) {
             leaveMoreBtn.addEventListener('click', () => this.resetForm());
         }
-
-        // Clear saved data when user actually leaves the website
-        window.addEventListener('beforeunload', () => {
-            // Only clear if user is navigating away from the domain
-            // Note: This will clear when closing tab/browser or going to external sites
-            if (!this.isInternalNavigation()) {
-                this.clearSavedFormData();
-            }
-        });
     }
 
     async handleFormSubmit(e) {
@@ -195,6 +186,10 @@ class BottomFeedbackForm {
         // Only save if there's actually some data to save
         if (formData.name.trim() || formData.message.trim()) {
             sessionStorage.setItem('feedbackFormData', JSON.stringify(formData));
+            console.log('Form data saved:', formData); // Debug log
+        } else {
+            // Remove saved data if both fields are empty
+            sessionStorage.removeItem('feedbackFormData');
         }
     }
 
@@ -206,6 +201,8 @@ class BottomFeedbackForm {
                 const formData = JSON.parse(savedData);
                 const nameField = document.getElementById('bottom-feedback-name');
                 const messageField = document.getElementById('bottom-feedback-message');
+                
+                console.log('Restoring form data:', formData); // Debug log
                 
                 if (nameField && formData.name) {
                     nameField.value = formData.name;
@@ -219,19 +216,14 @@ class BottomFeedbackForm {
                 // Clear corrupted data
                 sessionStorage.removeItem('feedbackFormData');
             }
+        } else {
+            console.log('No saved form data found'); // Debug log
         }
     }
 
     clearSavedFormData() {
         sessionStorage.removeItem('feedbackFormData');
         sessionStorage.removeItem('feedbackUserName'); // Legacy cleanup
-    }
-
-    isInternalNavigation() {
-        // This is a simple check - in a real scenario, we might want more sophisticated detection
-        // For now, we'll rely on the beforeunload event behavior
-        // sessionStorage automatically clears when the browser/tab is closed anyway
-        return false;
     }
 }
 
