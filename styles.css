@@ -5290,7 +5290,7 @@ button.nav-link {
 
 .feedback-form {
     display: block;
-    height: 320px;
+    height: 344px;
 }
 
 .feedback-fields {
@@ -5500,7 +5500,7 @@ button.nav-link {
     justify-content: center;
     align-items: center;
     gap: 24px;
-    height: 320px;
+    height: 344px;
     display: none;
     margin-top: 0;
     padding-top: 0;
