@@ -961,6 +961,71 @@
                 </div>
 
             </div>
+            
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <div class="feedback-container">
+                    <div class="feedback-content">
+                        <div class="feedback-text-column">
+                            <p class="feedback-intro">Got a moment?</p>
+                            <h2 class="feedback-title">Please feedback on my portfolio</h2>
+                            <p class="feedback-description">Every person and product needs feedback and I would really appreciate yours.</p>
+                        </div>
+                        
+                        <div class="feedback-form-column">
+                            <div class="bottom-feedback-form-container">
+                                <!-- Feedback Form -->
+                            <form class="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="bottom-feedback-form">
+                                <input type="hidden" name="form-name" value="feedback" />
+                                <p style="display: none;">
+                                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                                </p>
+                                
+                                <div class="feedback-fields">
+                                    <div class="feedback-field">
+                                        <div class="feedback-label-row">
+                                            <label for="bottom-feedback-name" class="feedback-label">Name</label>
+                                            <span class="feedback-optional">Optional</span>
+                                        </div>
+                                        <input type="text" id="bottom-feedback-name" name="name" class="feedback-input">
+                                    </div>
+                                    
+                                    <div class="feedback-field">
+                                        <label for="bottom-feedback-message" class="feedback-label">Message</label>
+                                        <textarea id="bottom-feedback-message" name="message" class="feedback-textarea" required></textarea>
+                                        <p class="feedback-error-message" id="bottom-feedback-message-error">Please enter a message</p>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="feedback-submit-btn">
+                                    <span class="feedback-submit-text">Submit feedback</span>
+                                </button>
+                            </form>
+
+                            <!-- Success State -->
+                            <div class="feedback-success-state" id="bottom-feedback-success" style="display: none;">
+                                <div class="feedback-success-icon">
+                                    <div class="animated-checkmark">
+                                        <svg width="24" height="24" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <defs>
+                                                <linearGradient id="circleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:white;stop-opacity:1" />
+                                                    <stop offset="100%" style="stop-color:white;stop-opacity:0.5" />
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="url(#circleGradient)" stroke-width="2"/>
+                                            <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="feedback-success-title">Thank you</h3>
+                                <p class="feedback-success-message">Your feedback will help me further improve my portfolio</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -979,7 +1044,8 @@
     <script src="mobile-nav.js"></script>
     <!-- Header Scroll Animation -->
     <script src="header-scroll.js"></script>
-    <!-- Feedback Widget -->
-    <script src="feedback.js"></script>
+    <!-- Bottom Feedback Form -->
+    <script src="bottom-feedback.js"></script>
+    
 </body>
 </html> 
