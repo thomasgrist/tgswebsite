@@ -4695,7 +4695,7 @@ button.nav-link {
 }
 
 .dropdown-container {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(14, 14, 14, 0.5);
     backdrop-filter: blur(37px);
     -webkit-backdrop-filter: blur(37px);
     border-radius: 32px; /* 60% of 64px height = 38.4px, using 32px for proper iOS feel */
@@ -4712,11 +4712,11 @@ button.nav-link {
 }
 
 .dropdown-container:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(14, 14, 14, 0.6);
 }
 
 .dropdown-container.menu-open {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(14, 14, 14, 0.7);
 }
 
 .dropdown-container::before {
