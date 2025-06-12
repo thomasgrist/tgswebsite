@@ -433,6 +433,7 @@ body {
     font-weight: 300;
     color: var(--nav-text-light);
     margin-left: 8px;
+    transform: translateY(-4px);
 }
 
 .hero-badges {
