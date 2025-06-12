@@ -343,7 +343,9 @@ class MobileTimelineSwiper {
         this.currentIndex = 0;
         this.totalCards = 12;
         this.startX = 0;
+        this.startY = 0;
         this.currentX = 0;
+        this.currentY = 0;
         this.isDragging = false;
         this.hasStartedDrag = false;
         this.threshold = 50; // Minimum distance to trigger swipe
@@ -398,6 +400,7 @@ class MobileTimelineSwiper {
     
     handleTouchStart(e) {
         this.startX = e.touches[0].clientX;
+        this.startY = e.touches[0].clientY;
         this.currentX = this.startX;
         this.isDragging = true;
         this.hasStartedDrag = false;
@@ -405,18 +408,31 @@ class MobileTimelineSwiper {
         // Add grabbing cursor
         this.timelineRow.style.cursor = 'grabbing';
         
-        // Prevent scrolling while swiping horizontally
-        e.preventDefault();
+        // Don't prevent default on touchstart - let the browser decide initially
     }
     
     handleTouchMove(e) {
         if (!this.isDragging) return;
         
         this.currentX = e.touches[0].clientX;
+        this.currentY = e.touches[0].clientY;
         const diffX = this.currentX - this.startX;
+        const diffY = this.currentY - this.startY;
         
-        if (!this.hasStartedDrag && Math.abs(diffX) > 10) {
-            this.hasStartedDrag = true;
+        // Determine if this is a horizontal or vertical swipe
+        const absX = Math.abs(diffX);
+        const absY = Math.abs(diffY);
+        
+        if (!this.hasStartedDrag && (absX > 10 || absY > 10)) {
+            // Only start horizontal drag if horizontal movement is greater than vertical
+            if (absX > absY && absX > 10) {
+                this.hasStartedDrag = true;
+            } else if (absY > absX) {
+                // This is a vertical scroll, stop tracking this gesture
+                this.isDragging = false;
+                this.timelineRow.style.cursor = 'grab';
+                return;
+            }
         }
         
         if (this.hasStartedDrag) {
@@ -424,7 +440,7 @@ class MobileTimelineSwiper {
             const limitedDiffX = Math.max(-this.maxDrag, Math.min(this.maxDrag, diffX));
             this.updateTransformWithDrag(limitedDiffX);
             
-            // Prevent page scrolling
+            // Only prevent page scrolling for horizontal swipes
             e.preventDefault();
         }
     }
