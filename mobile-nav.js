@@ -356,6 +356,14 @@ class StickyButtons {
             // Clean up event listeners
             document.removeEventListener('click', handleDocumentClick);
             tooltip.removeEventListener('click', handleTooltipClick);
+            window.removeEventListener('scroll', handleScroll);
+        };
+        
+        // Handle scroll events to adjust tooltip position
+        const handleScroll = () => {
+            if (tooltip && tooltip.parentNode && this.activeButton) {
+                this.positionTooltip(tooltip, this.activeButton);
+            }
         };
         
         // Handle clicks on the tooltip itself (close on click)
@@ -377,6 +385,7 @@ class StickyButtons {
         setTimeout(() => {
             tooltip.addEventListener('click', handleTooltipClick);
             document.addEventListener('click', handleDocumentClick);
+            window.addEventListener('scroll', handleScroll, { passive: true });
         }, 100);
     }
     
@@ -446,8 +455,14 @@ class StickyButtons {
             }
         }
         
+        // Calculate vertical position with scroll adjustment
+        const scrollY = window.scrollY;
+        const baseGap = 8; // Base gap between button and tooltip
+        const scrollAdjustment = Math.min(scrollY * 0.1, 20); // Reduce gap as user scrolls, max 20px adjustment
+        const adjustedGap = Math.max(baseGap - scrollAdjustment, -4); // Minimum gap of -4px (slight overlap)
+        
         tooltip.style.left = leftPosition + 'px';
-        tooltip.style.top = buttonRect.bottom + 8 + 'px';
+        tooltip.style.top = buttonRect.bottom + adjustedGap + 'px';
         tooltip.style.transform = 'translateX(-50%)';
         tooltip.style.zIndex = '10000';
         tooltip.style.background = 'transparent';
