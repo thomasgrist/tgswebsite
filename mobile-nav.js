@@ -185,6 +185,8 @@ class MobileNavigation {
  */
 class StickyButtons {
     constructor() {
+        this.activeTooltip = null;
+        this.activeButton = null;
         this.init();
     }
     
@@ -194,6 +196,19 @@ class StickyButtons {
         } else {
             this.setupButtons();
         }
+        
+        // Add resize event listener to reposition tooltip
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            if (this.activeTooltip && this.activeButton) {
+                // Clear previous timeout
+                clearTimeout(resizeTimeout);
+                // Add small delay to ensure layout has settled, especially on mobile
+                resizeTimeout = setTimeout(() => {
+                    this.repositionTooltip();
+                }, 50);
+            }
+        });
     }
     
     setupButtons() {
@@ -304,16 +319,12 @@ class StickyButtons {
         
         tooltip.appendChild(svgImg);
         
+        // Store references for resize handling
+        this.activeTooltip = tooltip;
+        this.activeButton = button;
+        
         // Position tooltip underneath the button
-        const buttonRect = button.getBoundingClientRect();
-        tooltip.style.position = 'fixed';
-        tooltip.style.left = buttonRect.left + (buttonRect.width / 2) + 'px';
-        tooltip.style.top = buttonRect.bottom + 8 + 'px';
-        tooltip.style.transform = 'translateX(-50%)';
-        tooltip.style.zIndex = '10000';
-        tooltip.style.background = 'transparent';
-        tooltip.style.border = 'none';
-        tooltip.style.padding = '0';
+        this.positionTooltip(tooltip, button);
         
         // Add tooltip to body
         document.body.appendChild(tooltip);
@@ -328,6 +339,9 @@ class StickyButtons {
                     }
                 }, 150);
             }
+            // Clear references
+            this.activeTooltip = null;
+            this.activeButton = null;
             // Remove active state from button
             button.classList.remove('tooltip-active');
             // Clean up event listeners
@@ -364,11 +378,74 @@ class StickyButtons {
                 tooltip.parentNode.removeChild(tooltip);
             }
         });
+        // Clear references
+        this.activeTooltip = null;
+        this.activeButton = null;
         // Remove active state from all call buttons
         const allCallButtons = document.querySelectorAll('.call-button');
         allCallButtons.forEach(button => {
             button.classList.remove('tooltip-active');
         });
+    }
+    
+    positionTooltip(tooltip, button) {
+        const buttonRect = button.getBoundingClientRect();
+        const isMobile = window.innerWidth <= 768;
+        
+        // Ensure the button is visible before positioning
+        if (buttonRect.width === 0 || buttonRect.height === 0) {
+            return;
+        }
+        
+        tooltip.style.position = 'fixed';
+        
+        // Calculate horizontal position
+        let leftPosition = buttonRect.left + (buttonRect.width / 2);
+        
+        // On mobile, ensure tooltip doesn't go off-screen
+        if (isMobile) {
+            const tooltipWidth = 133; // SVG width
+            const viewportWidth = window.innerWidth;
+            const padding = 16; // Minimum padding from edges
+            
+            // Adjust position if tooltip would go off the left edge
+            if (leftPosition - (tooltipWidth / 2) < padding) {
+                leftPosition = padding + (tooltipWidth / 2);
+            }
+            // Adjust position if tooltip would go off the right edge
+            else if (leftPosition + (tooltipWidth / 2) > viewportWidth - padding) {
+                leftPosition = viewportWidth - padding - (tooltipWidth / 2);
+            }
+        }
+        
+        tooltip.style.left = leftPosition + 'px';
+        tooltip.style.top = buttonRect.bottom + 8 + 'px';
+        tooltip.style.transform = 'translateX(-50%)';
+        tooltip.style.zIndex = '10000';
+        tooltip.style.background = 'transparent';
+        tooltip.style.border = 'none';
+        tooltip.style.padding = '0';
+    }
+    
+    repositionTooltip() {
+        if (!this.activeTooltip || !this.activeButton) {
+            return;
+        }
+        
+        // Check if the button is still visible and in the DOM
+        if (!document.body.contains(this.activeButton)) {
+            this.removeExistingTooltips();
+            return;
+        }
+        
+        // Check if button is visible (not hidden or display: none)
+        const buttonStyle = window.getComputedStyle(this.activeButton);
+        if (buttonStyle.display === 'none' || buttonStyle.visibility === 'hidden') {
+            this.removeExistingTooltips();
+            return;
+        }
+        
+        this.positionTooltip(this.activeTooltip, this.activeButton);
     }
 }
 
