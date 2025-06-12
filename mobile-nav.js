@@ -8,6 +8,7 @@ class MobileNavigation {
         this.navigation = null;
         this.overlay = null;
         this.isMenuOpen = false;
+        this.scrollThreshold = 5; // Same threshold as header scroll
         
         this.init();
     }
@@ -67,6 +68,21 @@ class MobileNavigation {
         });
     }
     
+    handleMobileMenuScroll() {
+        // Only handle scroll when menu is open and on mobile
+        if (!this.isMenuOpen || window.innerWidth > 768) {
+            return;
+        }
+        
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > this.scrollThreshold) {
+            this.navigation.classList.add('scrolled');
+        } else {
+            this.navigation.classList.remove('scrolled');
+        }
+    }
+    
     toggleMenu() {
         if (this.isMenuOpen) {
             this.closeMenu();
@@ -107,6 +123,14 @@ class MobileNavigation {
         // Focus management for accessibility
         this.navigation.setAttribute('aria-hidden', 'false');
         this.menuToggle.setAttribute('aria-expanded', 'true');
+        
+        // Add scroll listener for mobile menu padding adjustment
+        if (window.innerWidth <= 768) {
+            this.scrollListener = () => this.handleMobileMenuScroll();
+            window.addEventListener('scroll', this.scrollListener);
+            // Check initial scroll position
+            this.handleMobileMenuScroll();
+        }
     }
     
     closeMenu() {
@@ -138,6 +162,15 @@ class MobileNavigation {
         // Focus management for accessibility
         this.navigation.setAttribute('aria-hidden', 'true');
         this.menuToggle.setAttribute('aria-expanded', 'false');
+        
+        // Remove scroll listener for mobile menu padding adjustment
+        if (this.scrollListener) {
+            window.removeEventListener('scroll', this.scrollListener);
+            this.scrollListener = null;
+        }
+        
+        // Remove scrolled class when menu closes
+        this.navigation.classList.remove('scrolled');
         
         // Force remove any persistent hover states on touch devices
         if ('ontouchstart' in window) {
