@@ -1604,7 +1604,7 @@ button.nav-link {
         bottom: -8px; /* Maintain equal spacing */
         background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
         backdrop-filter: blur(37px); /* Background blur effect */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* 1px white border at 15% opacity */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Full width border for mobile */
         transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                     bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                     background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -1612,15 +1612,25 @@ button.nav-link {
                     border-bottom 0.2s ease 0.1s; /* Delayed fade-in for border */
     }
     
-    /* Fade out header border when mobile menu is open */
-    .fixed-header.border-faded-out.scrolled::before {
+    /* Add border when mobile menu is open (regardless of scroll state) */
+    .fixed-header.border-faded-out::before {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                    bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    backdrop-filter 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    border-bottom 0.3s ease;
+    }
+    
+    /* Fade out header border when mobile menu is open - REMOVED to keep border visible */
+    /* .fixed-header.border-faded-out.scrolled::before {
         border-bottom: 1px solid rgba(255, 255, 255, 0) !important;
         transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                     bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                     background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                     backdrop-filter 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                    border-bottom 0.3s ease; /* Smooth fade out for border */
-    }
+                    border-bottom 0.3s ease;
+    } */
     
     .mobile-nav-overlay {
         display: block;
@@ -1646,7 +1656,12 @@ button.nav-link {
         overscroll-behavior: contain;
         touch-action: pan-y;
         /* Add top padding to avoid header overlap */
-        padding-top: 96px; /* Space for fixed header */
+        padding-top: 108px; /* Space for fixed header */
+    }
+    
+    /* Reduce padding when page is scrolled */
+    .left-navigation.menu-open.scrolled {
+        padding-top: 108px; /* Reduced space when scrolled */
     }
     
     /* Hide dropdown when mobile menu is open */
@@ -3848,15 +3863,25 @@ button.nav-link {
                     border-bottom 0.2s ease 0.1s; /* Delayed fade-in for border */
     }
     
-    /* Fade out header border when mobile menu is open on small screens */
-    .fixed-header.border-faded-out.scrolled::before {
+    /* Add border when mobile menu is open on small screens (regardless of scroll state) */
+    .fixed-header.border-faded-out::before {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                    bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    backdrop-filter 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    border-bottom 0.3s ease;
+    }
+    
+    /* Fade out header border when mobile menu is open on small screens - REMOVED to keep border visible */
+    /* .fixed-header.border-faded-out.scrolled::before {
         border-bottom: 1px solid rgba(255, 255, 255, 0) !important;
         transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                     bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                     background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                     backdrop-filter 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                    border-bottom 0.3s ease; /* Smooth fade out for border */
-    }
+                    border-bottom 0.3s ease;
+    } */
     
     .action-button {
         padding: 6px 12px;
@@ -5290,7 +5315,7 @@ button.nav-link {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 500;
     font-size: 27px;
-    line-height: 1.2;
+    line-height: 1.4;
     color: #FFFFFF;
     margin: 0 0 24px 0 !important;
     text-align: left;
@@ -5602,6 +5627,7 @@ button.nav-link {
     
     .feedback-title {
         padding-right: 0;
+        line-height: 1.4;
     }
     
     .feedback-description {
@@ -5681,6 +5707,7 @@ button.nav-link {
 
     .feedback-title {
         font-size: 28px;
+        line-height: 1.4;
         text-align: left;
         margin: 0 0 16px 0 !important;
         width: 100%;
@@ -5750,6 +5777,7 @@ button.nav-link {
 
     .feedback-title {
         font-size: 27px !important;
+        line-height: 1.4;
         margin: 0 0 16px 0 !important;
     }
 
