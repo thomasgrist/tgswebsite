@@ -1536,7 +1536,6 @@ button.nav-link {
         gap: 12px;
         padding: 10px 16px 7px 16px;
         background: transparent;
-        backdrop-filter: blur(37px);
         border: none;
         border-radius: 50px;
         color: white;
@@ -1572,7 +1571,7 @@ button.nav-link {
     
     /* Add hover effects for mobile controls group call button */
     .mobile-controls-group .call-button:hover {
-        background: rgba(25, 25, 25, 0.1);
+        background: transparent;
         border-color: rgba(255, 255, 255, 0.6);
         transform: translateY(-1px);
     }
@@ -1605,7 +1604,7 @@ button.nav-link {
         bottom: -8px; /* Maintain equal spacing */
         background-color: rgba(6, 6, 6, 0.7); /* Glass effect background */
         backdrop-filter: blur(37px); /* Background blur effect */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Full width border for mobile */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* 1px white border at 15% opacity */
         transition: top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
                     bottom 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                     background-color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -1647,7 +1646,7 @@ button.nav-link {
         overscroll-behavior: contain;
         touch-action: pan-y;
         /* Add top padding to avoid header overlap */
-        padding-top: 120px; /* Space for fixed header */
+        padding-top: 96px; /* Space for fixed header */
     }
     
     /* Hide dropdown when mobile menu is open */
@@ -1670,8 +1669,8 @@ button.nav-link {
     
     /* Adjust content padding since we added padding to container */
     .left-navigation.menu-open .nav-content {
-        padding-top: 40px; /* Reduced since container now has 120px top padding */
-        padding-left: 4px;
+        padding-top: 0; /* No spacing between header and contact section */
+        padding-left: 0;
         padding-right: 0;
         /* Add bottom padding to ensure the call button is always accessible when scrolling */
         padding-bottom: 180px;
@@ -3776,7 +3775,6 @@ button.nav-link {
         gap: 10px;
         padding: 10px 16px 7px 16px;
         background: transparent;
-        backdrop-filter: blur(37px);
         border: none;
         border-radius: 50px;
         color: white;
@@ -3812,7 +3810,7 @@ button.nav-link {
     
     /* Add hover effects for mobile controls group on small mobile */
     .mobile-controls-group .call-button:hover {
-        background: rgba(25, 25, 25, 0.1);
+        background: transparent;
         border-color: rgba(255, 255, 255, 0.6);
         transform: translateY(-1px);
     }
