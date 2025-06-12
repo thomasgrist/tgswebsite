@@ -360,9 +360,14 @@ class StickyButtons {
         };
         
         // Handle scroll events to adjust tooltip position
+        let scrollTicking = false;
         const handleScroll = () => {
-            if (tooltip && tooltip.parentNode && this.activeButton) {
-                this.positionTooltip(tooltip, this.activeButton);
+            if (!scrollTicking && tooltip && tooltip.parentNode && this.activeButton) {
+                requestAnimationFrame(() => {
+                    this.positionTooltip(tooltip, this.activeButton);
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
             }
         };
         
@@ -456,10 +461,11 @@ class StickyButtons {
         }
         
         // Calculate vertical position with scroll adjustment
+        // This creates a dynamic gap that shrinks as user scrolls down and expands back when scrolling up
         const scrollY = window.scrollY;
-        const baseGap = 8; // Base gap between button and tooltip
-        const scrollAdjustment = Math.min(scrollY * 0.1, 20); // Reduce gap as user scrolls, max 20px adjustment
-        const adjustedGap = Math.max(baseGap - scrollAdjustment, -4); // Minimum gap of -4px (slight overlap)
+        const baseGap = 8; // Base gap between button and tooltip (when at top of page)
+        const scrollAdjustment = Math.min(scrollY * 0.1, 20); // Reduce gap by 10% of scroll distance, max 20px
+        const adjustedGap = Math.max(baseGap - scrollAdjustment, -4); // Minimum gap of -4px (slight overlap when heavily scrolled)
         
         tooltip.style.left = leftPosition + 'px';
         tooltip.style.top = buttonRect.bottom + adjustedGap + 'px';
