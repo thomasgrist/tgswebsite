@@ -460,12 +460,10 @@ class StickyButtons {
             }
         }
         
-        // Calculate vertical position with scroll adjustment
-        // This creates a dynamic gap that shrinks as user scrolls down and expands back when scrolling up
+        // Calculate vertical position with simple two-state positioning
         const scrollY = window.scrollY;
-        const baseGap = 8; // Base gap between button and tooltip (when at top of page)
-        const scrollAdjustment = Math.min(scrollY * 0.1, 20); // Reduce gap by 10% of scroll distance, max 20px
-        const adjustedGap = Math.max(baseGap - scrollAdjustment, -4); // Minimum gap of -4px (slight overlap when heavily scrolled)
+        const isScrolled = scrollY > 50; // Threshold for considering page "scrolled"
+        const adjustedGap = isScrolled ? -2 : 8; // Close gap when scrolled, normal gap at top
         
         tooltip.style.left = leftPosition + 'px';
         tooltip.style.top = buttonRect.bottom + adjustedGap + 'px';
