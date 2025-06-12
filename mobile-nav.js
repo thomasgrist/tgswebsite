@@ -358,17 +358,10 @@ class StickyButtons {
             tooltip.removeEventListener('click', handleTooltipClick);
             window.removeEventListener('scroll', handleScroll);
         };
-        
-        // Handle scroll events to adjust tooltip position
-        let scrollTicking = false;
+
+        // Handle scroll events to fade out tooltip
         const handleScroll = () => {
-            if (!scrollTicking && tooltip && tooltip.parentNode && this.activeButton) {
-                requestAnimationFrame(() => {
-                    this.positionTooltip(tooltip, this.activeButton);
-                    scrollTicking = false;
-                });
-                scrollTicking = true;
-            }
+            removeTooltip();
         };
         
         // Handle clicks on the tooltip itself (close on click)
@@ -390,7 +383,7 @@ class StickyButtons {
         setTimeout(() => {
             tooltip.addEventListener('click', handleTooltipClick);
             document.addEventListener('click', handleDocumentClick);
-            window.addEventListener('scroll', handleScroll, { passive: true });
+            window.addEventListener('scroll', handleScroll);
         }, 100);
     }
     
@@ -460,13 +453,8 @@ class StickyButtons {
             }
         }
         
-        // Calculate vertical position with simple two-state positioning
-        const scrollY = window.scrollY;
-        const isScrolled = scrollY > 50; // Threshold for considering page "scrolled"
-        const adjustedGap = isScrolled ? -2 : 8; // Close gap when scrolled, normal gap at top
-        
         tooltip.style.left = leftPosition + 'px';
-        tooltip.style.top = buttonRect.bottom + adjustedGap + 'px';
+        tooltip.style.top = buttonRect.bottom + 8 + 'px';
         tooltip.style.transform = 'translateX(-50%)';
         tooltip.style.zIndex = '10000';
         tooltip.style.background = 'transparent';
