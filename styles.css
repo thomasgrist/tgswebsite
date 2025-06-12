@@ -1122,7 +1122,7 @@ body {
     position: fixed;
     top: 40px;
     left: 40px;
-    right: 24px;
+    right: 32px;
     z-index: 3000;
     display: flex;
     justify-content: space-between;
@@ -1140,7 +1140,7 @@ body {
     position: absolute;
     top: -40px; /* Extend above by top margin amount */
     left: -40px; /* Extend to viewport edge */
-    right: -24px; /* Extend to viewport edge */
+    right: -32px; /* Extend to viewport edge */
     bottom: -40px; /* Extend below by top margin amount */
     background-color: var(--dark-2);
     z-index: -1;
@@ -1163,17 +1163,28 @@ body {
 
 /* Desktop and tablet specific styles */
 @media (min-width: 769px) {
-    /* Desktop border positioned to align with content area */
-    .fixed-header.scrolled::after {
+    /* Desktop border positioned to align with content area - REMOVED */
+    /* .fixed-header.scrolled::after {
         content: '';
         position: absolute;
-        bottom: -12px; /* Position 12px below header */
-        left: 244px; /* Start 40px to the right of content area left edge */
-        right: -100vw; /* Extend to right edge of viewport */
+        bottom: -12px;
+        left: 244px;
+        right: -100vw;
         height: 1px;
         background: rgba(255, 255, 255, 0.15);
-        transition: opacity 0.2s ease 0.1s; /* Delayed fade-in only */
+        transition: opacity 0.2s ease 0.1s;
         z-index: 1;
+    } */
+    
+    /* Remove background color from fixed header on desktop */
+    .fixed-header::before {
+        background-color: transparent;
+    }
+    
+    /* Remove background color and backdrop filter from scrolled fixed header on desktop */
+    .fixed-header.scrolled::before {
+        background-color: transparent;
+        backdrop-filter: none;
     }
     
     /* Move logo down 2px on desktop and tablet */
@@ -1210,6 +1221,90 @@ body {
     display: flex;
     gap: 24px;
     align-items: center;
+}
+
+/* Header buttons container with dropdown-style border (desktop only) */
+@media (min-width: 769px) {
+    .header-buttons-container {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(37px);
+        -webkit-backdrop-filter: blur(37px);
+        border-radius: 38px; /* iOS 60% corner smoothing: 60% of 64px height */
+        padding: 12px 6px 12px 6px;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        height: 62px;
+        position: relative;
+        transition: background-color 0.2s ease;
+    }
+    
+    .header-buttons-container:hover {
+        background: rgba(255, 255, 255, 0.04);
+    }
+    
+    /* Sliding hover background */
+    .header-buttons-container {
+        --slider-left: 0px;
+        --slider-width: 0px;
+    }
+    
+    .header-buttons-container::after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        bottom: 6px;
+        left: var(--slider-left);
+        width: var(--slider-width);
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(37px);
+        border-radius: 30px; /* iOS 60% corner smoothing: 60% of ~50px button height */
+        opacity: 0;
+        transition: opacity 0.2s ease, left 0.1s ease-out, width 0.1s ease-out;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .header-buttons-container.slider-active::after {
+        opacity: 1;
+    }
+    
+    /* Simple fade-in for first hover - no sliding */
+    .header-buttons-container.slider-fade-in::after {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+    
+    .header-buttons-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        background: linear-gradient(22.5deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0.4) 100%);
+        border-radius: 38px; /* iOS 60% corner smoothing: match container */
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        -webkit-mask-composite: xor;
+        pointer-events: none;
+    }
+    
+    /* Reset header-buttons gap since container now handles spacing */
+    .header-buttons {
+        gap: 0;
+    }
+    
+    /* Remove individual button hover states on desktop - sliding effect handles this */
+    .header-buttons-container .action-button {
+        position: relative;
+        z-index: 1;
+        transition: none;
+    }
+    
+    .header-buttons-container .action-button:hover {
+        background-color: transparent;
+        backdrop-filter: none;
+    }
 }
 
 /* Hide mobile controls group on desktop */
@@ -3710,7 +3805,7 @@ button.nav-link {
     padding: 12px 24px;
     background: transparent;
     border: none;
-    border-radius: 50px;
+    border-radius: 29px; /* iOS 60% corner smoothing: 60% of ~48px button height */
     cursor: pointer;
     transition: background-color var(--transition-hover-out) var(--easing-smooth);
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -5865,8 +5960,7 @@ button.nav-link {
 
 /* Keep call button in hover state when tooltip is active */
 .call-button.tooltip-active {
-    background-color: rgba(255, 255, 255, 0.07) !important;
-    backdrop-filter: blur(37px) !important;
+    background-color: rgba(255, 255, 255, 0) !important;
 }
 
 /* Mobile controls group call button tooltip active state */
