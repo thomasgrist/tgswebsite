@@ -784,9 +784,11 @@ body {
 
 /* Full Width Project Tile Component */
 .project-tile-full {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(14, 14, 14, 0.5);
+    backdrop-filter: blur(37px);
+    -webkit-backdrop-filter: blur(37px);
     border: none;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -808,7 +810,7 @@ body {
     box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 1.0);
     transform: translateY(-3px);
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(28, 28, 28, 0.6);
 }
 
 .project-tile-full::before {
@@ -818,7 +820,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 1px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -860,9 +862,11 @@ body {
 
 /* Project Tile Component */
 .project-tile {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(14, 14, 14, 0.5);
+    backdrop-filter: blur(37px);
+    -webkit-backdrop-filter: blur(37px);
     border: none;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -884,7 +888,7 @@ body {
     box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 1.0);
     transform: translateY(-3px);
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(28, 28, 28, 0.6);
 }
 
 .project-tile::before {
@@ -894,7 +898,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 1px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -2310,9 +2314,11 @@ button.nav-link {
     align-items: center;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(14, 14, 14, 0.5);
+    backdrop-filter: blur(37px);
+    -webkit-backdrop-filter: blur(37px);
     border: none;
-    border-radius: 50%;
+    border-radius: 28px; /* iOS 60% corner smoothing: 60% of ~47px equivalent */
     cursor: pointer;
     transition: all 0.2s ease-out;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0);
@@ -2332,9 +2338,9 @@ button.nav-link {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 50%;
+    border-radius: 28px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+    background: linear-gradient(22.5deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0.4) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: subtract;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -2345,7 +2351,7 @@ button.nav-link {
 .career-nav-button:hover {
     box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 1.0);
     transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(28, 28, 28, 0.6);
 }
 
 .career-nav-button:disabled,
@@ -3444,6 +3450,13 @@ button.nav-link {
     margin: 0;
 }
 
+/* Add padding-right on screens larger than 1024px */
+@media (min-width: 1025px) {
+    .case-study-description {
+        padding-right: 256px;
+    }
+}
+
 /* Overview Section Component */
 .case-study-overview-section {
     margin-top: 80px;
@@ -4067,7 +4080,7 @@ button.nav-link {
     background: rgba(16, 16, 16, 0.95);
     backdrop-filter: blur(20px);
     border: none;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: feedbackFormIn 0.3s ease;
@@ -4081,7 +4094,7 @@ button.nav-link {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 1px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -4099,7 +4112,7 @@ button.nav-link {
     right: 1px;
     bottom: 1px;
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 7px;
+    border-radius: 15px;
     pointer-events: none;
     z-index: 0;
 }
@@ -4715,7 +4728,7 @@ button.nav-link {
 }
 
 .dropdown-container:hover {
-    background: rgba(14, 14, 14, 0.6);
+    background: rgba(28, 28, 28, 0.6);
 }
 
 .dropdown-container.menu-open {
@@ -5023,7 +5036,7 @@ button.nav-link {
 
 .bottom-feedback-form-container {
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 40px;
     position: relative;
 }
@@ -5034,7 +5047,7 @@ button.nav-link {
     inset: 0;
     padding: 1px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0.4) 100%);
-    border-radius: 12px;
+    border-radius: 16px;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: xor;
@@ -5597,7 +5610,7 @@ button.nav-link {
 }
 
 .feedback-submit-btn {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(14, 14, 14, 0.5);
     backdrop-filter: blur(37px);
     -webkit-backdrop-filter: blur(37px);
     border-radius: 32px;
@@ -5635,7 +5648,7 @@ button.nav-link {
 }
 
 .feedback-submit-btn:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(28, 28, 28, 0.6);
 }
 
 .feedback-submit-text {
