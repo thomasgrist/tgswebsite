@@ -273,7 +273,7 @@ class StickyButtons {
     }
     
     handleCallClick(event) {
-        // Show tooltip instead of making a call
+        // Show SVG tooltip instead of making a call
         const button = event.currentTarget;
         
         // Check if tooltip already exists for this button
@@ -290,11 +290,19 @@ class StickyButtons {
         // Add active state to button
         button.classList.add('tooltip-active');
         
-        // Create tooltip element using SVG
-        const tooltip = document.createElement('img');
+        // Create tooltip element with SVG
+        const tooltip = document.createElement('div');
         tooltip.className = 'call-tooltip';
-        tooltip.src = 'img/call-tooltip.svg';
-        tooltip.alt = 'Call tooltip';
+        
+        // Create and load the SVG image
+        const svgImg = document.createElement('img');
+        svgImg.src = 'img/call-tooltip.svg';
+        svgImg.alt = 'Contact information';
+        svgImg.style.display = 'block';
+        svgImg.style.width = '133px';
+        svgImg.style.height = '56px';
+        
+        tooltip.appendChild(svgImg);
         
         // Position tooltip underneath the button
         const buttonRect = button.getBoundingClientRect();
@@ -303,6 +311,9 @@ class StickyButtons {
         tooltip.style.top = buttonRect.bottom + 8 + 'px';
         tooltip.style.transform = 'translateX(-50%)';
         tooltip.style.zIndex = '10000';
+        tooltip.style.background = 'transparent';
+        tooltip.style.border = 'none';
+        tooltip.style.padding = '0';
         
         // Add tooltip to body
         document.body.appendChild(tooltip);
