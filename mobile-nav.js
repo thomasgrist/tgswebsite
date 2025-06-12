@@ -272,11 +272,92 @@ class StickyButtons {
         window.open(mailtoURL, '_blank');
     }
     
-    handleCallClick() {
-        // Open phone dialer for UK phone number
-        const phoneNumber = '+447931042702';
-        const telURL = `tel:${phoneNumber}`;
-        window.location.href = telURL;
+    handleCallClick(event) {
+        // Show tooltip instead of making a call
+        const button = event.currentTarget;
+        
+        // Check if tooltip already exists for this button
+        const existingTooltip = document.querySelector('.call-tooltip');
+        if (existingTooltip) {
+            // If clicking the same button, close the tooltip
+            this.removeExistingTooltips();
+            return;
+        }
+        
+        // Remove any other existing tooltips
+        this.removeExistingTooltips();
+        
+        // Add active state to button
+        button.classList.add('tooltip-active');
+        
+        // Create tooltip element using SVG
+        const tooltip = document.createElement('img');
+        tooltip.className = 'call-tooltip';
+        tooltip.src = 'img/call-tooltip.svg';
+        tooltip.alt = 'Call tooltip';
+        
+        // Position tooltip underneath the button
+        const buttonRect = button.getBoundingClientRect();
+        tooltip.style.position = 'fixed';
+        tooltip.style.left = buttonRect.left + (buttonRect.width / 2) + 'px';
+        tooltip.style.top = buttonRect.bottom + 8 + 'px';
+        tooltip.style.transform = 'translateX(-50%)';
+        tooltip.style.zIndex = '10000';
+        
+        // Add tooltip to body
+        document.body.appendChild(tooltip);
+        
+        // Set up event listeners for closing the tooltip
+        const removeTooltip = () => {
+            if (tooltip && tooltip.parentNode) {
+                tooltip.classList.add('fade-out');
+                setTimeout(() => {
+                    if (tooltip.parentNode) {
+                        tooltip.parentNode.removeChild(tooltip);
+                    }
+                }, 150);
+            }
+            // Remove active state from button
+            button.classList.remove('tooltip-active');
+            // Clean up event listeners
+            document.removeEventListener('click', handleDocumentClick);
+            tooltip.removeEventListener('click', handleTooltipClick);
+        };
+        
+        // Handle clicks on the tooltip itself (close on click)
+        const handleTooltipClick = (e) => {
+            e.stopPropagation();
+            removeTooltip();
+        };
+        
+        // Handle clicks anywhere else on the document
+        const handleDocumentClick = (e) => {
+            // Don't close if clicking on any call button (handled by handleCallClick)
+            if (e.target.closest('.call-button')) {
+                return;
+            }
+            removeTooltip();
+        };
+        
+        // Add event listeners with a small delay to prevent immediate closure
+        setTimeout(() => {
+            tooltip.addEventListener('click', handleTooltipClick);
+            document.addEventListener('click', handleDocumentClick);
+        }, 100);
+    }
+    
+    removeExistingTooltips() {
+        const existingTooltips = document.querySelectorAll('.call-tooltip');
+        existingTooltips.forEach(tooltip => {
+            if (tooltip.parentNode) {
+                tooltip.parentNode.removeChild(tooltip);
+            }
+        });
+        // Remove active state from all call buttons
+        const allCallButtons = document.querySelectorAll('.call-button');
+        allCallButtons.forEach(button => {
+            button.classList.remove('tooltip-active');
+        });
     }
 }
 
