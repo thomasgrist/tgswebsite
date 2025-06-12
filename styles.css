@@ -432,8 +432,10 @@ body {
     font-size: 40%; /* 40% of the parent font size */
     font-weight: 300;
     color: var(--nav-text-light);
-    margin-left: 8px;
-    transform: translateY(-4px);
+    margin-left: 12px;
+    vertical-align: super;
+    position: relative;
+    top: -2px;
 }
 
 .hero-badges {
