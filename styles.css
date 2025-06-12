@@ -1226,7 +1226,7 @@ body {
 /* Header buttons container with dropdown-style border (desktop only) */
 @media (min-width: 769px) {
     .header-buttons-container {
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(14, 14, 14, 0.5);
         backdrop-filter: blur(37px);
         -webkit-backdrop-filter: blur(37px);
         border-radius: 38px; /* iOS 60% corner smoothing: 60% of 64px height */
@@ -1240,7 +1240,7 @@ body {
     }
     
     .header-buttons-container:hover {
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(14, 14, 14, 0.6);
     }
     
     /* Sliding hover background */
@@ -1252,8 +1252,8 @@ body {
     .header-buttons-container::after {
         content: '';
         position: absolute;
-        top: 13px;
-        bottom: 14px;
+        top: 5px;
+        bottom: 6px;
         left: var(--slider-left);
         width: var(--slider-width);
         background: rgba(255, 255, 255, 0.07);
