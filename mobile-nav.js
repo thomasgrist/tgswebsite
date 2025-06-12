@@ -306,14 +306,9 @@ class StickyButtons {
         
         // Position tooltip underneath the button
         const buttonRect = button.getBoundingClientRect();
-        
-        // Use less spacing on mobile devices
-        const isMobile = window.innerWidth <= 768;
-        const spacing = isMobile ? 4 : 8;
-        
         tooltip.style.position = 'fixed';
         tooltip.style.left = buttonRect.left + (buttonRect.width / 2) + 'px';
-        tooltip.style.top = buttonRect.bottom + spacing + 'px';
+        tooltip.style.top = buttonRect.bottom + 8 + 'px';
         tooltip.style.transform = 'translateX(-50%)';
         tooltip.style.zIndex = '10000';
         tooltip.style.background = 'transparent';
