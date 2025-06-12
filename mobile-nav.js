@@ -288,9 +288,18 @@ class StickyButtons {
     }
     
     handleCallClick(event) {
-        // Show SVG tooltip instead of making a call
         const button = event.currentTarget;
+        const isMobile = this.isMobileDevice();
         
+        // On mobile devices, directly initiate phone call
+        if (isMobile) {
+            const phoneNumber = '07931-042702';
+            const telURL = `tel:${phoneNumber}`;
+            window.location.href = telURL;
+            return;
+        }
+        
+        // On desktop, show SVG tooltip (existing behavior)
         // Check if tooltip already exists for this button
         const existingTooltip = document.querySelector('.call-tooltip');
         if (existingTooltip) {
@@ -369,6 +378,25 @@ class StickyButtons {
             tooltip.addEventListener('click', handleTooltipClick);
             document.addEventListener('click', handleDocumentClick);
         }, 100);
+    }
+    
+    /**
+     * Detect if the user is on a mobile device
+     * Uses multiple detection methods for better accuracy
+     */
+    isMobileDevice() {
+        // Method 1: Check if touch events are supported
+        const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        // Method 2: Check screen width (mobile-first approach)
+        const isMobileWidth = window.innerWidth <= 768;
+        
+        // Method 3: User agent check for mobile devices
+        const mobileUserAgents = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        const isMobileUserAgent = mobileUserAgents.test(navigator.userAgent);
+        
+        // Return true if any of the mobile indicators are present
+        return hasTouch && (isMobileWidth || isMobileUserAgent);
     }
     
     removeExistingTooltips() {
