@@ -3064,6 +3064,14 @@ button.nav-link {
 
 
 
+/* Remove padding from double content text on large screens (> 1199px) */
+@media (min-width: 1200px) {
+    .double-content-text {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
 /* Tablet responsive for AI Thoughts Section */
 @media (max-width: 1199px) {
     .ai-thoughts-row {
