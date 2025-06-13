@@ -43,15 +43,76 @@ class BottomDropdownMenu {
     getSections() {
         // Get all section elements with IDs
         const sections = document.querySelectorAll('[id]');
-        const sectionMap = {
-            'overview': 'Overview',
-            'process': 'Process',
-            'research': 'Research', 
-            'design': 'Design',
-            'testing': 'Testing',
-            'implementation': 'Implementation',
-            'results': 'Results'
-        };
+        
+        // Check if we're on the Whereby page
+        const isWherebyPage = window.location.pathname.includes('whereby.html') || 
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'Whereby';
+        
+        // Check if we're on the Sky & Comcast page
+        const isSkyComcastPage = window.location.pathname.includes('sky-comcast.html') || 
+                                 document.querySelector('.project-tile-company')?.textContent.trim() === 'Sky & Comcast';
+        
+        // Check if we're on the Rio ESG page
+        const isRioESGPage = window.location.pathname.includes('rio-esg.html') || 
+                             document.querySelector('.project-tile-company')?.textContent.trim() === 'Rio ESG';
+        
+        // Check if we're on the Deltatre page
+        const isDeltaTreePage = window.location.pathname.includes('deltatre.html') || 
+                                document.querySelector('.project-tile-company')?.textContent.trim() === 'Deltatre';
+        
+        // Check if we're on the Audi page
+        const isAudiPage = window.location.pathname.includes('audi.html') || 
+                           document.querySelector('.project-tile-company')?.textContent.trim() === 'Audi @ BBH';
+        
+        let sectionMap;
+        if (isWherebyPage) {
+            // Custom sections for Whereby page
+            sectionMap = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else if (isSkyComcastPage) {
+            // Custom sections for Sky & Comcast page
+            sectionMap = {
+                'overview': 'Overview',
+                'research': 'Final Designs',
+                'success-definition': 'Workings'
+            };
+        } else if (isRioESGPage) {
+            // Custom sections for Rio ESG page
+            sectionMap = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else if (isDeltaTreePage) {
+            // Custom sections for Deltatre page
+            sectionMap = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else if (isAudiPage) {
+            // Custom sections for Audi page
+            sectionMap = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'pitch': 'Pitch',
+                'workings': 'Workings'
+            };
+        } else {
+            // Default sections for other pages
+            sectionMap = {
+                'overview': 'Overview',
+                'process': 'Process',
+                'research': 'Research', 
+                'design': 'Design',
+                'testing': 'Testing',
+                'implementation': 'Implementation',
+                'results': 'Results'
+            };
+        }
 
         const availableSections = [];
         sections.forEach(section => {
@@ -264,15 +325,31 @@ class BottomDropdownMenu {
 
     updateSectionOnScroll() {
         const currentSectionId = this.getCurrentSectionId();
-        const sectionNames = {
-            'overview': 'Overview',
-            'process': 'Process',
-            'research': 'Research', 
-            'design': 'Design',
-            'testing': 'Testing',
-            'implementation': 'Implementation',
-            'results': 'Results'
-        };
+        
+        // Check if we're on the Whereby page
+        const isWherebyPage = window.location.pathname.includes('whereby.html') || 
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'Whereby';
+        
+        let sectionNames;
+        if (isWherebyPage) {
+            // Custom sections for Whereby page
+            sectionNames = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else {
+            // Default sections for other pages
+            sectionNames = {
+                'overview': 'Overview',
+                'process': 'Process',
+                'research': 'Research', 
+                'design': 'Design',
+                'testing': 'Testing',
+                'implementation': 'Implementation',
+                'results': 'Results'
+            };
+        }
 
         const newSectionName = sectionNames[currentSectionId] || 'Overview';
         
