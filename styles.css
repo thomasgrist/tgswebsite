@@ -2191,6 +2191,7 @@ button.nav-link {
 
 /* Career Timeline Component */
 .career-timeline {
+    display: none; /* Hidden from all devices */
     margin-top: 156px;
     margin-bottom: 156px;
     width: 100%;
