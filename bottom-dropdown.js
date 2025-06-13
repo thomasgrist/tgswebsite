@@ -303,7 +303,9 @@ class BottomDropdownMenu {
 
     getCurrentSectionId() {
         const scrollY = window.scrollY;
-        const offset = 100;
+        const viewportHeight = window.innerHeight;
+        // Calculate 70% of viewport height from bottom (30% from top)
+        const thresholdOffset = viewportHeight * 0.3;
 
         // Check if we're at the very top
         if (scrollY < 50) {
@@ -311,11 +313,12 @@ class BottomDropdownMenu {
         }
 
         // Find the current section based on scroll position
+        // Section becomes active when it reaches 70% up from the bottom of viewport
         for (let i = this.sections.length - 1; i >= 0; i--) {
             const section = this.sections[i];
             const sectionTop = section.element.offsetTop;
             
-            if (scrollY + offset >= sectionTop) {
+            if (scrollY + thresholdOffset >= sectionTop) {
                 return section.id;
             }
         }
@@ -330,12 +333,57 @@ class BottomDropdownMenu {
         const isWherebyPage = window.location.pathname.includes('whereby.html') || 
                               document.querySelector('.project-tile-company')?.textContent.trim() === 'Whereby';
         
+        // Check if we're on the Sky & Comcast page
+        const isSkyComcastPage = window.location.pathname.includes('sky-comcast.html') || 
+                                 document.querySelector('.project-tile-company')?.textContent.trim() === 'Sky & Comcast';
+        
+        // Check if we're on the Rio ESG page
+        const isRioESGPage = window.location.pathname.includes('rio-esg.html') || 
+                             document.querySelector('.project-tile-company')?.textContent.trim() === 'Rio ESG';
+        
+        // Check if we're on the Deltatre page
+        const isDeltaTreePage = window.location.pathname.includes('deltatre.html') || 
+                                document.querySelector('.project-tile-company')?.textContent.trim() === 'Deltatre';
+        
+        // Check if we're on the Audi page
+        const isAudiPage = window.location.pathname.includes('audi.html') || 
+                           document.querySelector('.project-tile-company')?.textContent.trim() === 'Audi @ BBH';
+        
         let sectionNames;
         if (isWherebyPage) {
             // Custom sections for Whereby page
             sectionNames = {
                 'overview': 'Overview',
                 'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else if (isSkyComcastPage) {
+            // Custom sections for Sky & Comcast page
+            sectionNames = {
+                'overview': 'Overview',
+                'research': 'Final Designs',
+                'success-definition': 'Workings'
+            };
+        } else if (isRioESGPage) {
+            // Custom sections for Rio ESG page
+            sectionNames = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else if (isDeltaTreePage) {
+            // Custom sections for Deltatre page
+            sectionNames = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'workings': 'Workings'
+            };
+        } else if (isAudiPage) {
+            // Custom sections for Audi page
+            sectionNames = {
+                'overview': 'Overview',
+                'final-designs': 'Final Designs',
+                'pitch': 'Pitch',
                 'workings': 'Workings'
             };
         } else {
