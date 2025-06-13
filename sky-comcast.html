@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky & Comcast - Thomas Grist - Lead Product Designer - UK</title>
+    <title>Thomas Grist - {{COMPANY_NAME}} - Lead Product Designer - UK</title>
     <link rel="icon" type="image/svg+xml" href="img/tgs-mark.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -102,6 +102,7 @@
                                 </div>
                             </a>
                         </li>
+                        <!-- {{NAVIGATION_HIGHLIGHT}} - Add active state to current page in navigation -->
                     </ul>
                 </section>
 
@@ -180,11 +181,314 @@
     </aside>
 
     <main class="homepage">
+        <div class="content-area">
         <div class="page-content">
-            <h1>Sky & Comcast</h1>
-            <p>My work on Sky & Comcast projects will go here.</p>
+                <!-- Case Study Header Component -->
+                <div class="case-study-header-component">
+                    <div class="case-study-header-row">
+                        <div class="project-tile-meta">
+                            <div class="project-tile-tag">
+                                <span class="tag-text">SaaS</span>
+                            </div>
+                            <span class="project-tile-company">Sky & Comcast</span>
+                        </div>
+                    </div>
+                    <h1 class="hero-name">~66% increase in ops speed</h1>
+                    <p class="case-study-description">At Sky & Comcast I worked on internal tooling for metadata editing.</p>
+                </div>
+
+
+
+                <!-- Overview Section Component -->
+                <div class="case-study-overview-section" id="overview">
+                    <div class="overview-content-row">
+                        <div class="overview-date">Oct '21-Jul '22</div>
+                        <div class="overview-content-column">
+                            <div class="overview-item overview-item-first">
+                                <p class="overview-text">The UK had seen a drop in productivity since adopting new software so I was hired to identify problems and solutions.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">I established a survey to profile the global user base, collate accessibility requirements and track user satisfaction scores.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">Because there were no analytics from the software itself, I also carried out additional user research activities and worked with Business Analysts to identify the most valuable solutions.</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">I provided UX/UI solutions, one of which resulted in ~66% increase in ops speed of the most common task (this task is carried out ~3,500 times a week at Sky UK alone and the solution was also rolled out globally).</p>
+                            </div>
+                            <div class="overview-item">
+                                <p class="overview-text">Whilst the software looked dated, I couldn't see any significant short term value in improving the aesthetic of the software so I used the existing styling in my work.</p>
+                            </div>
+                            <div class="overview-item overview-item-last">
+                                <p class="overview-text">A large part of the user's challenge was working with a huge, complex data model and so a lot of my work was working out how to surface relevant data at the right time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Double Content Block Component -->
+                <div class="case-study-double-content-block" id="research">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/643406f2a7778d16d296740e_sky-2-min.png" alt="Sky & Comcast metadata editing interface before Work Queue feature" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">Before the 'Work Queue' feature I designed editors had to search for programmes that needed the correct metadata mapped to them. As the most common task, UK editors were doing this ~3,500 times a week.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/64340708a54dc6624e5e2854_sky-3-min.png" alt="Sky & Comcast Work Queue feature showing automatic programme surfacing" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">'Work Queue' automatically surfaced programmes that needed mapping to each editor based on their expertise (e.g. drama, sport, news). This resulted in a ~66% reduction in time spent on the most common user task and at such a high volume represented a big boost to global productivity. Due to a lack of analytics from the software, I measured this by observing and timing users performing the task pre and post 'Work Queue'.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 2 -->
+                <div class="case-study-content-block" id="design">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/643407b1a7778d2bb79682a5_sky-4-min.png" alt="Sky & Comcast Work Queue manager setup interface showing backstage flows" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">Whilst the end result for editors was simple and fast, there were more complex backstage flows for a few select managers that helped them setup 'Work Queues'. A small price to pay for a feature that supercharged the vast majority of the global metadata operation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Content Block Component 3 -->
+                <div class="case-study-double-content-block" id="assessment">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/64340810d763b78092ec4c19_sky-5-min.png" alt="Sky & Comcast programme assessment interface before redesign" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">Once an editor had found a programme that needed mapping the next step in their journey was to assess a programme already in the database to map it to.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/6434081c94cfb15c117af658_sky-6-min.png" alt="Sky & Comcast redesigned programme view with increased data density" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">When I redesigned the programme view I initially didn't think I would end up making it busier. But after shadowing users it became clear they were doing a lot of scrolling up and down to find certain bits of data so I increased the data density to speed up the task. It received positive feedback from the 17 editors I tested it on.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Content Block Component 4 -->
+                <div class="case-study-double-content-block" id="interaction-design">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/64340857a1cb4fa8420951dd_sky-7-min.png" alt="Sky & Comcast thin scroll bar interface before redesign" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">Even basic interactions were redesigned. The scroll bar was thinner than what web standards recommend and users had provided feedback saying they were having a hard time grabbing it.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/643408647b5ef257a13d394c_sky-8-min.png" alt="Sky & Comcast improved scroll bar with doubled hit area" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">I quickly brought it inline with standards, doubling the hit area. It may seem a small detail but given the amount of times a day an editor would scroll it made a big difference on a global scale.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 3 -->
+                <div class="case-study-content-block" id="success-definition">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/643408924378237a2abdc40d_sky-9-min.png" alt="Sky & Comcast success definition document written on day 2 of contract" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">I wrote my success definition on day 2 of my contract.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 4 -->
+                <div class="case-study-content-block" id="research-presentation">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/643408b0e8f0af0f79691eb2_sky-10-min.png" alt="Sky & Comcast research presentation to global leadership team" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">I presented my research to the global leadership team. Due to a lack of software analytics, it was a layered research programme I carried out including surveys, user shadowing, Slack polls and business analysis. The research provided user segmentation, feedback, pain points, high value solutions and KPIs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Double Content Block Component 5 -->
+                <div class="case-study-double-content-block" id="research-summary">
+                    <div class="double-content-container">
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/643408ee1f92be2dba12af37_sky-11-min.png" alt="Sky & Comcast research summary presented to global leadership team" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">My research summary I presented to the global leadership team.</p>
+                        </div>
+                        <div class="double-content-column">
+                            <img src="img/sky-comcast/643408f91f92be519712b01b_sky-12-min.png" alt="Sky & Comcast internal tooling philosophy - happy users equals happy business" style="width: 100%; height: auto; border-radius: 8px;">
+                            <p class="double-content-text">Internal tooling. Happy users = happy business.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 5 -->
+                <div class="case-study-content-block" id="user-shadowing">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/6434095de186e15072f9dcd7_sky-10-min.png" alt="Sky & Comcast remote user shadowing sessions setup and methodology" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">Remote user shadowing sessions I conducted (due to lack of software analytics). I wrote the test script and carried out more than 50 tests with editors to ensure any insights were trustworthy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 6 -->
+                <div class="case-study-content-block" id="task-analysis">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/64340985bbc6d1a1eb1acace_sky-10-2-min.png" alt="Sky & Comcast task dissection analysis for optimization opportunities" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">My dissection of the highest volume task helped identify additional optimisation possibilities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 7 -->
+                <div class="case-study-content-block" id="design-integration">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/64340a26a1a61f4cdc9fc8cd_sky-13-min.png" alt="Sky & Comcast design integration into development cycle process" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text">As a new function within the product team it was up to me to define how design was integrated into the development cycle and in what order activities should be done.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 8 -->
+                <div class="case-study-content-block" id="sky-14">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/6441aac899d9195f540c2b98_sky-14-min.png" alt="Sky & Comcast project documentation" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Content Block Component 9 -->
+                <div class="case-study-content-block" id="sky-15">
+                    <div class="content-block-container">
+                        <img src="img/sky-comcast/643560f220509a1c7c824f2e_sky-15-min.png" alt="Sky & Comcast project overview" style="width: 100%; height: auto; border-radius: 8px;">
+                        <div class="content-block-text-container">
+                            <div class="content-block-date-spacer"></div>
+                            <p class="content-block-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study Navigation Component -->
+                <div class="case-study-navigation">
+                    <div class="case-study-navigation-container">
+                        <div class="case-study-nav-card previous">
+                            <div class="case-study-nav-arrow">
+                                <img src="img/case-study-nav-arrow.svg" alt="Previous case study" />
+                            </div>
+                            <div class="case-study-nav-content">
+                                <div class="project-tile-meta">
+                                    <div class="project-tile-tag">
+                                        <span class="tag-text">eCommerce</span>
+                                    </div>
+                                    <span class="project-tile-company">Audi @ BBH</span>
+                                </div>
+                                <h3 class="case-study-nav-title">59% increase in lead generation</h3>
+                            </div>
+                        </div>
+                        <div class="case-study-nav-card next">
+                            <div class="case-study-nav-content">
+                                <div class="project-tile-meta">
+                                    <div class="project-tile-tag">
+                                        <span class="tag-text">SaaS</span>
+                                    </div>
+                                    <span class="project-tile-company">Sky & Comcast</span>
+                                </div>
+                                <h3 class="case-study-nav-title">62% increase in ops speed</h3>
+                            </div>
+                            <div class="case-study-nav-arrow next-arrow">
+                                <img src="img/case-study-nav-arrow.svg" alt="Next case study" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <div class="feedback-container">
+                    <div class="feedback-content">
+                        <div class="feedback-text-column">
+                            <div class="feedback-text-container">
+                                <p class="feedback-intro">Got a moment?</p>
+                                <h2 class="feedback-title">Please feedback on my portfolio</h2>
+                                <p class="feedback-description">Every person and product needs feedback and I would really appreciate yours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-form-column">
+                            <div class="bottom-feedback-form-container">
+                                <!-- Feedback Form -->
+                            <form class="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="bottom-feedback-form">
+                                <input type="hidden" name="form-name" value="feedback" />
+                                <p style="display: none;">
+                                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                                </p>
+                                
+                                <div class="feedback-fields">
+                                    <div class="feedback-field">
+                                        <div class="feedback-label-row">
+                                            <label for="bottom-feedback-name" class="feedback-label">Name</label>
+                                            <span class="feedback-optional">Optional</span>
+                                        </div>
+                                        <input type="text" id="bottom-feedback-name" name="name" class="feedback-input">
+                                    </div>
+                                    
+                                    <div class="feedback-field">
+                                        <label for="bottom-feedback-message" class="feedback-label">Message</label>
+                                        <textarea id="bottom-feedback-message" name="message" class="feedback-textarea"></textarea>
+                                        <p class="feedback-error-message" id="bottom-feedback-message-error">Please enter a message</p>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="feedback-submit-btn">
+                                    <span class="feedback-submit-text">Submit feedback</span>
+                                </button>
+                            </form>
+
+                            <!-- Success State -->
+                            <div class="feedback-success-state" id="bottom-feedback-success" style="display: none;">
+                                <div class="feedback-success-icon">
+                                    <div class="animated-checkmark">
+                                        <svg width="20" height="20" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <defs>
+                                                <linearGradient id="circleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:white;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:white;stop-opacity:0.5" />
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="url(#circleGradient)" stroke-width="2"/>
+                                            <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="feedback-success-title">Thank you</h3>
+                                <p class="feedback-success-message">Your feedback will help me further improve my portfolio</p>
+                                <button type="button" class="feedback-submit-btn" id="bottom-feedback-leave-more">
+                                    <span class="feedback-submit-text">Leave more feedback</span>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+
+    <!-- Static form for Netlify detection - DO NOT REMOVE -->
+    <form name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: none;">
+        <input type="hidden" name="form-name" value="feedback" />
+        <label>Name: <input type="text" name="name" /></label>
+        <label>Message: <textarea name="message"></textarea></label>
+        <p style="display: none;">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
 
     <!-- Mobile Navigation JavaScript -->
     <script src="mobile-nav.js"></script>
@@ -192,5 +496,12 @@
     <script src="header-scroll.js"></script>
     <!-- Header Hover Effects -->
     <script src="header-hover.js"></script>
+    <!-- Sticky Tabs Functionality -->
+    <script src="sticky-tabs.js"></script>
+    <!-- Bottom Feedback Form -->
+    <script src="bottom-feedback.js"></script>
+    
+    <!-- Bottom Dropdown Menu -->
+    <script src="bottom-dropdown.js"></script>
 </body>
 </html> 
