@@ -1,6 +1,8 @@
 // Case Study Navigation Handler
 // Handles previous and next navigation between case studies
 
+console.log('case-study-navigation.js file loaded successfully');
+
 class CaseStudyNavigation {
     constructor() {
         this.caseStudies = [
@@ -62,11 +64,18 @@ class CaseStudyNavigation {
     }
     
     updateNavigationCard(card, caseStudy, isPrevious = false) {
-        if (!card || !caseStudy) return;
+        if (!card || !caseStudy) {
+            console.log('Card or case study missing:', card, caseStudy);
+            return;
+        }
+        
+        console.log('Updating navigation card:', isPrevious ? 'previous' : 'next', caseStudy);
         
         const tagElement = card.querySelector('.tag-text');
         const companyElement = card.querySelector('.project-tile-company');
         const titleElement = card.querySelector('.case-study-nav-title');
+        
+        console.log('Found elements:', { tagElement, companyElement, titleElement });
         
         if (tagElement) tagElement.textContent = caseStudy.tag;
         if (companyElement) companyElement.textContent = caseStudy.company;
@@ -74,7 +83,8 @@ class CaseStudyNavigation {
         
         // Make the card clickable
         card.style.cursor = 'pointer';
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+            console.log('Navigation card clicked, going to:', caseStudy.filename);
             window.location.href = caseStudy.filename;
         });
         
@@ -96,11 +106,23 @@ class CaseStudyNavigation {
     }
     
     init() {
+        console.log('Case Study Navigation initialized');
+        console.log('Current page:', this.currentPage);
+        console.log('Current index:', this.currentIndex);
+        
         // Only run on case study pages
-        if (this.currentIndex === -1) return;
+        if (this.currentIndex === -1) {
+            console.log('Not a case study page, exiting');
+            return;
+        }
         
         const navigationContainer = document.querySelector('.case-study-navigation-container');
-        if (!navigationContainer) return;
+        if (!navigationContainer) {
+            console.log('Navigation container not found');
+            return;
+        }
+        
+        console.log('Navigation container found:', navigationContainer);
         
         const previousCard = navigationContainer.querySelector('.case-study-nav-card.previous');
         const nextCard = navigationContainer.querySelector('.case-study-nav-card.next');
@@ -134,5 +156,23 @@ class CaseStudyNavigation {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new CaseStudyNavigation();
-}); 
+    console.log('DOM Content Loaded, initializing navigation...');
+    try {
+        new CaseStudyNavigation();
+    } catch (error) {
+        console.error('Error initializing case study navigation:', error);
+    }
+});
+
+// Fallback initialization if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    // Document still loading, wait for DOMContentLoaded
+} else {
+    // Document already loaded
+    console.log('Document already loaded, initializing navigation...');
+    try {
+        new CaseStudyNavigation();
+    } catch (error) {
+        console.error('Error initializing case study navigation:', error);
+    }
+} 
