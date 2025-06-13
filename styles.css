@@ -1233,7 +1233,7 @@ body {
 /* Header buttons container with dropdown-style border (desktop only) */
 @media (min-width: 769px) {
     .header-buttons-container {
-        background: rgba(14, 14, 14, 0.5);
+        background: rgba(14, 14, 14, 0.75);
         backdrop-filter: blur(37px);
         -webkit-backdrop-filter: blur(37px);
         border-radius: 38px; /* iOS 60% corner smoothing: 60% of 64px height */
@@ -4711,7 +4711,7 @@ button.nav-link {
 }
 
 .dropdown-container {
-    background: rgba(14, 14, 14, 0.5);
+    background: rgba(14, 14, 14, 0.75);
     backdrop-filter: blur(37px);
     -webkit-backdrop-filter: blur(37px);
     border-radius: 32px; /* 60% of 64px height = 38.4px, using 32px for proper iOS feel */
