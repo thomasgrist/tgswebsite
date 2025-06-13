@@ -4,7 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Feedback Received</title>
+    
+    <!-- Preload critical fonts to prevent FOUT -->
+    <link rel="preload" href="fonts/Apercu-Light.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Apercu-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Font loading optimization -->
     <style>
+        /* Critical inline styles to prevent FOUT */
+        .font-loading body {
+            visibility: hidden;
+        }
+        .fonts-loaded body,
+        .no-js body {
+            visibility: visible;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             display: flex;
@@ -13,6 +28,9 @@
             min-height: 100vh;
             margin: 0;
             background-color: #f8f9fa;
+        }
+        .fonts-loaded body {
+            font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         .success-container {
             text-align: center;
@@ -54,6 +72,9 @@
             background: #2563eb;
         }
     </style>
+    
+    <!-- Font loading detection -->
+    <script src="font-loading.js"></script>
 </head>
 <body>
     <div class="success-container">
