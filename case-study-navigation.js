@@ -14,7 +14,7 @@ class CaseStudyNavigation {
             },
             {
                 filename: 'sky-comcast.html',
-                title: '~66% increase in ops speed',
+                title: '~62% increase in ops speed',
                 company: 'Sky & Comcast',
                 tag: 'SaaS'
             },
