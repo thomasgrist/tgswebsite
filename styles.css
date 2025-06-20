@@ -145,8 +145,8 @@ body {
     color: rgba(181, 181, 181, 1) !important;
 }
 
-/* Hide mobile roadmap item on desktop */
-.mobile-roadmap-item {
+/* Hide mobile backlog item on desktop */
+.mobile-backlog-item {
     display: none;
 }
 
@@ -186,7 +186,7 @@ body {
         order: 4;
     }
     
-    /* Reorder items within About section: CV first, then How I Design, then Roadmap */
+    /* Reorder items within About section: CV first, then How I Design, then Backlog */
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list {
         display: flex;
         flex-direction: column;
@@ -224,7 +224,7 @@ body {
 }
 
 .nav-item:hover {
-    background-color: #1F1F1F;
+    background-color: rgba(255, 255, 255, 0.2);
     transform: translateX(8px);
     transition: background-color var(--transition-hover-in) var(--easing-smooth), 
                 transform var(--transition-hover-in) var(--easing-smooth);
@@ -583,12 +583,12 @@ body {
     right: -17px;
 }
 
-#roadmap-coming-soon {
+#backlog-coming-soon {
     top: 10px;
-    right: 7px;
+    right: 20px;
 }
 
-#roadmap-coming-soon-mobile {
+#backlog-coming-soon-mobile {
     top: 10px;
     right: 7px;
 }
@@ -612,6 +612,10 @@ body {
 }
 
 .speechmatics-ai-tile::before {
+    display: none !important;
+}
+
+.speechmatics-ai-tile:hover::after {
     display: none !important;
 }
 
@@ -661,12 +665,12 @@ body {
         right: 20px;
     }
     
-    #roadmap-coming-soon {
+    #backlog-coming-soon {
         top: 27px;
         right: 20px;
     }
     
-    #roadmap-coming-soon-mobile {
+    #backlog-coming-soon-mobile {
         top: 27px;
         right: 20px;
     }
@@ -831,6 +835,19 @@ body {
     background: rgba(28, 28, 28, 0.6);
 }
 
+.project-tile-full:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .project-tile-full::before {
     content: '';
     position: absolute;
@@ -907,6 +924,19 @@ body {
     transform: translateY(-3px);
     cursor: pointer;
     background: rgba(28, 28, 28, 0.6);
+}
+
+.project-tile:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .project-tile::before {
@@ -1281,7 +1311,7 @@ body {
         bottom: 10px;
         left: var(--slider-left);
         width: var(--slider-width);
-        background: rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(37px);
         border-radius: 30px; /* iOS 60% corner smoothing: 60% of ~50px button height */
         opacity: 0;
@@ -1497,14 +1527,14 @@ body {
 }
 
 .mobile-nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateX(4px);
     transition: all var(--transition-hover-in) var(--easing-smooth);
 }
 
 .mobile-nav-button:active {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.2);
     transform: translateX(2px);
 }
 
@@ -2020,15 +2050,15 @@ button.nav-link {
         display: flex;
     }
     
-    /* Remove hover effects for How I Design and Roadmap on mobile */
+    /* Remove hover effects for How I Design and Backlog on mobile */
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover, /* How I Design */
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover { /* Roadmap */
+    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover { /* Backlog */
         transform: translateX(0) !important;
         background-color: transparent !important;
     }
     
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover .nav-link::before, /* How I Design */
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover .nav-link::before { /* Roadmap */
+    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover .nav-link::before { /* Backlog */
         display: none !important;
     }
     
@@ -3002,7 +3032,11 @@ button.nav-link {
     display: inline-flex;
     align-items: baseline;
     gap: 6px;
-    transition: color 0.2s ease;
+    padding: 12px 24px;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    width: fit-content;
+    margin-left: -24px;
 }
 
 .ai-thoughts-link-text {
@@ -3011,18 +3045,13 @@ button.nav-link {
 }
 
 .ai-thoughts-link-text::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: rgba(181, 181, 181, 0.4);
-    transition: background-color 0.2s ease;
+    display: none;
 }
 
 .ai-thoughts-link:hover {
     color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
 }
 
 .ai-thoughts-link:hover .ai-thoughts-link-text::after {
@@ -3860,7 +3889,7 @@ button.nav-link {
 }
 
 .action-button:hover {
-    background-color: rgba(255, 255, 255, 0.07); /* 7% white tint */
+    background-color: rgba(255, 255, 255, 0.2); /* 20% white tint */
     backdrop-filter: blur(37px); /* Background blur effect */
     transition: background-color var(--transition-hover-in) var(--easing-smooth), backdrop-filter var(--transition-hover-in) var(--easing-smooth);
 }
@@ -4347,6 +4376,26 @@ button.nav-link {
     background: rgba(255, 255, 255, 0.05);
 }
 
+.case-study-nav-card:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.case-study-nav-card.previous:hover::after {
+    border-radius: 8px 0 0 8px;
+}
+
+.case-study-nav-card.next:hover::after {
+    border-radius: 0 8px 8px 0;
+}
+
 .case-study-nav-card.previous {
     justify-content: flex-start;
     border-radius: 8px 0 0 8px;
@@ -4481,6 +4530,14 @@ button.nav-link {
     .case-study-nav-card:hover {
         transform: none; /* Remove translateY hover effect on tablets */
     }
+    
+    .case-study-nav-card.previous:hover::after {
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .case-study-nav-card.next:hover::after {
+        border-radius: 0 0 8px 8px;
+    }
 }
 
 /* Mobile responsive for Case Study Navigation Component */
@@ -4526,6 +4583,11 @@ button.nav-link {
     
     .case-study-nav-card:last-child:hover {
         border-top-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .case-study-nav-card.previous:hover::after,
+    .case-study-nav-card.next:hover::after {
+        border-radius: 0;
     }
     
     .case-study-nav-arrow {
@@ -4758,6 +4820,19 @@ button.nav-link {
     background: rgba(28, 28, 28, 0.6);
 }
 
+.dropdown-container:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 32px;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .dropdown-container.menu-open {
     background: rgba(14, 14, 14, 0.7);
 }
@@ -4908,7 +4983,7 @@ button.nav-link {
 }
 
 .dropdown-menu-link:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
 }
 
@@ -4919,7 +4994,7 @@ button.nav-link {
 }
 
 .dropdown-menu-link.back-to-top:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
 }
 
@@ -5514,7 +5589,7 @@ button.nav-link {
 
 .feedback-label {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 15px;
     color: #FFFFFF;
     margin: 0;
@@ -5522,7 +5597,7 @@ button.nav-link {
 
 .feedback-optional {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 15px;
     color: #B5B5B5;
     opacity: 1;
@@ -5657,7 +5732,7 @@ button.nav-link {
     transition: background-color 0.2s ease;
     color: #FFFFFF;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 15px;
     border: none;
     white-space: nowrap;
@@ -5679,7 +5754,7 @@ button.nav-link {
 }
 
 .feedback-submit-btn:hover {
-    background: rgba(28, 28, 28, 0.6);
+    background: rgba(56, 56, 56, 0.8);
 }
 
 .feedback-submit-text {
