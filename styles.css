@@ -5117,7 +5117,7 @@ button.nav-link {
 
 /* Bottom Feedback Section */
 .feedback-section {
-    padding: 80px 40px;
+    padding: 80px 40px 120px 40px; /* Added extra bottom padding for dropdown button space */
     background: #0F0F0F;
     margin-top: 156px;
     position: relative;
@@ -5168,6 +5168,14 @@ button.nav-link {
     border-radius: 16px;
     padding: 40px;
     position: relative;
+    min-height: 380px; /* Consistent minimum height for form and success states */
+}
+
+/* Increase minimum height on screens above 768px to accommodate larger buttons */
+@media (min-width: 769px) {
+    .bottom-feedback-form-container {
+        min-height: 400px; /* Extra space for larger buttons */
+    }
 }
 
 .bottom-feedback-form-container::before {
@@ -5762,6 +5770,15 @@ button.nav-link {
     justify-content: center;
 }
 
+/* Match dropdown button size on screens above 768px */
+@media (min-width: 769px) {
+    .feedback-submit-btn {
+        height: 64px; /* Match dropdown button height */
+        font-size: 17px; /* Match dropdown button font size */
+        min-width: 200px; /* Match dropdown button min-width */
+    }
+}
+
 .feedback-submit-btn::before {
     content: '';
     position: absolute;
@@ -5798,10 +5815,17 @@ button.nav-link {
     justify-content: center;
     align-items: center;
     gap: 24px;
-    height: 344px;
+    min-height: 380px; /* Consistent minimum height with form container */
     display: none;
     margin-top: 0;
     padding-top: 0;
+}
+
+/* Increase minimum height on screens above 768px to match form container */
+@media (min-width: 769px) {
+    .feedback-success-state {
+        min-height: 400px; /* Match form container minimum height */
+    }
 }
 
 .feedback-success-icon {
@@ -5867,7 +5891,7 @@ button.nav-link {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .feedback-section {
-        padding: 40px 40px;
+        padding: 40px 40px 120px 40px; /* Added extra bottom padding for dropdown button space */
     }
     
     .feedback-content {
@@ -5907,7 +5931,7 @@ button.nav-link {
 
 @media (max-width: 768px) {
     .feedback-section {
-        padding: 32px;
+        padding: 32px 32px 100px 32px; /* Added extra bottom padding for dropdown button space */
         margin-top: 48px;
         margin-bottom: 0;
         margin-left: 0;
@@ -6012,7 +6036,7 @@ button.nav-link {
 
 @media (max-width: 480px) {
     .feedback-section {
-        padding: 32px;
+        padding: 32px 32px 100px 32px; /* Added extra bottom padding for dropdown button space */
         margin-top: 48px;
     }
 
