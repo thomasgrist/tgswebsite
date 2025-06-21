@@ -5174,7 +5174,7 @@ button.nav-link {
 /* Increase minimum height on screens above 768px to accommodate larger buttons */
 @media (min-width: 769px) {
     .bottom-feedback-form-container {
-        min-height: 400px; /* Extra space for larger buttons */
+        min-height: 438px; /* Extra space for larger buttons */
     }
 }
 
