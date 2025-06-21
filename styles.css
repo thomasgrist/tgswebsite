@@ -5598,6 +5598,7 @@ button.nav-link {
 
 .feedback-form {
     display: block;
+    height: 358px;
 }
 
 .feedback-fields {
@@ -5819,6 +5820,7 @@ button.nav-link {
     display: none;
     margin-top: 0;
     padding-top: 0;
+    height: 358px;
 }
 
 /* Ensure success state fills container height on desktop for proper centering */
