@@ -47,6 +47,13 @@
         return index;
     }
     
+    function navigateToPage(url) {
+        // Add a small delay to ensure touch interaction completes
+        setTimeout(() => {
+            window.location.href = url;
+        }, 50);
+    }
+    
     function updateNavigationCard(card, caseStudy, direction) {
         if (!card || !caseStudy) {
             console.warn('Case study navigation: Missing card or case study data');
@@ -70,37 +77,54 @@
         newCard.style.cursor = 'pointer';
         newCard.style.transition = 'transform 0.2s ease';
         
-        // Add click handler
+        // Add touch-action for better mobile support
+        newCard.style.touchAction = 'manipulation';
+        
+        // Add click handler for desktop
         newCard.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            window.location.href = caseStudy.filename;
+            navigateToPage(caseStudy.filename);
         });
         
-        // Add touch event handlers for mobile devices
+        // Add touch event handlers for mobile
+        let touchStartTime = 0;
+        let touchMoved = false;
+        
         newCard.addEventListener('touchstart', function(e) {
-            e.stopPropagation();
-            // Prevent hover effects on touch devices during interaction
-            newCard.style.transform = 'translateY(-1px)';
-        });
+            touchStartTime = Date.now();
+            touchMoved = false;
+            newCard.style.transform = 'translateY(-2px)';
+        }, { passive: true });
+        
+        newCard.addEventListener('touchmove', function(e) {
+            touchMoved = true;
+        }, { passive: true });
         
         newCard.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            // Navigate on touch end
-            window.location.href = caseStudy.filename;
+            const touchDuration = Date.now() - touchStartTime;
+            newCard.style.transform = 'translateY(0)';
+            
+            // Only navigate if it was a tap (not a scroll) and was quick
+            if (!touchMoved && touchDuration < 500) {
+                e.preventDefault();
+                e.stopPropagation();
+                navigateToPage(caseStudy.filename);
+            }
+        }, { passive: false });
+        
+        // Add mouse events for desktop hover effects
+        newCard.addEventListener('mouseenter', function() {
+            if (!('ontouchstart' in window)) { // Only on non-touch devices
+                newCard.style.transform = 'translateY(-2px)';
+            }
         });
         
-        // Add hover effects for desktop only
-        if (!('ontouchstart' in window)) {
-            newCard.addEventListener('mouseenter', function() {
-                newCard.style.transform = 'translateY(-2px)';
-            });
-            
-            newCard.addEventListener('mouseleave', function() {
+        newCard.addEventListener('mouseleave', function() {
+            if (!('ontouchstart' in window)) { // Only on non-touch devices
                 newCard.style.transform = 'translateY(0)';
-            });
-        }
+            }
+        });
         
         // Update the DOM elements in the new card
         const newTagElement = newCard.querySelector('.tag-text');

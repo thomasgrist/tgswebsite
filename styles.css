@@ -4368,11 +4368,15 @@ button.nav-link {
     will-change: transform;
     background: rgba(255, 255, 255, 0.02);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0);
-    /* Better touch support */
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    
+    /* Improve touch interaction on mobile */
     touch-action: manipulation;
-    user-select: none;
+    -webkit-touch-callout: none;
     -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .case-study-nav-card:hover {
@@ -4557,17 +4561,25 @@ button.nav-link {
         gap: 0;
     }
     
+    /* Ensure proper touch target size on mobile */
+    .case-study-nav-card {
+        min-height: 44px; /* iOS recommended minimum touch target */
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        tap-highlight-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Improve touch feedback on mobile */
+    .case-study-nav-card:active {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
     .case-study-nav-card {
         padding: 24px 16px 24px 0;
         border: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 0;
         gap: 16px;
-        /* Improve touch targets on mobile */
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-        touch-action: manipulation;
-        user-select: none;
-        -webkit-user-select: none;
     }
     
     .case-study-nav-card.previous {
