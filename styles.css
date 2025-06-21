@@ -4807,7 +4807,7 @@ button.nav-link {
     bottom: 24px;
     right: 24px;
     transform: translateY(100px);
-    z-index: 2000;
+    z-index: 2550; /* Above feedback section (2500) but below mobile menu (2600) */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -4829,6 +4829,7 @@ button.nav-link {
     padding: 12px 24px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     height: 64px;
     width: fit-content;
@@ -6116,4 +6117,156 @@ button.nav-link {
 
 .mobile-controls-group .call-button.tooltip-active .button-text {
     color: white !important;
+}
+
+/* Backlog Page Styles */
+.backlog-section {
+    margin-top: 80px;
+}
+
+.backlog-section:first-of-type {
+    margin-top: 120px;
+}
+
+.backlog-section-title {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+    font-weight: 300 !important;
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+    color: #B5B5B5 !important;
+    margin-bottom: 48px;
+}
+
+/* Backlog Cards Grid */
+.backlog-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    width: 100%;
+}
+
+@media (min-width: 1000px) {
+    .backlog-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .backlog-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .backlog-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .backlog-section {
+        margin-top: 60px;
+    }
+    
+    .backlog-section:first-of-type {
+        margin-top: 80px;
+    }
+    
+    .backlog-section-title {
+        font-size: 16px !important;
+        margin-bottom: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* Backlog Card Styles - Based on Speechmatics tile */
+.backlog-card {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 32px;
+    cursor: default;
+    box-shadow: none;
+}
+
+.backlog-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.backlog-card-callout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 16px;
+    color: #B5B5B5;
+    background: transparent;
+}
+
+.backlog-card-reporter {
+    background: transparent;
+    color: #B5B5B5;
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1;
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backlog-card-title {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300 !important;
+    font-size: 22px !important;
+    line-height: 1.4545454545454546em !important;
+    color: #FFFFFF !important;
+    margin-bottom: 8px;
+}
+
+.backlog-card-description {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 17px !important;
+    line-height: 1.6rem !important;
+    color: #B5B5B5;
+    margin: 0;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .backlog-card {
+        padding: 24px;
+    }
+    
+    .backlog-card-header {
+        margin-bottom: 8px;
+    }
+    
+    .backlog-card-title {
+        font-size: 22px !important;
+        margin-bottom: 8px;
+    }
+    
+    .backlog-card-description {
+        font-size: 14px !important;
+    }
 }

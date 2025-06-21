@@ -24,6 +24,13 @@ class BottomDropdownMenu {
     }
 
     getCompanyName() {
+        // Special case for backlog page - always show "Backlog" in dropdown
+        const isBacklogPage = window.location.pathname.includes('backlog.html') || 
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'thomasgrist.co.uk';
+        if (isBacklogPage) {
+            return 'Backlog';
+        }
+        
         // Try to get company name from the page content
         const companyElement = document.querySelector('.project-tile-company');
         if (companyElement) {
@@ -64,8 +71,22 @@ class BottomDropdownMenu {
         const isAudiPage = window.location.pathname.includes('audi.html') || 
                            document.querySelector('.project-tile-company')?.textContent.trim() === 'Audi @ BBH';
         
+        // Check if we're on the Backlog page
+        const isBacklogPage = window.location.pathname.includes('backlog.html') || 
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'Backlog' ||
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'thomasgrist.co.uk';
+        
         let sectionMap;
-        if (isWherebyPage) {
+        if (isBacklogPage) {
+            // Custom sections for Backlog page
+            sectionMap = {
+                'overview': 'Overview',
+                'p1': 'P1',
+                'p2': 'P2',
+                'p3': 'P3',
+                'p4': 'P4'
+            };
+        } else if (isWherebyPage) {
             // Custom sections for Whereby page
             sectionMap = {
                 'overview': 'Overview',
@@ -303,9 +324,8 @@ class BottomDropdownMenu {
 
     getCurrentSectionId() {
         const scrollY = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        // Calculate 70% of viewport height from bottom (30% from top)
-        const thresholdOffset = viewportHeight * 0.3;
+        // No threshold offset - section becomes active when it reaches the top of the page
+        const thresholdOffset = 0;
 
         // Check if we're at the very top
         if (scrollY < 50) {
@@ -313,7 +333,7 @@ class BottomDropdownMenu {
         }
 
         // Find the current section based on scroll position
-        // Section becomes active when it reaches 70% up from the bottom of viewport
+        // Section becomes active when it reaches the top of the viewport
         for (let i = this.sections.length - 1; i >= 0; i--) {
             const section = this.sections[i];
             const sectionTop = section.element.offsetTop;
@@ -349,8 +369,21 @@ class BottomDropdownMenu {
         const isAudiPage = window.location.pathname.includes('audi.html') || 
                            document.querySelector('.project-tile-company')?.textContent.trim() === 'Audi @ BBH';
         
+        // Check if we're on the Backlog page
+        const isBacklogPage = window.location.pathname.includes('backlog.html') || 
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'Backlog' ||
+                              document.querySelector('.project-tile-company')?.textContent.trim() === 'thomasgrist.co.uk';
+        
         let sectionNames;
-        if (isWherebyPage) {
+        if (isBacklogPage) {
+            // Custom sections for Backlog page
+            sectionNames = {
+                'p1': 'P1',
+                'p2': 'P2',
+                'p3': 'P3',
+                'p4': 'P4'
+            };
+        } else if (isWherebyPage) {
             // Custom sections for Whereby page
             sectionNames = {
                 'overview': 'Overview',
@@ -425,7 +458,9 @@ class BottomDropdownMenu {
             // Find the section and scroll to it
             const section = this.sections.find(s => s.id === sectionId);
             if (section) {
-                const offsetTop = section.element.offsetTop - 100; // Account for header
+                // Scroll to exactly the section position so dropdown updates correctly
+                // Add 1px to ensure we cross the threshold and trigger the dropdown update
+                const offsetTop = section.element.offsetTop + 1;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
