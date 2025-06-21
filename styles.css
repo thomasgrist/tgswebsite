@@ -4543,7 +4543,7 @@ button.nav-link {
 /* Mobile responsive for Case Study Navigation Component */
 @media (max-width: 768px) {
     .case-study-navigation {
-        margin-top: 60px;
+        margin-top: 48px;
         padding: 0 16px;
     }
     
