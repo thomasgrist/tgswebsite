@@ -135,14 +135,14 @@ body {
     color: #FFFFFF;
 }
 
-/* Make thomasgrist.co.uk section light grey */
+/* Make thomasgrist.co.uk section pure white like other sections */
 .nav-section:nth-child(4) .nav-section-title {
-    color: rgba(181, 181, 181, 1);
+    color: #FFFFFF;
 }
 
-/* Ensure thomasgrist.co.uk section title is light grey */
+/* Ensure thomasgrist.co.uk section title is pure white */
 .nav-section:last-child .nav-section-title {
-    color: rgba(181, 181, 181, 1) !important;
+    color: #FFFFFF !important;
 }
 
 /* Hide mobile backlog item on desktop */
@@ -150,16 +150,12 @@ body {
     display: none;
 }
 
-    /* About and Contact sections pure white in mobile menu */
+    /* About, Contact, and thomasgrist.co.uk sections pure white in mobile menu */
 @media (max-width: 768px) {
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-section-title,
-    .left-navigation.menu-open .nav-section:nth-child(3) .nav-section-title {
-        color: #FFFFFF;
-    }
-    
-    /* Make thomasgrist.co.uk section light grey in mobile menu */
+    .left-navigation.menu-open .nav-section:nth-child(3) .nav-section-title,
     .left-navigation.menu-open .nav-section:nth-child(4) .nav-section-title {
-        color: rgba(181, 181, 181, 1);
+        color: #FFFFFF;
     }
     
     /* Reorder sections in mobile menu: Contact first, Case Studies second, About third */
@@ -2034,6 +2030,7 @@ button.nav-link {
     
     .left-navigation.menu-open .nav-section:nth-child(4) .nav-section-title {
         animation-delay: 1.6s;
+        color: #FFFFFF;
     }
     
     .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1) {
@@ -2050,15 +2047,13 @@ button.nav-link {
         display: flex;
     }
     
-    /* Remove hover effects for How I Design and Backlog on mobile */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover, /* How I Design */
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover { /* Backlog */
+    /* Remove hover effects for How I Design on mobile (since it's not active yet) */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover { /* How I Design */
         transform: translateX(0) !important;
         background-color: transparent !important;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover .nav-link::before, /* How I Design */
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1):hover .nav-link::before { /* Backlog */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover .nav-link::before { /* How I Design */
         display: none !important;
     }
     
@@ -3537,7 +3532,7 @@ button.nav-link {
     width: 17%;
     flex-shrink: 0;
     position: sticky;
-    top: 116px; /* Desktop: positions below sticky header + sticky tabs + 12px spacing */
+    top: 2px; /* Desktop: changed to 2px as requested */
     align-self: flex-start;
 }
 

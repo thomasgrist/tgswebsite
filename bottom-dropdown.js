@@ -12,6 +12,9 @@ class BottomDropdownMenu {
         this.currentSection = 'Overview';
         this.companyName = this.getCompanyName();
         this.sections = this.getSections();
+        this.manualSelectionActive = false; // Flag to prevent scroll override after manual selection
+        this.manualSelectionTimer = null;
+        this.lastScrollY = window.scrollY; // Track scroll position for manual scroll detection
         
         this.init();
     }
@@ -215,6 +218,21 @@ class BottomDropdownMenu {
         const handleScroll = () => {
             if (!ticking) {
                 requestAnimationFrame(() => {
+                    // Detect significant manual scrolling and re-enable scroll-based updates
+                    const currentScrollY = window.scrollY;
+                    const scrollDifference = Math.abs(currentScrollY - this.lastScrollY);
+                    
+                    // If user scrolls manually by more than 100px while manual selection is active,
+                    // re-enable scroll-based updates (they're manually scrolling, not using dropdown)
+                    if (this.manualSelectionActive && scrollDifference > 100) {
+                        this.manualSelectionActive = false;
+                        if (this.manualSelectionTimer) {
+                            clearTimeout(this.manualSelectionTimer);
+                            this.manualSelectionTimer = null;
+                        }
+                    }
+                    
+                    this.lastScrollY = currentScrollY;
                     this.updateSectionOnScroll();
                     this.checkBackToTopVisibility();
                     ticking = false;
@@ -347,6 +365,11 @@ class BottomDropdownMenu {
     }
 
     updateSectionOnScroll() {
+        // Don't update if user just made a manual selection from dropdown
+        if (this.manualSelectionActive) {
+            return;
+        }
+        
         const currentSectionId = this.getCurrentSectionId();
         
         // Check if we're on the Whereby page
@@ -448,16 +471,33 @@ class BottomDropdownMenu {
     }
 
     navigateToSection(sectionId) {
+        // Set flag to prevent scroll-based updates from overriding manual selection
+        this.manualSelectionActive = true;
+        
+        // Clear any existing timer
+        if (this.manualSelectionTimer) {
+            clearTimeout(this.manualSelectionTimer);
+        }
+        
+        // Update dropdown label immediately when user clicks on a section
         if (sectionId === 'top') {
+            // For "back to top", set to Overview (first section)
+            this.currentSection = 'Overview';
+            this.updateDropdownContent();
+            
             // Smooth scroll to top
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         } else {
-            // Find the section and scroll to it
+            // Find the section and update the dropdown label immediately
             const section = this.sections.find(s => s.id === sectionId);
             if (section) {
+                // Update the dropdown button label immediately
+                this.currentSection = section.name;
+                this.updateDropdownContent();
+                
                 // Scroll to exactly the section position so dropdown updates correctly
                 // Add 1px to ensure we cross the threshold and trigger the dropdown update
                 const offsetTop = section.element.offsetTop + 1;
@@ -467,6 +507,12 @@ class BottomDropdownMenu {
                 });
             }
         }
+        
+        // Re-enable scroll-based updates after scroll animation completes
+        // Wait longer than the scroll animation (typically 500-1000ms)
+        this.manualSelectionTimer = setTimeout(() => {
+            this.manualSelectionActive = false;
+        }, 1500);
     }
 }
 
