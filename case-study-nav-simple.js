@@ -47,7 +47,24 @@
     
     function getCurrentCaseStudyIndex() {
         const currentPage = getCurrentPageFilename();
-        const index = caseStudies.findIndex(study => study.filename === currentPage);
+        
+        // Try exact match first
+        let index = caseStudies.findIndex(study => study.filename === currentPage);
+        
+        // If not found and currentPage doesn't have .html, try adding it
+        if (index === -1 && !currentPage.includes('.html')) {
+            const pageWithHtml = currentPage + '.html';
+            index = caseStudies.findIndex(study => study.filename === pageWithHtml);
+            console.log('Case Study Navigation: Trying with .html extension:', pageWithHtml, 'Found index:', index);
+        }
+        
+        // If not found and currentPage has .html, try without it
+        if (index === -1 && currentPage.includes('.html')) {
+            const pageWithoutHtml = currentPage.replace('.html', '');
+            index = caseStudies.findIndex(study => study.filename.replace('.html', '') === pageWithoutHtml);
+            console.log('Case Study Navigation: Trying without .html extension:', pageWithoutHtml, 'Found index:', index);
+        }
+        
         console.log('Case Study Navigation: Current case study index:', index);
         return index;
     }
