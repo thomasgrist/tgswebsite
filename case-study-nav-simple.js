@@ -47,12 +47,6 @@
         return index;
     }
     
-    function isMobileDevice() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-               window.innerWidth <= 768 ||
-               ('ontouchstart' in window);
-    }
-    
     function updateNavigationCard(card, caseStudy, direction) {
         if (!card || !caseStudy) {
             console.warn('Case study navigation: Missing card or case study data');
@@ -76,62 +70,29 @@
         newCard.style.cursor = 'pointer';
         newCard.style.transition = 'transform 0.2s ease';
         
-        // Add mobile-friendly touch handling
-        if (isMobileDevice()) {
-            // For mobile devices, use touchstart/touchend for better responsiveness
-            let touchStartTime = 0;
-            let touchMoved = false;
-            
-            newCard.addEventListener('touchstart', function(e) {
-                touchStartTime = Date.now();
-                touchMoved = false;
-                // Add active state for visual feedback
-                newCard.style.transform = 'translateY(-2px)';
-                newCard.style.background = 'rgba(255, 255, 255, 0.05)';
-            }, { passive: true });
-            
-            newCard.addEventListener('touchmove', function(e) {
-                touchMoved = true;
-                // Remove active state if user is scrolling
-                newCard.style.transform = 'translateY(0)';
-                newCard.style.background = '';
-            }, { passive: true });
-            
-            newCard.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const touchEndTime = Date.now();
-                const touchDuration = touchEndTime - touchStartTime;
-                
-                // Reset visual state
-                newCard.style.transform = 'translateY(0)';
-                newCard.style.background = '';
-                
-                // Only navigate if it was a quick tap and user didn't scroll
-                if (!touchMoved && touchDuration < 500) {
-                    console.log('Touch navigation to:', caseStudy.filename);
-                    window.location.href = caseStudy.filename;
-                }
-            });
-            
-            // Also add click handler as fallback
-            newCard.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Click navigation to:', caseStudy.filename);
-                window.location.href = caseStudy.filename;
-            });
-            
-        } else {
-            // For desktop, use standard click and hover events
-            newCard.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = caseStudy.filename;
-            });
-            
-            // Add hover effects for desktop only
+        // Add click handler
+        newCard.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location.href = caseStudy.filename;
+        });
+        
+        // Add touch event handlers for mobile devices
+        newCard.addEventListener('touchstart', function(e) {
+            e.stopPropagation();
+            // Prevent hover effects on touch devices during interaction
+            newCard.style.transform = 'translateY(-1px)';
+        });
+        
+        newCard.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Navigate on touch end
+            window.location.href = caseStudy.filename;
+        });
+        
+        // Add hover effects for desktop only
+        if (!('ontouchstart' in window)) {
             newCard.addEventListener('mouseenter', function() {
                 newCard.style.transform = 'translateY(-2px)';
             });

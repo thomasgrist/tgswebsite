@@ -4368,6 +4368,11 @@ button.nav-link {
     will-change: transform;
     background: rgba(255, 255, 255, 0.02);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0);
+    /* Better touch support */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .case-study-nav-card:hover {
@@ -4558,14 +4563,11 @@ button.nav-link {
         border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 0;
         gap: 16px;
-        /* Improve touch targets for mobile */
-        min-height: 44px;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+        /* Improve touch targets on mobile */
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        touch-action: manipulation;
         user-select: none;
+        -webkit-user-select: none;
     }
     
     .case-study-nav-card.previous {
@@ -4585,12 +4587,8 @@ button.nav-link {
         gap: 24px;
     }
     
-    /* Remove hover effects on mobile to prevent touch issues */
     .case-study-nav-card:hover {
         border-color: rgba(255, 255, 255, 0.15);
-        transform: none !important;
-        background: rgba(255, 255, 255, 0.02) !important;
-        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0) !important;
     }
     
     .case-study-nav-card:last-child:hover {
@@ -4600,13 +4598,6 @@ button.nav-link {
     .case-study-nav-card.previous:hover::after,
     .case-study-nav-card.next:hover::after {
         border-radius: 0;
-        display: none; /* Hide hover overlays on mobile */
-    }
-    
-    /* Add active state for better touch feedback */
-    .case-study-nav-card:active {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.05);
     }
     
     .case-study-nav-arrow {
@@ -6113,22 +6104,4 @@ button.nav-link {
 
 .mobile-controls-group .call-button.tooltip-active .button-text {
     color: white !important;
-}
-
-/* Disable hover effects on touch devices to prevent mobile navigation issues */
-@media (hover: none) and (pointer: coarse) {
-    .case-study-nav-card:hover {
-        transform: none !important;
-        background: rgba(255, 255, 255, 0.02) !important;
-        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 1.0) !important;
-    }
-    
-    .case-study-nav-card:hover::after {
-        display: none !important;
-    }
-    
-    .case-study-nav-card.previous:hover::after,
-    .case-study-nav-card.next:hover::after {
-        display: none !important;
-    }
 }
