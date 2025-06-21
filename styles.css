@@ -5169,6 +5169,8 @@ button.nav-link {
     padding: 40px;
     position: relative;
     min-height: 380px; /* Consistent minimum height for form and success states */
+    display: flex; /* Enable flexbox for proper success state centering */
+    flex-direction: column; /* Stack children vertically */
 }
 
 /* Increase minimum height on screens above 768px to accommodate larger buttons */
@@ -5823,6 +5825,7 @@ button.nav-link {
 @media (min-width: 769px) {
     .feedback-success-state {
         height: 100%;
+        display: flex; /* Ensure flexbox layout when visible */
     }
 }
 
