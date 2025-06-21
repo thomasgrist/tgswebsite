@@ -5814,18 +5814,12 @@ button.nav-link {
     justify-content: center;
     align-items: center;
     gap: 24px;
-    min-height: 380px; /* Consistent minimum height with form container */
     display: none;
     margin-top: 0;
     padding-top: 0;
 }
 
-/* Increase minimum height on screens above 768px to match form container */
-@media (min-width: 769px) {
-    .feedback-success-state {
-        min-height: 400px; /* Match form container minimum height */
-    }
-}
+/* Remove minimum height constraints for success state */
 
 .feedback-success-icon {
     margin: 0 auto;
