@@ -126,13 +126,7 @@
                 touchStarted = false;
             }, { passive: false });
             
-            // Mouse events for desktop
-            card.addEventListener('mousedown', function(e) {
-                if (!('ontouchstart' in window)) {
-                    console.log('Case Study Navigation: Mouse down, navigating');
-                    navigate(e);
-                }
-            });
+
             
         } catch (error) {
             console.error('Case Study Navigation: Error adding event listeners:', error);
