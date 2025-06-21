@@ -5992,6 +5992,7 @@ button.nav-link {
 
     .bottom-feedback-form-container {
         padding: 32px;
+        min-height: 397px; /* Updated mobile min-height */
     }
 
     .feedback-intro {
