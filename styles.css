@@ -5819,6 +5819,14 @@ button.nav-link {
     padding-top: 0;
 }
 
+/* Ensure success state content is vertically centered on desktop */
+@media (min-width: 769px) {
+    .feedback-success-state {
+        height: 100%;
+        min-height: 438px; /* Match container min-height for proper centering */
+    }
+}
+
 /* Remove minimum height constraints for success state */
 
 .feedback-success-icon {
