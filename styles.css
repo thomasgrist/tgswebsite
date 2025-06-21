@@ -5601,6 +5601,13 @@ button.nav-link {
     height: 358px;
 }
 
+/* Mobile height for feedback form */
+@media (max-width: 768px) {
+    .feedback-form {
+        height: 333px;
+    }
+}
+
 .feedback-fields {
     display: flex;
     flex-direction: column;
@@ -5821,6 +5828,13 @@ button.nav-link {
     margin-top: 0;
     padding-top: 0;
     height: 358px;
+}
+
+/* Mobile height for success state */
+@media (max-width: 768px) {
+    .feedback-success-state {
+        height: 333px;
+    }
 }
 
 /* Ensure success state fills container height on desktop for proper centering */
