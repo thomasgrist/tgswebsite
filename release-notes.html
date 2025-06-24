@@ -47,6 +47,77 @@
             margin-bottom: 8px !important;
             flex: none !important;
         }
+        
+        .timestamp-time {
+            margin-bottom: 8px;
+        }
+        
+        .timestamp-date {
+            font-size: 15px;
+        }
+        
+        @media (min-width: 1200px) {
+            .overview-date,
+            .timestamp-time,
+            .timestamp-date {
+                position: static !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .overview-content-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px !important;
+            }
+            .overview-date {
+                margin-bottom: 12px !important;
+                width: 100% !important;
+            }
+            .overview-content-column {
+                width: 100% !important;
+            }
+        }
+        
+        @media (min-width: 1000px) and (max-width: 1199px) {
+            .overview-date {
+                position: static !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+            }
+        }
+        
+        .content-block-text.secondary-text {
+            font-style: italic;
+        }
+        
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .case-study-content-block,
+            .content-block-container,
+            .content-block-text-container,
+            .content-block-text {
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .overview-content-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            .overview-date {
+                margin-bottom: 12px !important;
+                width: 100% !important;
+            }
+            .overview-content-column {
+                width: 100% !important;
+            }
+        }
     </style>
     
     <!-- Font loading detection -->
@@ -251,7 +322,10 @@
                 <!-- Overview Section Component (from case studies) -->
                 <div class="case-study-overview-section" id="overview">
                     <div class="overview-content-row">
-                        <div class="overview-date">2nd Jul '25, 23:58</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">23:58</div>
+                            <div class="timestamp-date">2nd Jul '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">Major performance improvements and new content additions:</p>
@@ -263,7 +337,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">28th Jun '25, 16:42</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">16:42</div>
+                            <div class="timestamp-date">28th Jun '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
@@ -271,7 +348,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">15th Jun '25, 14:27</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">14:27</div>
+                            <div class="timestamp-date">15th Jun '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">Design system updates and accessibility improvements:</p>
@@ -283,7 +363,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">8th Jun '25, 09:15</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">09:15</div>
+                            <div class="timestamp-date">8th Jun '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">Content updates and bug fixes:</p>
@@ -295,7 +378,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">3rd Jun '25, 18:33</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">18:33</div>
+                            <div class="timestamp-date">3rd Jun '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
@@ -303,7 +389,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">29th May '25, 11:48</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">11:48</div>
+                            <div class="timestamp-date">29th May '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
@@ -311,7 +400,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">24th May '25, 20:56</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">20:56</div>
+                            <div class="timestamp-date">24th May '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
@@ -319,7 +411,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">19th May '25, 13:22</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">13:22</div>
+                            <div class="timestamp-date">19th May '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
@@ -327,7 +422,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">14th May '25, 07:39</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">07:39</div>
+                            <div class="timestamp-date">14th May '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
@@ -335,7 +433,10 @@
                         </div>
                     </div>
                     <div class="overview-content-row">
-                        <div class="overview-date">10th May '25, 15:04</div>
+                        <div class="overview-date">
+                            <div class="timestamp-time">15:04</div>
+                            <div class="timestamp-date">10th May '25</div>
+                        </div>
                         <div class="overview-content-column">
                             <div class="overview-item overview-item-first">
                                 <p class="overview-text">All website updates, improvements, and feature releases are automatically documented here to provide transparency into the portfolio's evolution.</p>
