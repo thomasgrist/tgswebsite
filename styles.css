@@ -1242,6 +1242,16 @@ body {
     .header-logo {
         transform: translateY(2px);
     }
+    
+    /* Keep header fixed in place on desktop - don't move when scrolling */
+    .fixed-header.scrolled {
+        top: 40px; /* Stay at original position instead of moving to 12px */
+    }
+    
+    /* Keep left navigation fixed in place on desktop - don't move when scrolling */
+    .left-navigation.scrolled {
+        top: 0; /* Stay at original position instead of moving to -28px */
+    }
 }
 
 .header-logo,
