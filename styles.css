@@ -279,20 +279,25 @@ body {
 
 /* Navigation Active States */
 .nav-item.active {
-    background-color: rgba(255, 255, 255, 0.35);
-    transform: translateX(8px);
+    background-color: rgba(255, 255, 255, 0.35) !important;
+    transform: translateX(8px) !important;
     transition: background-color var(--transition-hover-in) var(--easing-smooth), 
                 transform var(--transition-hover-in) var(--easing-smooth);
 }
 
 .nav-item.active .nav-arrow {
-    transform: rotate(45deg);
+    transform: rotate(45deg) !important;
     transition: transform var(--transition-hover-in) var(--easing-smooth);
 }
 
-/* Ensure active state takes precedence over hover */
+/* Ensure active state takes precedence over hover - remove hover effects completely when active */
 .nav-item.active:hover {
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.35) !important;
+    transform: translateX(8px) !important;
+}
+
+.nav-item.active:hover .nav-arrow {
+    transform: rotate(45deg) !important;
 }
 
 .nav-link {

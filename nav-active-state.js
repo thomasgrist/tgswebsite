@@ -79,12 +79,37 @@ function setNavigationActiveState() {
     }
 }
 
+// Function to handle immediate active state on navigation link clicks
+function handleNavigationClick() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Immediately remove active class from all nav items
+            document.querySelectorAll('.nav-item.active').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Immediately add active class to the clicked nav item
+            const navItem = this.closest('.nav-item');
+            if (navItem) {
+                navItem.classList.add('active');
+                console.log('🚀 Immediately applied active state on click');
+            }
+        });
+    });
+}
+
 // Execute when DOM is fully loaded
 if (document.readyState === 'loading') {
     console.log('DOM is loading, waiting for DOMContentLoaded...');
-    document.addEventListener('DOMContentLoaded', setNavigationActiveState);
+    document.addEventListener('DOMContentLoaded', function() {
+        setNavigationActiveState();
+        handleNavigationClick();
+    });
 } else {
     // DOM is already loaded
     console.log('DOM already loaded, executing immediately...');
     setNavigationActiveState();
+    handleNavigationClick();
 } 
