@@ -4742,6 +4742,12 @@ button.nav-link {
 }
 
 @media (max-width: 1024px) {
+    .overview-content-row {
+        gap: 4px !important;
+    }
+}
+
+@media (max-width: 1024px) {
     .overview-content-column {
         width: calc(100% - 20px);
     }
