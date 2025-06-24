@@ -142,48 +142,7 @@ body {
     display: none;
 }
 
-/* Backlog and Release Notes styling */
-.backlog-item {
-    /* margin-top: 24px; removed spacing above backlog item */
-}
-
-.backlog-item .nav-text,
-.release-notes-item .nav-text {
-    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: 400; /* Regular Apercu, not Light */
-    font-size: 12px;
-    line-height: 1.4em;
-    color: #999999; /* Light grey color */
-}
-
-/* Ensure arrows are visible for backlog and release notes items */
-.backlog-item .nav-arrow,
-.release-notes-item .nav-arrow {
-    opacity: 0.7; /* Slightly dimmed grey arrow */
-}
-
-/* Hover states for backlog and release notes items */
-.backlog-item:hover .nav-text,
-.release-notes-item:hover .nav-text {
-    color: #FFFFFF; /* White text on hover */
-}
-
-.backlog-item:hover .nav-arrow,
-.release-notes-item:hover .nav-arrow {
-    opacity: 0.8; /* Slightly brighter arrow on hover */
-}
-
-/* Active states for backlog and release notes items */
-.backlog-item.active .nav-text,
-.release-notes-item.active .nav-text {
-    color: #FFFFFF; /* White text when active */
-}
-
-.backlog-item.active .nav-arrow,
-.release-notes-item.active .nav-arrow {
-    content: url('img/nav-arrow.svg'); /* Use white arrow when active */
-    opacity: 1; /* Full opacity for active state */
-}
+/* Backlog and Release Notes styling - Now matches standard nav items */
 
     /* About and Contact sections pure white in mobile menu */
 @media (max-width: 768px) {
@@ -1939,8 +1898,8 @@ button.nav-link {
         background-color: rgba(255, 255, 255, 0.15);
     }
     
-    /* CV nav item (visually first but 3rd child) needs top border on mobile */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::before { /* CV */
+    /* How I Design nav item (first child) needs top border on mobile */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::before { /* How I Design */
         content: '';
         position: absolute;
         left: -4px;
@@ -1950,8 +1909,8 @@ button.nav-link {
         background-color: rgba(255, 255, 255, 0.15);
     }
     
-    /* Add bottom border to CV nav item to create divider between CV and How I Design */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::after { /* CV */
+    /* Add bottom border to How I Design nav item to create divider between How I Design and CV */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::after { /* How I Design */
         content: '';
         position: absolute;
         left: -4px;
@@ -2098,21 +2057,21 @@ button.nav-link {
         animation-delay: 1.2s;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* CV */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* How I Design */
         animation-delay: 1.3s;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* CV */
         animation-delay: 1.4s;
     }
     
-    /* Order for About section items: CV first, How I Design second, Backlog third, Release notes fourth */
+    /* Order for About section items: How I Design first, CV second, Backlog third, Release notes fourth */
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3) { /* Backlog */
-        order: 3;
+        animation-delay: 1.5s;
     }
     
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(4) { /* Release notes */
-        order: 4;
+        animation-delay: 1.6s;
     }
     
 
@@ -2137,12 +2096,12 @@ button.nav-link {
     }
     
     /* Remove hover effects for How I Design on mobile (since it's not active yet) */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover { /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1):hover { /* How I Design */
         transform: translateX(0) !important;
         background-color: transparent !important;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2):hover .nav-link::before { /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1):hover .nav-link::before { /* How I Design */
         display: none !important;
     }
     
