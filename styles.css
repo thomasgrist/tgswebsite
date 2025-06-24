@@ -163,6 +163,11 @@ body {
 }
 
 /* Hover states for backlog and release notes items */
+.backlog-item:hover .nav-text,
+.release-notes-item:hover .nav-text {
+    color: #FFFFFF; /* White text on hover */
+}
+
 .backlog-item:hover .nav-arrow,
 .release-notes-item:hover .nav-arrow {
     opacity: 0.8; /* Slightly brighter arrow on hover */
