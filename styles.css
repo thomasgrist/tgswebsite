@@ -249,6 +249,24 @@ body {
     transition: transform var(--transition-hover-in) var(--easing-smooth);
 }
 
+/* Navigation Active States */
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: translateX(8px);
+    transition: background-color var(--transition-hover-in) var(--easing-smooth), 
+                transform var(--transition-hover-in) var(--easing-smooth);
+}
+
+.nav-item.active .nav-arrow {
+    transform: rotate(45deg);
+    transition: transform var(--transition-hover-in) var(--easing-smooth);
+}
+
+/* Ensure active state takes precedence over hover */
+.nav-item.active:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
 .nav-link {
     display: flex;
     align-items: center;
@@ -1946,7 +1964,7 @@ button.nav-link {
         overflow: visible;
     }
     
-    .left-navigation .nav-item:hover .nav-link::before {
+        .left-navigation .nav-item:hover .nav-link::before {
         content: '';
         position: absolute;
         top: 0;
@@ -1957,7 +1975,37 @@ button.nav-link {
         margin-left: -4px;
         z-index: -1;
     }
+
+    /* Mobile navigation active states */
+    .left-navigation .nav-item.active {
+        transform: translateX(0);
+        border-radius: 0;
+        background-color: transparent;
+        overflow: visible;
+    }
     
+    .left-navigation .nav-item.active .nav-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #2A2A2A; /* Slightly lighter than hover for better visibility */
+        width: 100vw;
+        margin-left: -4px;
+        z-index: -1;
+    }
+    
+    /* Ensure active state takes precedence over hover on mobile */
+    .left-navigation .nav-item.active:hover {
+        transform: translateX(0);
+        background-color: transparent;
+    }
+    
+    .left-navigation .nav-item.active:hover .nav-link::before {
+        background-color: #2A2A2A;
+    }
+
     .left-navigation .nav-link {
         position: relative;
     }
