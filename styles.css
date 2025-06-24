@@ -5027,12 +5027,13 @@ button.nav-link {
 @media (max-width: 768px) {
     .bottom-dropdown-menu {
         bottom: 32px;
-        right: 12px;
-        transform: translateY(100px);
+        left: 50%;
+        right: unset;
+        transform: translateX(-50%) translateY(100px);
     }
     
     .bottom-dropdown-menu.visible {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
     
     .dropdown-container {
@@ -5067,12 +5068,13 @@ button.nav-link {
 @media (max-width: 480px) {
     .bottom-dropdown-menu {
         bottom: 32px;
-        right: 8px;
-        transform: translateY(100px);
+        left: 50%;
+        right: unset;
+        transform: translateX(-50%) translateY(100px);
     }
     
     .bottom-dropdown-menu.visible {
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
     
     .dropdown-container {
@@ -6243,28 +6245,25 @@ button.nav-link {
     align-items: center;
     gap: 10px;
     padding: 2px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid #FFFFFF;
     border-radius: 4px;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
     font-size: 15px;
     line-height: 16px;
-    color: #B5B5B5;
+    color: #FFFFFF;
     background: transparent;
 }
 
 .backlog-card-reporter {
     background: transparent;
-    color: #B5B5B5;
+    color: #FFFFFF;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: normal;
+    font-weight: 300;
     font-size: 15px;
     line-height: 1;
-    padding: 8px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    width: 32px;
-    height: 32px;
+    padding: 0;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6273,10 +6272,10 @@ button.nav-link {
 .backlog-card-title {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300 !important;
-    font-size: 22px !important;
-    line-height: 1.4545454545454546em !important;
+    font-size: 19px !important;
+    line-height: 1.5263157894736843em !important;
     color: #FFFFFF !important;
-    margin-bottom: 8px;
+    margin-bottom: 4px !important;
 }
 
 .backlog-card-description {
@@ -6301,8 +6300,8 @@ button.nav-link {
     }
     
     .backlog-card-title {
-        font-size: 22px !important;
-        margin-bottom: 8px;
+        font-size: 19px !important;
+        margin-bottom: 4px !important;
     }
     
     .backlog-card-description {

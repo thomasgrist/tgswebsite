@@ -500,7 +500,13 @@ class BottomDropdownMenu {
                 
                 // Scroll to exactly the section position so dropdown updates correctly
                 // Add 1px to ensure we cross the threshold and trigger the dropdown update
-                const offsetTop = section.element.offsetTop + 1;
+                let offsetTop = section.element.offsetTop + 1;
+                
+                // Apply mobile offset to prevent content from appearing behind sticky menu
+                if (window.innerWidth <= 768) {
+                    offsetTop = Math.max(0, offsetTop - 80);
+                }
+                
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
