@@ -6237,7 +6237,7 @@ button.nav-link {
 
 /* Backlog Page Styles */
 .backlog-section {
-    margin-top: 80px;
+    margin-top: 156px;
 }
 
 .backlog-section:first-of-type {
@@ -6251,6 +6251,17 @@ button.nav-link {
     line-height: 1.4 !important;
     color: #B5B5B5 !important;
     margin-bottom: 48px;
+    position: relative;
+}
+
+.backlog-section-title::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    right: 0px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Backlog Cards Grid */
@@ -6295,6 +6306,12 @@ button.nav-link {
         padding-left: 16px;
         padding-right: 16px;
     }
+    
+    .backlog-section-title::before {
+        left: 16px;
+        right: 16px;
+        top: -15px;
+    }
 }
 
 /* Backlog Card Styles - Based on Speechmatics tile */
@@ -6311,7 +6328,7 @@ button.nav-link {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .backlog-card-callout {
@@ -6350,7 +6367,7 @@ button.nav-link {
     font-size: 19px !important;
     line-height: 1.5263157894736843em !important;
     color: #FFFFFF !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 12px !important;
 }
 
 .backlog-card-description {
