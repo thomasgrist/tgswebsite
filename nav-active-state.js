@@ -8,9 +8,22 @@ function setNavigationActiveState() {
     console.log('Setting navigation active state...');
     
     // Get the current page filename
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    console.log('Current page:', currentPage);
+    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    console.log('Current page (raw):', currentPage);
     console.log('Full pathname:', window.location.pathname);
+    
+    // Handle URLs without .html extension (common in live environments)
+    if (currentPage && !currentPage.includes('.') && currentPage !== '') {
+        currentPage = currentPage + '.html';
+        console.log('Added .html extension, current page now:', currentPage);
+    }
+    
+    // Fallback for root/homepage
+    if (!currentPage || currentPage === '.html') {
+        currentPage = 'index.html';
+    }
+    
+    console.log('Final current page:', currentPage);
     
     // Define the mapping between pages and their navigation text
     const pageNavMapping = {
