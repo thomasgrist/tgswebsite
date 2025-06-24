@@ -144,7 +144,7 @@ body {
 
 /* Backlog and Release Notes styling */
 .backlog-item {
-    margin-top: 24px; /* Add spacing above backlog item */
+    /* margin-top: 24px; removed spacing above backlog item */
 }
 
 .backlog-item .nav-text,
@@ -1866,6 +1866,7 @@ button.nav-link {
         background-color: var(--dark-2);
         /* Enable scrolling on mobile navigation */
         overflow-y: auto;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
         touch-action: pan-y;
@@ -1909,65 +1910,55 @@ button.nav-link {
     .left-navigation.menu-open .nav-section .nav-item:not(:last-child)::after {
         content: '';
         position: absolute;
-        left: 0;
-        right: 0;
+        left: -4px;
+        right: -4px;
         bottom: 0;
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
-        width: 100vw;
-        margin-left: -4px;
     }
     
     /* Add dividers above first item of each section */
     .left-navigation.menu-open .nav-section .nav-item:first-child::before {
         content: '';
         position: absolute;
-        left: 0;
-        right: 0;
+        left: -4px;
+        right: -4px;
         top: 0;
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
-        width: 100vw;
-        margin-left: -4px;
     }
     
     /* Add dividers below last item of each section */
     .left-navigation.menu-open .nav-section .nav-item:last-child::after {
         content: '';
         position: absolute;
-        left: 0;
-        right: 0;
+        left: -4px;
+        right: -4px;
         bottom: 0;
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
-        width: 100vw;
-        margin-left: -4px;
     }
     
     /* CV nav item (visually first but 3rd child) needs top border on mobile */
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::before { /* CV */
         content: '';
         position: absolute;
-        left: 0;
-        right: 0;
+        left: -4px;
+        right: -4px;
         top: 0;
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
-        width: 100vw;
-        margin-left: -4px;
     }
     
     /* Add bottom border to CV nav item to create divider between CV and How I Design */
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1)::after { /* CV */
         content: '';
         position: absolute;
-        left: 0;
-        right: 0;
+        left: -4px;
+        right: -4px;
         bottom: 0;
         height: 1px;
         background-color: rgba(255, 255, 255, 0.15);
-        width: 100vw;
-        margin-left: -4px;
     }
     
     .left-navigation.menu-open .nav-section .nav-item {
@@ -2001,11 +1992,10 @@ button.nav-link {
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
+        left: -4px;
+        right: -4px;
         bottom: 0;
         background-color: #1F1F1F;
-        width: 100vw;
-        margin-left: -4px;
         z-index: -1;
     }
 
@@ -2021,11 +2011,10 @@ button.nav-link {
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
+        left: -4px;
+        right: -4px;
         bottom: 0;
         background-color: #2A2A2A; /* Slightly lighter than hover for better visibility */
-        width: 100vw;
-        margin-left: -4px;
         z-index: -1;
     }
     
