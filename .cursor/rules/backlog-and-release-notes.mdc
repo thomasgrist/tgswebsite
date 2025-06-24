@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+every time i push to GitHub ask me 
+- if I want to log this release to a timestamped release on the release notes page
+- if I do please write some release notes that describe the changes I’ve just pushed to GitHub, please be short and concise, use bullet points if you need to for longer content
+
+also, every time i push to GitHub ask me if this completes anything noted in the backlog
+- if I provide a backlog card number e.g. 0002 please delete this card from the backlog page
+
+please include any changes to the release notes page and backlog page in the push to github along with the changes I originally requested to push
+
+on the release notes page there should only ever be 10 releases, if I log a release that would push the amount of releases on the page to 11 please automatically delete the oldest existing release

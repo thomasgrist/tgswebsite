@@ -135,26 +135,55 @@ body {
     color: #FFFFFF;
 }
 
-/* Make thomasgrist.co.uk section pure white like other sections */
-.nav-section:nth-child(4) .nav-section-title {
-    color: #FFFFFF;
-}
-
-/* Ensure thomasgrist.co.uk section title is pure white */
-.nav-section:last-child .nav-section-title {
-    color: #FFFFFF !important;
-}
+/* Removed old thomasgrist.co.uk section references */
 
 /* Hide mobile backlog item on desktop */
 .mobile-backlog-item {
     display: none;
 }
 
-    /* About, Contact, and thomasgrist.co.uk sections pure white in mobile menu */
+/* Backlog and Release Notes styling */
+.backlog-item {
+    margin-top: 24px; /* Add spacing above backlog item */
+}
+
+.backlog-item .nav-text,
+.release-notes-item .nav-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 400; /* Regular Apercu, not Light */
+    font-size: 12px;
+    line-height: 1.4em;
+    color: #999999; /* Light grey color */
+}
+
+/* Ensure arrows are visible for backlog and release notes items */
+.backlog-item .nav-arrow,
+.release-notes-item .nav-arrow {
+    opacity: 0.7; /* Slightly dimmed grey arrow */
+}
+
+/* Hover states for backlog and release notes items */
+.backlog-item:hover .nav-arrow,
+.release-notes-item:hover .nav-arrow {
+    opacity: 0.8; /* Slightly brighter arrow on hover */
+}
+
+/* Active states for backlog and release notes items */
+.backlog-item.active .nav-text,
+.release-notes-item.active .nav-text {
+    color: #FFFFFF; /* White text when active */
+}
+
+.backlog-item.active .nav-arrow,
+.release-notes-item.active .nav-arrow {
+    content: url('img/nav-arrow.svg'); /* Use white arrow when active */
+    opacity: 1; /* Full opacity for active state */
+}
+
+    /* About and Contact sections pure white in mobile menu */
 @media (max-width: 768px) {
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-section-title,
-    .left-navigation.menu-open .nav-section:nth-child(3) .nav-section-title,
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-section-title {
+    .left-navigation.menu-open .nav-section:nth-child(3) .nav-section-title {
         color: #FFFFFF;
     }
     
@@ -174,12 +203,6 @@ body {
     
     .left-navigation.menu-open .nav-section:nth-child(3) { /* Contact */
         order: 1;
-    }
-    
-    /* Show thomasgrist.co.uk section on mobile at the bottom */
-    .left-navigation.menu-open .nav-section:nth-child(4) {
-        display: flex;
-        order: 4;
     }
     
     /* Reorder items within About section: CV first, then How I Design, then Backlog */
@@ -2084,15 +2107,24 @@ button.nav-link {
         animation-delay: 1.4s;
     }
     
-
-    
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-section-title {
-        animation-delay: 1.6s;
-        color: #FFFFFF;
+    /* Order for About section items: CV first, How I Design second, Backlog third, Release notes fourth */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3) { /* Backlog */
+        order: 3;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(4) .nav-list .nav-item:nth-child(1) {
-        animation-delay: 1.7s;
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(4) { /* Release notes */
+        order: 4;
+    }
+    
+
+    
+    /* Enhanced mobile menu animations for backlog and release notes items in About section */
+    .left-navigation.menu-open .backlog-item {
+        animation: fadeInUp 0.4s ease-out 1.5s both;
+    }
+    
+    .left-navigation.menu-open .release-notes-item {
+        animation: fadeInUp 0.4s ease-out 1.6s both;
     }
     
     /* Show Contact section on mobile */
@@ -4742,12 +4774,6 @@ button.nav-link {
 }
 
 @media (max-width: 1024px) {
-    .overview-content-row {
-        gap: 4px !important;
-    }
-}
-
-@media (max-width: 1024px) {
     .overview-content-column {
         width: calc(100% - 20px);
     }
@@ -4774,7 +4800,7 @@ button.nav-link {
     /* Stack overview content row */
     .overview-content-row {
         flex-direction: column;
-        gap: 24px;
+        gap: 4px;
     }
     
     .overview-date {
