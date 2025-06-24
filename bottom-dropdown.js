@@ -342,8 +342,9 @@ class BottomDropdownMenu {
 
     getCurrentSectionId() {
         const scrollY = window.scrollY;
-        // No threshold offset - section becomes active when it reaches the top of the page
-        const thresholdOffset = 0;
+        // Add 64px threshold offset for desktop - section becomes active when it's within 64px of viewport top
+        // Keep 0 offset for mobile to maintain current behavior
+        const thresholdOffset = window.innerWidth > 768 ? 64 : 0;
 
         // Check if we're at the very top
         if (scrollY < 50) {
@@ -351,7 +352,7 @@ class BottomDropdownMenu {
         }
 
         // Find the current section based on scroll position
-        // Section becomes active when it reaches the top of the viewport
+        // Section becomes active when it reaches the threshold offset from the top of the viewport
         for (let i = this.sections.length - 1; i >= 0; i--) {
             const section = this.sections[i];
             const sectionTop = section.element.offsetTop;
