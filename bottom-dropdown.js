@@ -502,9 +502,13 @@ class BottomDropdownMenu {
                 // Add 1px to ensure we cross the threshold and trigger the dropdown update
                 let offsetTop = section.element.offsetTop + 1;
                 
-                // Apply mobile offset to prevent content from appearing behind sticky menu
+                // Apply offset to prevent content from appearing behind sticky menu
                 if (window.innerWidth <= 768) {
+                    // Mobile: larger offset for mobile menu
                     offsetTop = Math.max(0, offsetTop - 80);
+                } else {
+                    // Desktop: 56px offset from viewport top
+                    offsetTop = Math.max(0, offsetTop - 56);
                 }
                 
                 window.scrollTo({

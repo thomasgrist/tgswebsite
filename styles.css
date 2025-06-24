@@ -3561,6 +3561,13 @@ button.nav-link {
     top: 104px; /* Updated positioning when tabs are sticky */
 }
 
+/* Set overview-date top value to 56px on devices larger than 1000px */
+@media (min-width: 1001px) {
+    .overview-date {
+        top: 56px;
+    }
+}
+
 .overview-content-column {
     width: 617px;
     display: flex;
