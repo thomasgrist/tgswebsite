@@ -16,7 +16,8 @@
         'rio-esg.html': 'Rio ESG',
         'deltatre.html': 'Deltatre',
         'audi.html': 'Audi',
-        'backlog.html': 'Backlog'
+        'backlog.html': 'Backlog',
+        'release-notes.html': 'Release notes'
     };
     
     // Get the navigation text for the current page
