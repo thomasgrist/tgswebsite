@@ -169,18 +169,26 @@ body {
         order: 1;
     }
     
-    /* Reorder items within About section: CV first, then How I Design, then Backlog */
+    /* Reorder items within About section: How I Design first, CV second, Backlog third, Release notes fourth */
     .left-navigation.menu-open .nav-section:nth-child(2) .nav-list {
         display: flex;
         flex-direction: column;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* CV */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1) { /* How I Design */
         order: 1;
     }
     
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* How I Design */
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(2) { /* CV */
         order: 2;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(3) { /* Backlog */
+        order: 3;
+    }
+    
+    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(4) { /* Release notes */
+        order: 4;
     }
     
 
