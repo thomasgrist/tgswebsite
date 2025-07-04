@@ -203,9 +203,15 @@ class BottomFeedbackForm {
         
         // Preserve the user's name but clear the message
         const preservedName = nameField ? nameField.value : '';
-        if (messageField) messageField.value = '';
         
-        // Save the preserved name back to sessionStorage so it persists
+        // Clear message field immediately and forcefully
+        if (messageField) {
+            messageField.value = '';
+            // Force a change event to ensure any listeners are notified
+            messageField.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        
+        // Immediately save the preserved name with empty message to sessionStorage
         if (preservedName.trim()) {
             const formData = {
                 name: preservedName,
@@ -215,6 +221,23 @@ class BottomFeedbackForm {
         } else {
             this.clearSavedFormData();
         }
+        
+        // Use setTimeout to ensure the message field is cleared after any pending browser operations
+        setTimeout(() => {
+            if (messageField) {
+                messageField.value = '';
+                // Force another sessionStorage update after a short delay to override any auto-save
+                if (preservedName.trim()) {
+                    const formData = {
+                        name: preservedName,
+                        message: ''
+                    };
+                    sessionStorage.setItem('feedbackFormData', JSON.stringify(formData));
+                } else {
+                    this.clearSavedFormData();
+                }
+            }
+        }, 100);
         
         // Reset button
         submitText.textContent = 'Submit feedback';
@@ -244,8 +267,32 @@ class BottomFeedbackForm {
                 timestamp: Date.now() // Add timestamp for debugging
             };
             
+            // Check if there's existing data in sessionStorage
+            const existingData = sessionStorage.getItem('feedbackFormData');
+            let existingFormData = null;
+            
+            if (existingData) {
+                try {
+                    existingFormData = JSON.parse(existingData);
+                } catch (e) {
+                    console.warn('Invalid existing form data, clearing it');
+                    sessionStorage.removeItem('feedbackFormData');
+                }
+            }
+            
             // Only save if there's actually some data to save
             if (formData.name || formData.message) {
+                // Special handling: if existing data has the same name but empty message,
+                // and current form has the same name but also empty message,
+                // preserve the empty message state (don't save old message)
+                if (existingFormData && 
+                    existingFormData.name === formData.name && 
+                    existingFormData.message === '' && 
+                    formData.message === '') {
+                    // Don't update - keep the existing empty message state
+                    return;
+                }
+                
                 const dataToSave = JSON.stringify(formData);
                 sessionStorage.setItem('feedbackFormData', dataToSave);
                 console.log('Form data saved:', { name: formData.name ? '[name provided]' : '[no name]', message: formData.message ? '[message provided]' : '[no message]' });
