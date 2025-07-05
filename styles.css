@@ -6540,20 +6540,21 @@ button.nav-link {
 
 @media (max-width: 768px) {
     .ticker-banner {
-        height: 48px;
+        height: 60px;
+        padding-bottom: 12px;
     }
     
     .ticker-fixed-text {
         padding: 0 16px;
-        height: 48px;
+        height: 60px;
     }
     
     .ticker-scroll-container {
-        height: 48px;
+        height: 60px;
     }
     
     .ticker-scroll-content {
-        height: 48px;
+        height: 60px;
         animation: ticker-scroll-mobile 40s linear infinite;
     }
     
@@ -6568,20 +6569,20 @@ button.nav-link {
 
 @media (max-width: 479px) {
     .ticker-banner {
-        height: 48px;
+        height: 60px;
     }
     
     .ticker-fixed-text {
         padding: 0 12px;
-        height: 48px;
+        height: 60px;
     }
     
     .ticker-scroll-container {
-        height: 48px;
+        height: 60px;
     }
     
     .ticker-scroll-content {
-        height: 48px;
+        height: 60px;
         animation: ticker-scroll-tiny 40s linear infinite;
     }
     
