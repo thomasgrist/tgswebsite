@@ -6487,6 +6487,24 @@ button.nav-link {
     }
 }
 
+@keyframes ticker-scroll-tablet {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-220%);
+    }
+}
+
+@keyframes ticker-scroll-mobile {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-250%);
+    }
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .ticker-banner {
@@ -6505,6 +6523,7 @@ button.nav-link {
     
     .ticker-scroll-content {
         height: 44px;
+        animation: ticker-scroll-tablet 36s linear infinite;
     }
     
     .ticker-item {
@@ -6534,6 +6553,7 @@ button.nav-link {
     
     .ticker-scroll-content {
         height: 40px;
+        animation: ticker-scroll-mobile 36s linear infinite;
     }
     
     .ticker-item {
