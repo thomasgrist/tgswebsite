@@ -123,7 +123,6 @@ body {
 .nav-section-title {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 1.6em;
     color: #FFFFFF;
     padding: 0 0 12px 16px;
@@ -454,7 +453,6 @@ body {
 .hero-location {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 1.6em;
     color: var(--nav-text-light);
     transform: translateY(-8px);
@@ -998,7 +996,6 @@ body {
 .tag-text {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 16px;
     color: #B5B5B5;
 }
@@ -1006,7 +1003,6 @@ body {
 .project-tile-company {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 1.6em;
     color: #B5B5B5;
 }
@@ -1148,7 +1144,6 @@ body {
 .skill-tag-text {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 17px;
     color: #FFFFFF;
 }
@@ -1721,7 +1716,6 @@ button.nav-link {
         border-radius: 50px;
         color: white;
         font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        font-size: 15px;
         font-weight: 400;
         cursor: pointer;
         transition: all 0.2s ease, opacity 0.3s ease;
@@ -2588,7 +2582,6 @@ button.nav-link {
 .timeline-tag-text {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 16px;
     color: #B5B5B5;
 }
@@ -2632,7 +2625,6 @@ button.nav-link {
 .timeline-skill-text {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 17px;
     color: #B5B5B5;
 }
@@ -3838,7 +3830,6 @@ button.nav-link {
     }
     
     .overview-text {
-        font-size: 15px;
         line-height: 1.6em;
     }
     
@@ -3888,7 +3879,6 @@ button.nav-link {
     }
     
     .ai-thoughts-link {
-        font-size: 15px;
         line-height: 1.375em;
     }
     
@@ -3998,7 +3988,6 @@ button.nav-link {
     
     .action-button {
         padding: 8px 16px;
-        font-size: 15px;
         gap: 8px;
     }
     
@@ -4174,6 +4163,12 @@ button.nav-link {
 /* Exclude cube animation from resize animation stopper to prevent erratic spinning */
 .resize-animation-stopper .cube {
     animation-duration: 30s !important;
+    animation-delay: 0s !important;
+}
+
+/* Exclude ticker animation from resize animation stopper to prevent flickering */
+.resize-animation-stopper .ticker-scroll-content {
+    animation-duration: 40s !important;
     animation-delay: 0s !important;
 }
 
@@ -5161,7 +5156,6 @@ button.nav-link {
     
     .dropdown-company-name,
     .dropdown-current-section {
-        font-size: 15px;
     }
     
     .dropdown-arrow {
@@ -5180,7 +5174,6 @@ button.nav-link {
     }
 
     .dropdown-menu-link {
-        font-size: 15px;
         padding: 8px 10px;
     }
 }
@@ -5700,7 +5693,6 @@ button.nav-link {
 .feedback-label {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     color: #FFFFFF;
     margin: 0;
 }
@@ -5708,7 +5700,6 @@ button.nav-link {
 .feedback-optional {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     color: #B5B5B5;
     opacity: 1;
 }
@@ -5843,7 +5834,6 @@ button.nav-link {
     color: #FFFFFF;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     border: none;
     white-space: nowrap;
     justify-content: center;
@@ -6139,7 +6129,6 @@ button.nav-link {
     }
 
     .feedback-intro {
-        font-size: 15px;
     }
 
     .feedback-title {
@@ -6164,7 +6153,6 @@ button.nav-link {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 15px;
     font-weight: 400;
     letter-spacing: 0.02em;
     backdrop-filter: blur(37px);
@@ -6339,7 +6327,6 @@ button.nav-link {
     border-radius: 4px;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 16px;
     color: #FFFFFF;
     background: transparent;
@@ -6350,7 +6337,6 @@ button.nav-link {
     color: #FFFFFF;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-weight: 300;
-    font-size: 15px;
     line-height: 1;
     padding: 0;
     border: none;
@@ -6451,7 +6437,7 @@ button.nav-link {
     display: flex;
     align-items: center;
     height: 48px;
-    animation: ticker-scroll 40s linear infinite;
+    animation: ticker-scroll-xl 40s linear infinite;
     white-space: nowrap;
 }
 
@@ -6468,7 +6454,7 @@ button.nav-link {
     content: '•';
     position: absolute;
     right: 12px;
-    color: #666;
+    color: #ffffff;
     font-size: 16px;
     top: 50%;
     transform: translateY(-50%);
@@ -6478,12 +6464,13 @@ button.nav-link {
     content: '';
 }
 
-@keyframes ticker-scroll {
+/* Ticker animations for different breakpoints */
+@keyframes ticker-scroll-xl {
     0% {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-190%);
+        transform: translateX(-240%);
     }
 }
 
@@ -6492,7 +6479,7 @@ button.nav-link {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-250%);
+        transform: translateX(-335%);
     }
 }
 
@@ -6501,7 +6488,7 @@ button.nav-link {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-320%);
+        transform: translateX(-420%);
     }
 }
 
@@ -6510,16 +6497,7 @@ button.nav-link {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-400%);
-    }
-}
-
-@keyframes ticker-scroll-tablet {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-500%);
+        transform: translateX(-575%);
     }
 }
 
@@ -6528,70 +6506,59 @@ button.nav-link {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-550%);
+        transform: translateX(-1000%);
     }
 }
 
-/* Responsive Ticker Animation Breakpoints */
-@media (max-width: 1600px) and (min-width: 1201px) {
+@keyframes ticker-scroll-tiny {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-1700%);
+    }
+}
+
+/* Ticker Banner Responsive Breakpoints */
+@media (max-width: 1599px) {
     .ticker-scroll-content {
-        animation: ticker-scroll-large 40s linear infinite !important;
+        animation: ticker-scroll-large 40s linear infinite;
     }
 }
 
-@media (max-width: 1200px) and (min-width: 1001px) {
+@media (max-width: 1199px) {
     .ticker-scroll-content {
-        animation: ticker-scroll-medium 40s linear infinite !important;
+        animation: ticker-scroll-medium 40s linear infinite;
     }
 }
 
-@media (max-width: 1000px) and (min-width: 769px) {
+@media (max-width: 999px) {
     .ticker-scroll-content {
-        animation: ticker-scroll-small 40s linear infinite !important;
+        animation: ticker-scroll-small 40s linear infinite;
     }
 }
 
-@media (max-width: 768px) and (min-width: 481px) {
-    .ticker-scroll-content {
-        animation: ticker-scroll-tablet 40s linear infinite !important;
-    }
-}
-
-@media (max-width: 480px) and (min-width: 321px) {
-    .ticker-scroll-content {
-        animation: ticker-scroll-mobile 40s linear infinite !important;
-    }
-}
-
-@media (max-width: 320px) {
-    .ticker-scroll-content {
-        animation: ticker-scroll-mobile 40s linear infinite !important;
-    }
-}
-
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .ticker-banner {
-        height: 44px;
+        height: 48px;
     }
     
     .ticker-fixed-text {
-        font-size: 16px;
         padding: 0 16px;
-        height: 44px;
+        height: 48px;
     }
     
     .ticker-scroll-container {
-        height: 44px;
+        height: 48px;
     }
     
     .ticker-scroll-content {
-        height: 44px;
+        height: 48px;
+        animation: ticker-scroll-mobile 40s linear infinite;
     }
     
     .ticker-item {
-        font-size: 16px;
-        padding: 0 20px;
+        padding: 0 29px 0px 0px;
     }
     
     .ticker-item:after {
@@ -6599,27 +6566,26 @@ button.nav-link {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
     .ticker-banner {
-        height: 40px;
+        height: 48px;
     }
     
     .ticker-fixed-text {
-        font-size: 15px;
         padding: 0 12px;
-        height: 40px;
+        height: 48px;
     }
     
     .ticker-scroll-container {
-        height: 40px;
+        height: 48px;
     }
     
     .ticker-scroll-content {
-        height: 40px;
+        height: 48px;
+        animation: ticker-scroll-tiny 40s linear infinite;
     }
     
     .ticker-item {
-        font-size: 15px;
         padding: 0 15px;
     }
     
