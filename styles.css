@@ -6487,12 +6487,39 @@ button.nav-link {
     }
 }
 
+@keyframes ticker-scroll-large {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-250%);
+    }
+}
+
+@keyframes ticker-scroll-medium {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-320%);
+    }
+}
+
+@keyframes ticker-scroll-small {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-400%);
+    }
+}
+
 @keyframes ticker-scroll-tablet {
     0% {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-220%);
+        transform: translateX(-500%);
     }
 }
 
@@ -6501,7 +6528,44 @@ button.nav-link {
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-250%);
+        transform: translateX(-550%);
+    }
+}
+
+/* Responsive Ticker Animation Breakpoints */
+@media (max-width: 1600px) and (min-width: 1201px) {
+    .ticker-scroll-content {
+        animation: ticker-scroll-large 40s linear infinite !important;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1001px) {
+    .ticker-scroll-content {
+        animation: ticker-scroll-medium 40s linear infinite !important;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 769px) {
+    .ticker-scroll-content {
+        animation: ticker-scroll-small 40s linear infinite !important;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .ticker-scroll-content {
+        animation: ticker-scroll-tablet 40s linear infinite !important;
+    }
+}
+
+@media (max-width: 480px) and (min-width: 321px) {
+    .ticker-scroll-content {
+        animation: ticker-scroll-mobile 40s linear infinite !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .ticker-scroll-content {
+        animation: ticker-scroll-mobile 40s linear infinite !important;
     }
 }
 
@@ -6523,7 +6587,6 @@ button.nav-link {
     
     .ticker-scroll-content {
         height: 44px;
-        animation: ticker-scroll-tablet 40s linear infinite;
     }
     
     .ticker-item {
@@ -6553,7 +6616,6 @@ button.nav-link {
     
     .ticker-scroll-content {
         height: 40px;
-        animation: ticker-scroll-mobile 40s linear infinite;
     }
     
     .ticker-item {
