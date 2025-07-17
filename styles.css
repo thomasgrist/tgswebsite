@@ -529,72 +529,7 @@ body {
     z-index: -1;
 }
 
-/* Coming Soon callout for navigation items */
-.nav-callout {
-    position: absolute;
-    top: -6px;
-    right: -36px;
-    background: rgba(181, 181, 181, 0.4);
-    color: rgba(181, 181, 181, 1);
-    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 1;
-    padding: 2px 3px;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-}
-
-.nav-callout::before {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
-    background: #060606;
-    border-radius: 3px;
-    z-index: -1;
-}
-
-/* Disabled navigation item styles */
-.nav-item.disabled .nav-link {
-    cursor: default;
-    pointer-events: none;
-    position: relative;
-}
-
-.nav-item.disabled .nav-text {
-    color: rgba(181, 181, 181, 1);
-}
-
-.nav-item.disabled .nav-arrow {
-    opacity: 0.7;
-}
-
-/* Remove hover effects from disabled navigation items */
-.nav-item.disabled:hover {
-    background-color: transparent;
-    transform: none;
-    transition: none;
-}
-
-.nav-item.disabled:hover .nav-arrow {
-    transform: rotate(0deg);
-    transition: none;
-}
-
-.nav-item.disabled:hover .nav-link {
-    color: inherit;
-}
-
 /* Specific positioning for individual coming soon callouts */
-#how-i-design-coming-soon {
-    top: 10px;
-    right: -17px;
-}
 
 #backlog-coming-soon {
     top: 10px;
@@ -673,11 +608,6 @@ body {
 
 /* Mobile-specific positioning for coming soon callouts */
 @media (max-width: 768px) {
-    #how-i-design-coming-soon {
-        top: 27px;
-        right: 20px;
-    }
-    
     #backlog-coming-soon {
         top: 27px;
         right: 20px;
@@ -2098,15 +2028,7 @@ button.nav-link {
         display: flex;
     }
     
-    /* Remove hover effects for How I Design on mobile (since it's not active yet) */
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1):hover { /* How I Design */
-        transform: translateX(0) !important;
-        background-color: transparent !important;
-    }
-    
-    .left-navigation.menu-open .nav-section:nth-child(2) .nav-list .nav-item:nth-child(1):hover .nav-link::before { /* How I Design */
-        display: none !important;
-    }
+
     
     @keyframes fadeInUp {
         from {
@@ -2905,6 +2827,17 @@ button.nav-link {
     width: 100%;
 }
 
+/* Specific spacing for How I Design page - reduce margin from 156px to 96px */
+.case-study-overview-section + .ai-thoughts-section,
+.case-study-content-block:has(.users-component) + .ai-thoughts-section {
+    margin-top: 96px;
+}
+
+/* Specific gap override for AI thoughts section on How I Design page */
+.ai-thoughts-section .ai-thoughts-text {
+    gap: 32px;
+}
+
 .ai-thoughts-row {
     display: flex;
     gap: 0;
@@ -3050,16 +2983,35 @@ button.nav-link {
 .ai-thoughts-title {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
     font-weight: 300 !important;
-    font-size: 17px !important;
+    font-size: 18px !important;
     line-height: 1.411764705882353em !important;
     color: #B5B5B5 !important;
     margin: 0 !important;
 }
 
+.ai-thoughts-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ai-thoughts-strategy-image {
+    width: 50%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.case-study-content-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .ai-thoughts-description {
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
     font-weight: 300 !important;
-    font-size: 19px !important;
+    font-size: 22px !important;
     line-height: 1.5263157894736843em !important;
     color: #FFFFFF !important;
     margin: 0 !important;
@@ -3133,6 +3085,13 @@ button.nav-link {
     height: 279px;
     object-fit: cover;
     border-radius: 4px;
+}
+
+.ai-thoughts-process-image {
+    width: 50%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 
@@ -3639,6 +3598,32 @@ button.nav-link {
     width: 100%;
 }
 
+.overview-text p {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+}
+
+.overview-bullet-list {
+    margin-top: 8px;
+}
+
+.overview-text .overview-bullet-text {
+    font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.5263157894736843em;
+    color: #B5B5B5;
+    margin: 0 0 8px 0;
+}
+
+.overview-text .overview-bullet-text:last-child {
+    margin-bottom: 0;
+}
+
 /* One Column Content Block Component */
 .case-study-content-block {
     margin-top: 96px;
@@ -3691,6 +3676,116 @@ button.nav-link {
     margin: 0;
     width: 617px;
     text-align: left;
+}
+
+/* Users Component */
+.case-study-content-block:has(.users-component) {
+    margin-top: 64px;
+}
+
+.users-component {
+    width: 100%;
+    max-width: 1187px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+}
+
+.users-component-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 43px;
+    width: 100%;
+    max-width: 1187px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.users-component-row:not(:first-child) {
+    border-top: none;
+}
+
+.users-icon-container {
+    width: 164.5px;
+    height: 149px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.users-icon-content {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 164px;
+    height: 151px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+}
+
+.keystone-icon {
+    width: 79.12px;
+    height: 61.74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cornerstone-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.users-text {
+    font-family: 'Apercu', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.411764705882353em;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+}
+
+.users-tags-container {
+    flex: 1;
+    max-width: 816px;
+}
+
+.users-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
+
+.users-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 70px;
+    flex-shrink: 0;
+    height: 24px;
+    box-sizing: border-box;
+}
+
+.users-tag-text {
+    font-family: 'Apercu', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.411764705882353em;
+    color: #B5B5B5;
+    white-space: nowrap;
 }
 
 /* Double Content Block Component */
@@ -3832,6 +3927,10 @@ button.nav-link {
     
     .overview-text {
         line-height: 1.6em;
+    }
+    
+    .overview-text p {
+        line-height: inherit;
     }
     
     .content-block-container {
@@ -4830,6 +4929,49 @@ button.nav-link {
     .double-content-text {
         padding-left: 0;
         padding-right: 0;
+    }
+    
+    /* Users Component Mobile */
+    .users-component {
+        gap: 0px;
+    }
+    
+    .users-component-row {
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+    }
+    
+    .users-icon-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        align-self: center;
+    }
+    
+    .users-icon-content {
+        position: static;
+        width: 200px;
+        margin: 0 auto;
+        padding: 16px;
+    }
+    
+    .users-tags-container {
+        max-width: 100%;
+    }
+    
+    .users-tags {
+        justify-content: center;
+        gap: 6px;
+    }
+    
+    .users-tag {
+        padding: 0px 6px;
+        height: 24px;
+    }
+    
+    .users-tag-text {
+        font-size: 15px;
     }
 }
 
@@ -6399,7 +6541,7 @@ button.nav-link {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
-    z-index: 2400; /* Below mobile menu (2600) to ensure proper layering */
+    z-index: 2550; /* Above feedback section (2500) but below mobile menu (2600) */
     overflow: hidden;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);

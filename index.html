@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Grist - Lead Product Designer - UK</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    
+    <!-- Preload critical fonts to prevent FOUT -->
+    <link rel="preload" href="fonts/Apercu-Light.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Apercu-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Font loading optimization -->
+    <style>
+        /* Critical inline styles to prevent FOUT */
+        .font-loading body {
+            visibility: hidden;
+        }
+        .fonts-loaded body,
+        .no-js body {
+            visibility: visible;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font loading detection -->
+    <script src="font-loading.js"></script>
+</head>
+<body>
+    <!-- Fixed Header - Contains Logo and Action Buttons -->
+    <header class="fixed-header">
+        <div class="header-logo">
+            <a href="index.html" class="logo-link">
+                <img src="img/tgs-mark.svg" alt="TGS" class="logo-svg">
+            </a>
+        </div>
+        
+        <div class="header-buttons">
+            <div class="header-buttons-container">
+                <button class="action-button linkedin-button">
+                    <img src="img/linkedin-icon.svg" alt="" class="button-icon">
+                    <span class="button-text">LinkedIn</span>
+                </button>
+                <button class="action-button email-button">
+                    <img src="img/email-icon.svg" alt="" class="button-icon">
+                    <span class="button-text">Email</span>
+                </button>
+                <button class="action-button call-button">
+                    <img src="img/call-icon.svg" alt="" class="button-icon">
+                    <span class="button-text">Call</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Controls Group (Call Button + Hamburger Menu) -->
+        <div class="mobile-controls-group">
+            <button class="action-button call-button">
+                <img src="img/call-icon.svg" alt="" class="button-icon">
+                <span class="button-text">Call</span>
+            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay"></div>
+
+    <aside class="left-navigation" aria-hidden="true">
+        <div class="nav-background">
+            <nav class="nav-content">
+                <!-- Case Studies Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">Case studies</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="whereby.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Whereby</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="sky-comcast.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Sky & Comcast</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="rio-esg.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Rio ESG</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="deltatre.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Deltatre</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="audi.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <div class="nav-text-container">
+                                    <span class="nav-text">Audi</span>
+                                    <span class="nav-subtitle">@ BBH</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- About Section -->
+                <section class="nav-section">
+                    <h2 class="nav-section-title">About</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="how-i-design.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">How I design</span>
+                            </a>
+                        </li>
+                        <li class="nav-item cv-nav-item">
+                            <button class="nav-link cv-button">
+                                <div class="nav-icon">
+                                    <img src="img/cv-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">CV</span>
+                            </button>
+                        </li>
+                        <li class="nav-item backlog-item">
+                            <a href="backlog.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Backlog</span>
+                            </a>
+                        </li>
+                        <li class="nav-item release-notes-item">
+                            <a href="release-notes.html" class="nav-link">
+                                <div class="nav-icon">
+                                    <img src="img/nav-arrow.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Release notes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                
+                <!-- Contact Section -->
+                <section class="nav-section contact-section">
+                    <h2 class="nav-section-title">Contact</h2>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <button class="nav-link linkedin-button">
+                                <div class="nav-icon">
+                                    <img src="img/linkedin-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">LinkedIn</span>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link email-button">
+                                <div class="nav-icon">
+                                    <img src="img/email-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Email</span>
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link call-button">
+                                <div class="nav-icon">
+                                    <img src="img/call-icon.svg" alt="" class="nav-arrow">
+                                </div>
+                                <span class="nav-text">Call</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Navigation active state handler - runs immediately after nav is rendered -->
+    <script src="nav-active-state.js"></script>
+
+    <main class="homepage">
+        <div class="content-area">
+            <div class="page-content">
+                <!-- Hero Section from Figma -->
+                <div class="hero-section">
+                    <div class="hero-header">
+                        <h1 class="hero-name">Thomas Grist</h1>
+                        <div class="hero-subtitle">
+                            <span class="hero-title">Lead Product Designer<sup class="hero-location-super">U.K.</sup></span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-badges">
+                        <div class="badge-row">
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/uk-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">Based in London & South</span>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/hands-on-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">Hands-on designer</span>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/performance-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">Motivated by results</span>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/journeys-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">End-to-end journeys</span>
+                            </div>
+                        </div>
+                        <div class="badge-row">
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/saas-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">B2B & B2C SaaS pro</span>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/ecomm-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">eCommerce experience</span>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/research-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">Research to release skills</span>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-circle">
+                                    <img src="img/vibe-code-icon.svg" alt="" class="badge-icon">
+                                </div>
+                                <span class="badge-text">Vibe coder & prototyper</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tiles Row -->
+                <div class="project-tiles-row">
+                    <!-- Project Tile Component 1 -->
+                    <a href="whereby.html" class="project-tile-link">
+                        <div class="project-tile">
+                        <div class="project-tile-header">
+                            <div class="project-tile-meta">
+                                <div class="project-tile-tag">
+                                    <span class="tag-text">SaaS</span>
+                                </div>
+                                <span class="project-tile-company">Whereby</span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-tile-description">
+                            Identifying & solving customer pain points
+                        </p>
+                        
+                        <div class="project-tile-tags">
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Customer journey mapping</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Strategy</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UX</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UI</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tile-image-space">
+                            <img src="img/whereby.png" alt="Whereby product interface" class="project-tile-image">
+                        </div>
+                        </div>
+                    </a>
+
+                    <!-- Project Tile Component 2 -->
+                    <a href="sky-comcast.html" class="project-tile-link">
+                        <div class="project-tile">
+                        <div class="project-tile-header">
+                            <div class="project-tile-meta">
+                                <div class="project-tile-tag">
+                                    <span class="tag-text">SaaS</span>
+                                </div>
+                                <span class="project-tile-company">Sky & Comcast</span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-tile-description">
+                            62% increase in ops speed
+                        </p>
+                        
+                        <div class="project-tile-tags">
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">User research</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UX</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UI</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Testing</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tile-image-space">
+                            <img src="img/sky-and-comcast.png" alt="Sky & Comcast product interface" class="project-tile-image">
+                        </div>
+                        </div>
+                    </a>
+                </div>
+
+
+
+                <!-- Project Tiles Row 2 -->
+                <div class="project-tiles-row">
+                    <!-- Project Tile Component 3 -->
+                    <a href="rio-esg.html" class="project-tile-link">
+                        <div class="project-tile">
+                        <div class="project-tile-header">
+                            <div class="project-tile-meta">
+                                <div class="project-tile-tag">
+                                    <span class="tag-text">SaaS</span>
+                                </div>
+                                <span class="project-tile-company">Rio ESG</span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-tile-description">
+                            Preparing the product for self-service
+                        </p>
+                        
+                        <div class="project-tile-tags">
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Workshop facilitation</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Brand</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UX</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UI</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Design System</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tile-image-space">
+                            <img src="img/rio.png" alt="Rio ESG product interface" class="project-tile-image">
+                        </div>
+                        </div>
+                    </a>
+
+                    <!-- Project Tile Component 4 -->
+                    <a href="deltatre.html" class="project-tile-link">
+                        <div class="project-tile">
+                        <div class="project-tile-header">
+                            <div class="project-tile-meta">
+                                <div class="project-tile-tag">
+                                    <span class="tag-text">SDK</span>
+                                </div>
+                                <span class="project-tile-company">Deltatre</span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-tile-description">
+                            Fan engagement: strategy to sales
+                        </p>
+                        
+                        <div class="project-tile-tags">
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Strategy</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UX</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UI</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tile-image-space">
+                            <img src="img/deltatre.png" alt="Deltatre product interface" class="project-tile-image">
+                        </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Full Width Project Tile 2 -->
+                <div class="project-tile-row-full">
+                    <a href="audi.html" class="project-tile-link-full">
+                        <div class="project-tile-full project-tile-no-gap">
+                            <div class="project-tile-header">
+                                <div class="project-tile-meta">
+                                    <div class="project-tile-tag">
+                                        <span class="tag-text">eCommerce</span>
+                                    </div>
+                                    <span class="project-tile-company">Audi @ BBH</span>
+                                </div>
+                            </div>
+                            
+                            <p class="project-tile-description">
+                                59% increase in lead generation
+                            </p>
+                            
+                            <div class="project-tile-tags">
+                                <div class="skill-tag">
+                                    <span class="skill-tag-text">Workshop facilitation</span>
+                                    <div class="skill-tag-dot"></div>
+                                </div>
+                                <div class="skill-tag">
+                                    <span class="skill-tag-text">UX</span>
+                                    <div class="skill-tag-dot"></div>
+                                </div>
+                                <div class="skill-tag">
+                                    <span class="skill-tag-text">UI</span>
+                                    <div class="skill-tag-dot"></div>
+                                </div>
+                                <div class="skill-tag">
+                                    <span class="skill-tag-text">Testing</span>
+                                    <div class="skill-tag-dot"></div>
+                                </div>
+                                <div class="skill-tag">
+                                    <span class="skill-tag-text">Design System</span>
+                                    <div class="skill-tag-dot"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-tile-image-space">
+                                <img src="img/audi.png" alt="Audi product interface" class="project-tile-image">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Full Width Project Tile - Speechmatics AI -->
+                <div class="project-tile-row-full">
+                    <div class="project-tile-full speechmatics-ai-tile">
+                        <div class="nav-callout" id="speechmatics-ai-coming-soon">Coming Soon</div>
+                        <div class="project-tile-header">
+                            <div class="project-tile-meta">
+                                <div class="project-tile-tag">
+                                    <span class="tag-text">SaaS</span>
+                                </div>
+                                <span class="project-tile-company">Speechmatics AI</span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-tile-description">
+                            Increasing leads with no-code tools
+                        </p>
+                        
+                        <div class="project-tile-tags">
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Workshop facilitation</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UX</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">UI</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                            <div class="skill-tag">
+                                <span class="skill-tag-text">Testing</span>
+                                <div class="skill-tag-dot"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-tile-image-space">
+                            <img src="img/speechmaticsai.png" alt="Speechmatics AI product interface" class="project-tile-image">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Timeline Component -->
+                <div class="career-timeline">
+                    <div class="career-timeline-header">
+                        <div class="career-timeline-title-section">
+                            <h2 class="career-timeline-title">My career timeline</h2>
+                            <div class="career-timeline-actions">
+                                <div class="career-action-item">
+                                    <div class="career-action-icon">
+                                        <img src="img/tick.svg" alt="" width="14" height="15" class="career-tick-icon">
+                                    </div>
+                                    <span class="career-action-text">Work samples available on request</span>
+                                </div>
+                                <div class="career-action-item">
+                                    <div class="career-action-icon">
+                                        <img src="img/tick.svg" alt="" width="14" height="15" class="career-tick-icon">
+                                    </div>
+                                    <span class="career-action-text">See <button class="career-cv-link cv-button"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="career-cv-icon">
+<path d="M4 1.125H10V7.125" stroke="#B5B5B5"/>
+<path d="M10 1.125L4 7.125" stroke="#B5B5B5"/>
+<path d="M1 2.375V8.875C1 9.42728 1.44772 9.875 2 9.875H9" stroke="#B5B5B5"/>
+</svg><span class="career-cv-text">CV</span></button> for detail</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="career-timeline-navigation">
+                            <button class="career-nav-button career-nav-previous">
+                                <img src="img/timeline-arrow.svg" alt="Previous" class="career-nav-icon career-nav-icon-previous">
+                            </button>
+                            <button class="career-nav-button career-nav-next">
+                                <img src="img/timeline-arrow.svg" alt="Next" class="career-nav-icon career-nav-icon-next">
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="career-timeline-content">
+                        <div class="career-timeline-projects">
+                            <!-- Timeline Line -->
+                            <div class="timeline-line"></div>
+                            
+                            <!-- Timeline Projects Row -->
+                            <div class="timeline-projects-row">
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client one</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2025</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client two</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2025</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client three</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2025</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client four</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2025</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client five</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2024</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client six</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2023</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client seven</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2024</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client eight</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2023</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client nine</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2023</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client ten</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2021</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client eleven</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2021</div>
+                                </div>
+                                
+                                <div class="timeline-project">
+                                    <div class="timeline-project-card">
+                                        <div class="timeline-project-line"></div>
+                                        <div class="timeline-project-content">
+                                            <div class="timeline-project-header">
+                                                <div class="timeline-project-meta">
+                                                    <div class="timeline-project-tag">
+                                                        <span class="timeline-tag-text">SaaS</span>
+                                                    </div>
+                                                    <span class="timeline-project-company">Client twelve</span>
+                                                </div>
+                                                <div class="timeline-project-tags">
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">Workshop facilitation</span>
+                                                        <div class="timeline-skill-dot"></div>
+                                                    </div>
+                                                    <div class="timeline-skill-tag">
+                                                        <span class="timeline-skill-text">UX</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="timeline-project-description">
+                                                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-year">2021</div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                        
+                        <!-- Fade Gradient -->
+                        <div class="career-timeline-fade"></div>
+                    </div>
+
+                </div>
+
+                <!-- AI Thoughts Component -->
+                <div class="ai-thoughts-section">
+                    <div class="ai-thoughts-row">
+                        <div class="ai-thoughts-container ai-thoughts-container-image">
+                            <div class="ai-thoughts-content">
+                                <div class="ai-thoughts-image">
+                                    <div class="cube-container">
+                                        <div class="cube">
+                                            <div class="face front"></div>
+                                            <div class="face back"></div>
+                                            <div class="face left"></div>
+                                            <div class="face right"></div>
+                                            <div class="face top"></div>
+                                            <div class="face bottom"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-thoughts-container ai-thoughts-container-text">
+                            <div class="ai-thoughts-content">
+                                <div class="ai-thoughts-text">
+                                    <p class="ai-thoughts-title">My thoughts on the impact of AI design and dev tools</p>
+                                    <p class="ai-thoughts-description">
+                                        Speed to market will accelerate significantly, leading to more saturated markets and fiercer, more agile competition. Quality will rise, taste and distinction will become even more important. Businesses will still need to integrate the best tools *and* people into their workflows to create high quality, distinctive products at pace.
+                                    </p>
+                                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7308865985044709376/" target="_blank" rel="noopener noreferrer" class="ai-thoughts-link">
+                                        <svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="ai-thoughts-link-icon">
+                                            <path d="M3.5 1H9.5V7" stroke="#B5B5B5"/>
+                                            <path d="M9.5 1L3.5 7" stroke="#B5B5B5"/>
+                                            <path d="M0.5 2.25V8.75C0.5 9.30228 0.947715 9.75 1.5 9.75H8.5" stroke="#B5B5B5"/>
+                                        </svg>
+                                        <span class="ai-thoughts-link-text">Read more on LinkedIn</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <div class="feedback-container">
+                    <div class="feedback-content">
+                        <div class="feedback-text-column">
+                            <div class="feedback-text-container">
+                                <p class="feedback-intro">Got a moment?</p>
+                                <h2 class="feedback-title">Please feedback on my portfolio</h2>
+                                <p class="feedback-description">Every person and product needs feedback and I would really appreciate yours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feedback-form-column">
+                            <div class="bottom-feedback-form-container">
+                                <!-- Feedback Form -->
+                            <form class="feedback-form" name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="bottom-feedback-form">
+                                <input type="hidden" name="form-name" value="feedback" />
+                                <p style="display: none;">
+                                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                                </p>
+                                
+                                <div class="feedback-fields">
+                                    <div class="feedback-field">
+                                        <div class="feedback-label-row">
+                                            <label for="bottom-feedback-name" class="feedback-label">Name</label>
+                                            <span class="feedback-optional">Optional</span>
+                                        </div>
+                                        <input type="text" id="bottom-feedback-name" name="name" class="feedback-input">
+                                    </div>
+                                    
+                                    <div class="feedback-field">
+                                        <label for="bottom-feedback-message" class="feedback-label">Message</label>
+                                        <textarea id="bottom-feedback-message" name="message" class="feedback-textarea"></textarea>
+                                        <p class="feedback-error-message" id="bottom-feedback-message-error">Please enter a message</p>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="feedback-submit-btn">
+                                    <span class="feedback-submit-text">Submit feedback</span>
+                                </button>
+                            </form>
+
+                            <!-- Success State -->
+                            <div class="feedback-success-state" id="bottom-feedback-success" style="display: none;">
+                                <div class="feedback-success-icon">
+                                    <div class="animated-checkmark">
+                                        <svg width="20" height="20" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <defs>
+                                                <linearGradient id="circleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                    <stop offset="0%" style="stop-color:white;stop-opacity:1" />
+                                                    <stop offset="100%" style="stop-color:white;stop-opacity:0.5" />
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="url(#circleGradient)" stroke-width="2"/>
+                                            <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h3 class="feedback-success-title">Thank you</h3>
+                                <p class="feedback-success-message">Your feedback will help me further improve my portfolio</p>
+                                <button type="button" class="feedback-submit-btn" id="bottom-feedback-leave-more">
+                                    <span class="feedback-submit-text">Leave more feedback</span>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Static form for Netlify detection - DO NOT REMOVE -->
+    <form name="feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: none;">
+        <input type="hidden" name="form-name" value="feedback" />
+        <label>Name: <input type="text" name="name" /></label>
+        <label>Message: <textarea name="message"></textarea></label>
+        <p style="display: none;">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Ticker Banner (Homepage Only) -->
+    <div class="ticker-banner" id="ticker-banner">
+        <div class="ticker-fixed-text">Career highlights</div>
+        <div class="ticker-scroll-container">
+            <div class="ticker-scroll-content">
+                <span class="ticker-item">Lead designer for Tiger Pistol's launch which subsequently secured Series A funding</span>
+                <span class="ticker-item">Shaped fan engagement strategy at Deltatre to procure investment and generate sales of features built to the NFL</span>
+                <span class="ticker-item">62% increase in ops speed at Sky</span>
+                <span class="ticker-item">59% increase in lead generation at Audi</span>
+                <span class="ticker-item">32% increase in bookings at Jackson Hewitt across 6,000 U.S. stores</span>
+                <span class="ticker-item">Helped launch Alike, a not-for-profit community designed to support those with cancer</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation JavaScript -->
+    <script src="mobile-nav.js"></script>
+    <!-- Header Scroll Animation -->
+    <script src="header-scroll.js"></script>
+    <!-- Header Hover Effect -->
+    <script src="header-hover.js"></script>
+    <!-- Bottom Feedback Form -->
+    <script src="bottom-feedback.js"></script>
+    <!-- Ticker Banner JavaScript -->
+    <script src="ticker-banner.js"></script>
+    
+</body>
+</html> 

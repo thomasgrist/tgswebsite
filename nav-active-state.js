@@ -33,6 +33,7 @@ function setNavigationActiveState() {
         'rio-esg.html': 'Rio ESG',
         'deltatre.html': 'Deltatre',
         'audi.html': 'Audi',
+        'how-i-design.html': 'How I design',
         'backlog.html': 'Backlog',
         'release-notes.html': 'Release notes'
     };
