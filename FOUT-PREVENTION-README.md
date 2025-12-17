@@ -95,7 +95,6 @@ All HTML pages now include the FOUT prevention system:
 - ✅ `speechmatics-ai.html`
 - ✅ `case-study-template.html`
 - ✅ `case-study-tabs-archive.html`
-- ✅ `how-i-design.html`
 - ✅ `backlog.html`
 - ✅ `success.html`
 
