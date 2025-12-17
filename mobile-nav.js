@@ -270,7 +270,7 @@ class StickyButtons {
     
     handleCVDownload() {
         // Open CV PDF from downloads folder in new browser window
-        window.open('downloads/Thomas-Grist_Lead-Product-Designer_CV.pdf', '_blank', 'noopener,noreferrer');
+        window.open('downloads/Thomas-Grist_Staff-Product-Designer_CV.pdf', '_blank', 'noopener,noreferrer');
     }
     
     handleLinkedInClick() {
