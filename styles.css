@@ -587,6 +587,8 @@ body {
 
 /* Speechmatics AI coming soon callout - match navigation menu styling exactly */
 #speechmatics-ai-coming-soon {
+    position: absolute !important;
+    width: fit-content !important;
     background: rgba(181, 181, 181, 0.4) !important;
     color: rgba(181, 181, 181, 1) !important;
     font-family: 'Apercu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
